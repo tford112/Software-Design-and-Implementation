@@ -8,29 +8,61 @@
 #include <ctype.h>
 #include <time.h>
 #include <unistd.h>
+
 #define SIZE 100
 #define ERROR -1
 
+typedef enum {ROCK, PAPER, SCISSORS, EXIT} choice; 
+
 char *my_getline();
 int compare_inp(char *);
-int comp_move(); 
-
+int computer_move() ;
+void game_result(int player, int cpu, int *pwin, int *cwin, int *tie) ;
+char *translate(int comp_move);
 	
-
 int main(int argc, char *argv[]){
 	int player_win = 0; 
+	int player_move = -1;
 	int comp_win = 0; 
+	int tie = 0 ;
 	int start = 1; 
+	printf("Please enter rock, paper, scissors\n"); 
 	while (start) {
-		char *inp = my_getline();
-		int player_move = compare_inp(inp); 
-		int comp_move = comp_move();
-		game_result(player_move, comp_move, &player_win, &comp_win); 
-		printf("Please enter rock, paper, scissors\n"); 
+		do {
+			char *inp = my_getline();
+			player_move = compare_inp(inp); 
+		} while (player_move == ERROR); 
 
+		if (player_move == EXIT) {
+			printf("Game status: \n Win:  %d\n Lose:  %d\n Tie:  %d\n Total:  %d\n", \
+					player_win, comp_win, tie, player_win + comp_win + tie); 
+			exit(0);
+		}
+		int comp_move = computer_move();
+		char *comp_res = translate(comp_move);
+		printf("Computer played: %s\n", comp_res);
+		game_result(player_move, comp_move, &player_win, &comp_win, &tie); 
 	}
+
 	return 0;
 }
+
+char *translate(int comp_move) {
+	char *translate = malloc(sizeof(char)*SIZE/10);
+	switch (comp_move) {
+		case ROCK:
+			translate = "ROCK";
+			break;
+		case PAPER:
+			translate = "PAPER";
+			break;
+		case SCISSORS:
+			translate = "SCISSORS";
+			break;
+	}
+	return translate;
+}
+		
 
 char* my_getline() {
 	int nch = 0; 
@@ -55,44 +87,82 @@ char* my_getline() {
 	return out; 
 }
 
+// compare player input to valid options 
 int compare_inp(char *inp) {
 	if (!strcmp(inp, "ROCK")) {
-		return 0;
+		return ROCK;
 	}
 	else if (!strcmp(inp, "PAPER")) {
-		return 1; 
+		return PAPER;
 	}
 	else if (!strcmp(inp, "SCISSORS")){
-		return 2; 
+		return SCISSORS;
 	} 
 	else if (!strcmp(inp, "E")) {
-		return 3; 
-	else {
-		perror("Please provide a valid choice: rock, paper, or scissors\n"); 
-		return ERROR;
+		return EXIT;
 	}
+	printf("Please enter valid rock, paper, scissors value\n"); 
+	return ERROR;
 }
 
-int comp_move() {
+// computer randomly chooses move 
+int computer_move() {
 	srand(time(0)); // initializes RNG with current time as seed 
 	int intermediary_random = rand() % 1000; 
 	return intermediary_random % 3; 
 }
 
-void game_result(int player, int cpu, int *pwin, int *cwin) {
+// game result between player choice and computer randomly-generated move
+void game_result(int player, int cpu, int *pwin, int *cwin, int *tie) {
 	switch (player) {
-		case 0:
-			if (cpu == 1) *cwin++; 
-			else if (cpu == 2) *pwin++; 
-			break;
-		case 1: 
-			if (cpu == 2) *cwin++;
-			else if (cpu == 0) *pwin++; 
-			break; 
-		case 2: 
-			if (cpu == 0) *cwin++;
-			else if (cpu == 1) *pwin++;
-			break; 
+		case ROCK:  // you played rock 
+			if (cpu == PAPER) {
+				printf("CPU wins!\n"); 
+				(*cwin)++; 
+				break;
+			}
+			else if (cpu == SCISSORS) {
+				printf("You win!\n"); 
+				(*pwin)++;
+				break;
+			}
+			else {
+				printf("Tied!\n"); 
+				(*tie)++;
+				break;
+			}
+		case PAPER: // you played paper 
+			if (cpu == SCISSORS) {
+				printf("CPU wins\n");
+				(*cwin)++;
+				break;
+			}
+			else if (cpu == ROCK) {
+				printf("You win!\n"); 
+				(*pwin)++; 
+				break;
+			}
+			else {
+				printf("Tied!\n"); 
+				(*tie)++;
+				break;
+			}
+		case SCISSORS: // you played scissors  
+			if (cpu == ROCK) {
+				printf("CPU wins\n");
+				(*cwin)++;
+				break;
+			}
+			else if (cpu == PAPER) {
+				printf("You win!\n"); 
+				(*pwin)++; 
+				break;
+			}
+			else {
+				printf("Tied!\n"); 
+				(*tie)++;
+				break;
+			}
 	}
 }
 
