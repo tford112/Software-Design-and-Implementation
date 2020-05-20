@@ -26,11 +26,13 @@ int main(int argc, char *argv[]){
 	int comp_win = 0; 
 	int tie = 0 ;
 	int start = 1; 
+	char *comp_res;
 	printf("Please enter rock, paper, scissors\n"); 
 	while (start) {
 		do {
 			char *inp = my_getline();
 			player_move = compare_inp(inp); 
+			free(inp);
 		} while (player_move == ERROR); 
 
 		if (player_move == EXIT) {
@@ -40,7 +42,13 @@ int main(int argc, char *argv[]){
 		}
 		int comp_move = computer_move();
 		char *comp_res = translate(comp_move);
+		if (comp_res == NULL){
+			perror("Not enough memory for comp move\n");
+			return ERROR;
+		}
 		printf("Computer played: %s\n", comp_res);
+		free(comp_res); 
+		
 		game_result(player_move, comp_move, &player_win, &comp_win, &tie); 
 	}
 
@@ -48,16 +56,16 @@ int main(int argc, char *argv[]){
 }
 
 char *translate(int comp_move) {
-	char *translate = malloc(sizeof(char)*SIZE/10);
+	char *translate = malloc(sizeof(char)*SIZE/10); // buffer to hold string value (only need 10 slots or so)
 	switch (comp_move) {
 		case ROCK:
-			translate = "ROCK";
+			snprintf(translate, SIZE/10, "%s", "ROCK");
 			break;
 		case PAPER:
-			translate = "PAPER";
+			snprintf(translate, SIZE/10, "%s", "PAPER"); 
 			break;
 		case SCISSORS:
-			translate = "SCISSORS";
+			snprintf(translate, SIZE/10, "%s", "SCISSORS"); 
 			break;
 	}
 	return translate;
