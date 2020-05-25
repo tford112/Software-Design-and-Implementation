@@ -44,6 +44,17 @@ DICTIONARY* dict = NULL;
 
 char *url_list[MAX_URL_PER_PAGE]; 
 
+//(2) - initLists
+
+void initLists(){
+	dict = (DICTIONARY*) malloc(sizeof(DICTIONARY));
+	MALLOC_CHECK(dict);
+	BZERO(dict, sizeof(DICTIONARY));
+	dict->start = NULL;
+	dict->end = NULL; 
+}
+
+
 /*
 
 

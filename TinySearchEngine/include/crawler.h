@@ -13,7 +13,6 @@
 // DEFINES
 
 // The max length of each URL path.
-#define MAX_URL_LENGTH 1000
 
 #define INTERVAL_PER_FETCH 1
 
