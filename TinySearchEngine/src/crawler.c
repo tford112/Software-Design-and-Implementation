@@ -18,6 +18,8 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "crawler.h"
 #include "html.h"
 #include "hash.h"
@@ -42,24 +44,76 @@ DICTIONARY* dict = NULL;
 // from the current HTML page. NULL pointer represents the end of the
 // list of URLs.
 
+
 char *url_list[MAX_URL_PER_PAGE]; 
 
-//(2) - initLists
+// (1) -- Command line processing on arguments 
+
+void commandLine(int argc, char *argv[]) {
+	if (argc != 4) {
+		perror("Not enough arguments supplied\n");
+		exit(1);
+	}
+	FILE *dir = fopen(argv[2], "r"); 
+	if (dir == NULL) {
+		perror("Directory to store HTMLs not supplied\n");
+		exit(1);
+	}
+	fclose(dir); 
+
+
+}
+
+//(2) - itLists (properly intialize the Dictionary Hash Table) 
 
 void initLists(){
 	dict = (DICTIONARY*) malloc(sizeof(DICTIONARY));
 	MALLOC_CHECK(dict);
-	BZERO(dict, sizeof(DICTIONARY));
+	memset(dict, 0, sizeof(DICTIONARY)); 
+//	BZERO(dict, sizeof(DICTIONARY));
 	dict->start = NULL;
 	dict->end = NULL; 
+}
+
+// (3) -- 
+
+
+/* 1. need to use wget to execute and download seedURL to temp file 
+ * 2. to do this need to determine length of this temp file 
+ *  (remember, it has to store all the HTML information so this will be a pretty long file )
+ * 3. return pointer to buffer 
+*/
+
+char *getPage(char *seedURL, int current_depth, char *target_directory) {
+	char command[MAX_URL_LENGTH+25];  // +5 for null terminator and wget
+	snprintf(command, MAX_URL_LENGTH+25, "wget %s -O buf.html", seedURL); 
+	system(command);
+	FILE *html = fopen("buf.html", "r"); 
+	if (html == NULL) {
+		perror("Wget didn't properly download to a temp file\n"); 
+		exit(1);
+	}
+	fseek(html, 0, SEEK_END); // seek to the end of the file 
+	int html_size = ftell(html);  // get current size of file after going to end 
+	rewind(html);  	          // rewind all the way back to read in later to buffer 
+	char *buf = malloc(sizeof(char) * html_size + 1); // +1 for null-terminator 
+	MALLOC_CHECK(buf);
+	memset(buf, 0, html_size); // need to initialize malloc'ed buffer before using 
+	size_t result = fread(buf, sizeof(char), html_size, html); // read into buffer
+	if (result != html_size) {
+		fputs("reading error", stderr); 
+		exit(2); 
+	}
+	fclose(html);   // cleaning up by closing the file stream and removing the temp file
+	char remove[15]; 
+	snprintf(remove, 15, "rm buf.html"); 
+
+	return buf;
 }
 
 
 /*
 
-
-(5) *Crawler*
--------------
 
 // Input command processing logic
 
@@ -135,18 +189,14 @@ void initLists(){
 */
 
 
-int main() {
-
-  printf("Get cooking cs23!\n");
-
-  printf("Translate the pseudo code. Data structures are in crawler.h\n");
-
-  printf("Don't forget to read the README in this directory\n\n");
-
-  printf("What do you call a fish with no eye? Fsh ;-)\n\n");
-
-  printf("Good luck\n");
-
-  return 0;
+int main(int argc, char *argv[]) {
+	commandLine(argc, argv); 
+	char *seedURL = argv[1]; 
+	int current_depth = atoi(argv[2]); 
+	char *target_dir = argv[3];
+	char *page = getPage(seedURL, current_depth, target_dir) ;
+	printf("page is:\n %s", page); 
+	free(page); 
+	return 0;
 }
 
