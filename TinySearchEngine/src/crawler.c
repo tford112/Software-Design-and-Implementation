@@ -24,6 +24,7 @@
 #include "html.h"
 #include "hash.h"
 #include "header.h"
+#include "html.c"  // parser function located here 
 
 // Define the dict structure that holds the hash table 
 // and the double linked list of DNODES. Each DNODE holds
@@ -73,6 +74,8 @@ void initLists(){
 //	BZERO(dict, sizeof(DICTIONARY));
 	dict->start = NULL;
 	dict->end = NULL; 
+
+	memset(url_list, 0, MAX_URL_PER_PAGE); // initialize the url_lists as well 
 }
 
 // (3) -- 
@@ -107,9 +110,33 @@ char *getPage(char *seedURL, int current_depth, char *target_directory) {
 	fclose(html);   // cleaning up by closing the file stream and removing the temp file
 	char remove[15]; 
 	snprintf(remove, 15, "rm buf.html"); 
-
+	system(remove);
 	return buf;
 }
+
+// (4) -- extractURLS(page, SEED_URL) 
+
+/* 1.) use the parser, GetNextURL (already provided by professors) to extract URLS from buffer (containing HTML page) 
+ * 2.) add each URL to the url_list[] if the URL has the same URL_PREFIX ("http://www.cs.dartmouth.edu")  
+ * 	-> This way we don't crawl other links in URLs and end up getting blocked (e.g. going to NY Times and crawling there 
+ * 	because a URL we extracted told the crawler to go there) 
+ * 3.) recall that the url_list is an array of pointers to char so need to malloc a buffer to store the correct extracted URLS 
+ *
+ * note: This course is outdated so the course recommended URL_PREFIX to be "http://www.cs.dartmouth.edu" but running the parser 
+ *     on this seedURL only shows 1 viable link. I'm editing the prefix to be all of dartmouth 
+ */
+
+void extractURLS(char *page, char *seedURL) {
+	char *parse_result = malloc(sizeof(char) * MAX_URL_PER_PAGE * MAX_URL_LENGTH); 
+	MALLOC_CHECK(parse_result); 
+	memset(parse_result, 0, MAX_URL_PER_PAGE * MAX_URL_LENGTH);
+	int parsed = GetNextURL(page, seedURL, parse_result,0); 
+	if (parsed != -1) {
+		perror("Error in parsing function.\n");
+	}
+	char *first = strstr(parse_result, URL_PREFIX);
+       	//printf("PARSED URLS %s\n", first); 
+}	
 
 
 /*
@@ -195,6 +222,7 @@ int main(int argc, char *argv[]) {
 	int current_depth = atoi(argv[2]); 
 	char *target_dir = argv[3];
 	char *page = getPage(seedURL, current_depth, target_dir) ;
+	extractURLS(page, seedURL);
 	printf("page is:\n %s", page); 
 	free(page); 
 	return 0;
