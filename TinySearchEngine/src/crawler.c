@@ -24,7 +24,8 @@
 #include "html.h"
 #include "hash.h"
 #include "header.h"
-#include "html.c"  // parser function located here 
+#include "gumbo.c"  // parser function located here 
+#include "gumbo.h"
 
 // Define the dict structure that holds the hash table 
 // and the double linked list of DNODES. Each DNODE holds
@@ -39,6 +40,8 @@
 // to the current URL search. 
 
 DICTIONARY* dict = NULL; 
+const char *URL_PREFIX = "https://home.dartmouth.edu"; 
+int url_list_index = 0; 
 
 
 // This is the table that keeps pointers to a list of URL extracted
@@ -88,8 +91,8 @@ void initLists(){
 */
 
 char *getPage(char *seedURL, int current_depth, char *target_directory) {
-	char command[MAX_URL_LENGTH+25];  // +5 for null terminator and wget
-	snprintf(command, MAX_URL_LENGTH+25, "wget %s -O buf.html", seedURL); 
+	char command[MAX_URL_LENGTH];  // +5 for null terminator and wget
+	snprintf(command, MAX_URL_LENGTH, "wget %s -O buf.html", seedURL); 
 	system(command);
 	FILE *html = fopen("buf.html", "r"); 
 	if (html == NULL) {
@@ -130,12 +133,31 @@ void extractURLS(char *page, char *seedURL) {
 	char *parse_result = malloc(sizeof(char) * MAX_URL_PER_PAGE * MAX_URL_LENGTH); 
 	MALLOC_CHECK(parse_result); 
 	memset(parse_result, 0, MAX_URL_PER_PAGE * MAX_URL_LENGTH);
-	int parsed = GetNextURL(page, seedURL, parse_result,0); 
-	if (parsed != -1) {
-		perror("Error in parsing function.\n");
-	}
-	char *first = strstr(parse_result, URL_PREFIX);
-       	//printf("PARSED URLS %s\n", first); 
+	char *url_results = all_urls(&page);
+	int len = strlen(url_results); 
+	int n = 0;
+	int single_index = 0; 
+	char single[MAX_URL_LENGTH] ; 
+	memset(single, 0, MAX_URL_LENGTH); 
+	while (n < len-1) {
+		if (url_results[n] == '\n') {
+			single[single_index] = '\0'; 
+			char *found = strstr(single, URL_PREFIX); 
+			if (found) {
+				char *put_result= calloc(strlen(single), sizeof(char)); 
+				MALLOC_CHECK(put_result); 
+				snprintf(put_result, sizeof(single), "%s", single); 
+				url_list[url_list_index++] = put_result; 
+				free(put_result);
+			}
+			memset(single, 0, MAX_URL_LENGTH); 
+			++n;
+			single_index = 0; 
+		}
+		else { 
+			single[single_index++] = url_results[n++]; 
+		}
+	}	
 }	
 
 
@@ -218,13 +240,18 @@ void extractURLS(char *page, char *seedURL) {
 
 int main(int argc, char *argv[]) {
 	commandLine(argc, argv); 
-	char *seedURL = argv[1]; 
+	char *seedURL = argv[1];  // example would be "www.cs.dartmouth.edu"
 	int current_depth = atoi(argv[2]); 
 	char *target_dir = argv[3];
 	char *page = getPage(seedURL, current_depth, target_dir) ;
 	extractURLS(page, seedURL);
-	printf("page is:\n %s", page); 
-	free(page); 
+	int n =0; 
+	while (n < 10) {
+		printf("%s\n", url_list[n]); 
+		++n;
+	}
+	//printf("page is:\n %s", page); 
+//	free(page); 
 	return 0;
 }
 
