@@ -28,6 +28,8 @@
 
 
 // Check whether s is NULL or not on a memory allocation. Quit this program if it is NULL.
+
+typedef int make_iso_compilers_happy; 
 #define MALLOC_CHECK(s)  if ((s) == NULL)   {                     \
     printf("No enough memory at %s:line%d ", __FILE__, __LINE__); \
     perror(":");                                                  \

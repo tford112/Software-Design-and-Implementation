@@ -59,10 +59,6 @@ Return: Position of the URL found
 
 */
 
-int main(void) {
-	char *html = "google.com";
-
-
 int GetNextURL(char* html, char* urlofthispage, char* result, int pos) {
   char c;
   int len, i, j;
@@ -75,6 +71,7 @@ int GetNextURL(char* html, char* urlofthispage, char* result, int pos) {
     removeWhiteSpace(html);
   }
   // /NEW
+//  printf("HTML ISSSSS %s\n", html); 
 
   // Find the <a> <A> HTML tag.
   while (0 != (c = html[pos])) {
@@ -279,7 +276,7 @@ int NormalizeURL(char* URL) {
         ||(!strncmp((URL + i), ".php", 4))
         ||(!strncmp((URL + i), ".jsp", 4))
         ) {
-      len = len; // do nothing.
+      //len = len; // do nothing.
     } else {
       return 0; // bad type
     }

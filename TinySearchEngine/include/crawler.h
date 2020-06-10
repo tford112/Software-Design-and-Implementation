@@ -20,7 +20,9 @@
 // You could remove this limtation but not before testing.
 // The danger is a site may block you
 
-#define URL_PREFIX "http://www.cs.dartmouth.edu"
+/* REPLACED */ 
+//#define URL_PREFIX "https://home.dartmouth.edu" 
+extern const char *URL_PREFIX ;
 
 // Set some magic numbers. These are large values.
 
@@ -60,9 +62,9 @@ typedef struct _URL URLNODE;
 // key is the same as URL recall.
 
 typedef struct _DNODE {
-  struct _DNODE  *next;
-  struct _DNODE  *prev;
-  void    *data;        //  actual data points to URLNOD
+  struct _DNODE *next;
+  struct _DNODE *prev;
+  struct _URL *data;     //  actual data points to URLNOD
   char key[KEY_LENGTH]; //  actual (URL) key 
 } __DNODE;
 
@@ -101,7 +103,7 @@ extern DICTIONARY *dict;
 // list of URLs.
 
 char *url_list[MAX_URL_PER_PAGE];
-
+extern int url_list_index; 
 
 //PROTOTYPES used by crawler.c You have to code them.
 

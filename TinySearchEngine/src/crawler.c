@@ -170,16 +170,6 @@ void extractURLS(char *page, char *seedURL) {
 
 void updateListLinkToBeVisited(char **url_list, int depth) {
 	// initialize first DNODE with URLNODE 
-	/*
-	URLNODE *first = malloc(sizeof(URLNODE)); 
-	MALLOC_CHECK(first); 
-	first->depth = depth ;
-	first->visited = 0; 
-	snprintf(first->url, MAX_URL_LENGTH, "%s", url_list[0]); 
-
-	dict->start->data = first;  // put the URLNODE into the first DNODE in the DICTIONARY (start)  
-	snprintf(dict->start->key, KEY_LENGTH, "%s", first->url); 
-	*/
 
 	int n =0; 
 	int start_temp = 0; 
@@ -203,7 +193,7 @@ void updateListLinkToBeVisited(char **url_list, int depth) {
 
 	while (url_list[n]) { 
 		unsigned long hash_value = hash1(url_list[n]) % MAX_HASH_SLOT ;
-		printf("%s and hash value: %lu\n", url_list[n], hash_value); 
+		printf("%s \t: %lu\n", url_list[n], hash_value); 
 		
 		// check if DICTIONARY has null space for hash value 
 		if (dict->hash[hash_value] == NULL ) { 
@@ -228,21 +218,26 @@ void updateListLinkToBeVisited(char **url_list, int depth) {
 			start_temp = hash_value; 
 
 		}
-		else {
-			
-			;
+		else if (dict->hash[hash_value]) {  // collision occurred with value already in Dictionary for that hash index 
+			DNODE *current = dict->hash[hash_value]; 
+			while ((current->next) && (strcmp(current->key, url_list[n]) != 0)) {
+				if (strcmp(current->key, url_list[n]) != 0) {
+					;
+				} 
+				else {
+					current->next = dict->hash[end_temp]; 
+					current->prev = dict->hash[start_temp]; 
+					dict->hash[start_temp]->next = current; 
+					dict->hash[end_temp]->prev = current; 
+					start_temp = hash_value;
+					break; 
+				}
+				current = current->next; 
+			}
+			free(current); 
 		}
 		++n;
 	}
-	/*
-	printf("trying dict->..\n"); 
-	for (int i = 0; i < MAX_HASH_SLOT; ++i) {
-		if (dict->hash[i]) {
-			printf("%s\n", dict->hash[i]->data->url); 
-		}
-	}
-	*/
-
 }
 
 
