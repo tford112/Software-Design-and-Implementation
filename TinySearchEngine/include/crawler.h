@@ -23,6 +23,7 @@
 /* REPLACED */ 
 //#define URL_PREFIX "https://home.dartmouth.edu" 
 extern const char *URL_PREFIX ;
+extern int max_depth; 
 
 // Set some magic numbers. These are large values.
 
@@ -98,12 +99,14 @@ typedef struct _DICTIONARY DICTIONARY;
 
 extern DICTIONARY *dict;
 
+/*
 // This is the table that keeps pointers to a list of URL extracted
 // from the current HTML page. NULL pointer represents the end of the
 // list of URLs.
 
 char *url_list[MAX_URL_PER_PAGE];
 extern int url_list_index; 
+*/
 
 //PROTOTYPES used by crawler.c You have to code them.
 
