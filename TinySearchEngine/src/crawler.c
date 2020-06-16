@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <unistd.h>
 #include <string.h>
 #include "crawler.h"
 #include "html.h"
@@ -73,8 +73,20 @@ void initLists(){
 	dict = (DICTIONARY*) malloc(sizeof(DICTIONARY));
 	MALLOC_CHECK(dict);
 	memset(dict, 0, sizeof(DICTIONARY)); 
-	dict->start = NULL;
-	dict->end = NULL; 
+
+	dict->start = malloc(sizeof(DNODE)); 
+	MALLOC_CHECK(dict->start); 
+	dict->end = malloc(sizeof(DNODE)); 
+	MALLOC_CHECK(dict->end); 
+
+//	dict->start = NULL;
+	//dict->end = NULL; 
+
+	dict->start->next = dict->end; 
+	dict->start->prev = NULL; 
+	dict->end->prev = dict->start; 
+	dict->end->next = NULL; 
+
 	for (int i =0; i < MAX_HASH_SLOT ; ++i) {
 		dict->hash[i] = NULL; 
 	}
@@ -104,7 +116,6 @@ char *getPage(char *seedURL, int curr_depth, char *target_directory) {
 	rewind(html);  	          // rewind all the way back to read in later to buffer 
 	char *buf = malloc(sizeof(char) * html_size + 1); // +1 for null-terminator 
 	MALLOC_CHECK(buf);
-	memset(buf, 0, html_size); // need to initialize malloc'ed buffer before using 
 	size_t result = fread(buf, sizeof(char), html_size, html); // read into buffer
 	if (result != html_size) {
 		fputs("reading error", stderr); 
@@ -129,7 +140,7 @@ char *getPage(char *seedURL, int curr_depth, char *target_directory) {
  *     on this seedURL only shows 1 viable link. I'm editing the prefix to be all of dartmouth 
  */
 
-char **extractURLS(char *page, char *seedURL) {
+char **extractURLS(char *page, char *seedURL, int *url_list_length) {
 	char *url_results = all_urls(&page);  // get all the URLS from the Gumbo parser 
 	int num_of_urls = 0;   // get the number of URL strings we need to malloc later 
 	for (int i = 0; i < strlen(url_results); ++i) {
@@ -156,7 +167,6 @@ char **extractURLS(char *page, char *seedURL) {
 
 	int url_list_index = 0; 
 	snprintf(url_list[url_list_index++], MAX_URL_LENGTH, "%s", seedURL);// first entry will be the seedURL  
-	int rel_num_urls = 0; 
 	while (n < len-1) {
 		if (url_results[n] == '\n') {  	// detect line break, store/capture our single URL and check if it is valid (e.g. it's part of the seedURL) 
 			single[single_index] = '\0'; 
@@ -168,9 +178,8 @@ char **extractURLS(char *page, char *seedURL) {
 				
 				snprintf(put_result, sizeof(single), "%s", single);  // putting the char array values into a char* to be put into url_list 
 				*/
-				snprintf(url_list[url_list_index++], MAX_URL_LENGTH, "%s", single); 
-				++rel_num_urls;
-				/*url_list[url_list_index++] = put_result; // updating a pointer to char to point to this dynamically allocated char*/
+				snprintf(url_list[url_list_index], MAX_URL_LENGTH, "%s", single); 
+				++url_list_index; 
 			}
 			memset(single, 0, MAX_URL_LENGTH);  	// reset the buffer 
 			++n; 					// go to the next line 
@@ -183,12 +192,23 @@ char **extractURLS(char *page, char *seedURL) {
 	// Not enough to reallocate-- need to also set these pointers to NULL 
 	// otherwise the next function will keep iterating and trying to dereference empty pointers 
 	// because they're all set to 0 after the realloc instead of explicit null. 
-	url_list = realloc(url_list, sizeof(char*) * rel_num_urls);
-	for (int i = rel_num_urls; i <= num_of_urls ; ++i) {  
+	
+	for (int i = url_list_index ; i <= num_of_urls ; ++i) {  
 		url_list[i] = NULL; 
 	}
+	url_list = realloc(url_list, sizeof(char*) * url_list_index);
 	MALLOC_CHECK(url_list);
-	return url_list; 
+
+	char **final_urls = malloc(sizeof(char*) * url_list_index); 
+	int c = 0 ; 
+	while (c < url_list_index) {
+		final_urls[c] = url_list[c]; 
+		++c; 
+	}
+
+	*url_list_length = c; 	
+
+	return final_urls; 
 }
 
 //(5) *updateListLinkToBeVisited(URLsLists, curr_depth + 1)*  For all the URL 
@@ -197,30 +217,31 @@ char **extractURLS(char *page, char *seedURL) {
 //  1.) Figure out uniqueness of url (use the hash function -> if hash into Dictionary and is null, then is unique) 
 //
 
-void updateListLinkToBeVisited(char **url_list, int depth) {
+void updateListLinkToBeVisited(char **url_list, int url_list_length, int depth) {
 	// initialize first DNODE with URLNODE 
-
+	//
 	int n =0; 
 
 	/* allocate memory for 2 Dnodes, which will represent the start and finish of the doubly linked list. 
 	 * We can assign the hash table's start and finish to these two memory locations of the dnodes. 
 	 * We can also assign their next and prev pointers to point to these allocated dnodes as well 
 	 */
-	dict->start = malloc(sizeof(DNODE)); 
-	MALLOC_CHECK(dict->start); 
-	dict->end = malloc(sizeof(DNODE)); 
-	MALLOC_CHECK(dict->end); 
 
-	dict->start->next = dict->end; 
-	dict->start->prev = NULL; 
-	dict->end->prev = dict->start; 
-	dict->end->next = NULL; 
-	DNODE *reg_curr = malloc(sizeof(DNODE)); 
-	MALLOC_CHECK(reg_curr); 
-	reg_curr = dict->start; 
+	
+	//DNODE *reg_curr = malloc(sizeof(DNODE)); 
+//	MALLOC_CHECK(reg_curr); 
+//	reg_curr = dict->start; 
+	
+	DNODE *reg_curr = dict->start; 
 	unsigned long hash_value = 0; 
 
-	while (url_list[n]) { 
+
+// a strange bug occurs when we iterate through the url_list and it tries to access a value just past the url_list 
+	while ((url_list[n]) && (url_list_length >0)) {
+		if ((url_list[n] == NULL) || (url_list[n] == '\0')) {
+			break;
+		}
+
 		hash_value = hash1(url_list[n]) % MAX_HASH_SLOT ;
 		printf("%s \t: %lu\n", url_list[n], hash_value); 
 		
@@ -237,7 +258,6 @@ void updateListLinkToBeVisited(char **url_list, int depth) {
 	// directly initialize "dict->hash[hash_value]->data = node". Need to allocate memory 
 	// for a DNODE first most likely before setting values to it...even though I thought 
 	// it was already allocated from the DICTIONARY 
-	//		dict->start = dict->end = malloc(sizeof(DNODE)); 
 			dict->hash[hash_value] = malloc(sizeof(DNODE)); // initialize to malloc(dnode) 
 			MALLOC_CHECK(dict->hash[hash_value]); 
 			dict->hash[hash_value]->data = node; 
@@ -247,11 +267,13 @@ void updateListLinkToBeVisited(char **url_list, int depth) {
 			dict->hash[hash_value]->prev = reg_curr; 
 			reg_curr->next = dict->hash[hash_value]; 
 			dict->end->prev = dict->hash[hash_value]; 
+/*
 			if (n == 0) {
 				printf("setting the start\n"); 
 				dict->start = reg_curr->next; 
 				printf("confirming start: %s\n", dict->start->key);
 			} 
+*/
 			reg_curr = reg_curr->next;  // update the curr pointer to next node  
 
 		}
@@ -295,9 +317,11 @@ void updateListLinkToBeVisited(char **url_list, int depth) {
 		}
 		
 		++n;
+		--url_list_length; 
 	}
+
+	/* iterate through and reset the dict->start and dict->end */ 
 	dict->end = dict->hash[hash_value];  	
-	free(reg_curr); 
 
 }
 
@@ -307,29 +331,30 @@ void updateListLinkToBeVisited(char **url_list, int depth) {
 // I don't want to mess around with the pointers that dict uses so I use another DNODE *pointer 
 // (like reg_curr in the above function) to traverse and modify the values 
 void setURLasVisited(char *seedURL) { // pass in the SEED URL 
-	unsigned long hash_value = hash1(seedURL) % MAX_HASH_SLOT; 
+	unsigned long hash_value = hash1(seedURL) % MAX_HASH_SLOT;   // compute hash value for url parameter 
 	unsigned long same_hash = hash_value; 
 	DNODE *pointer = malloc(sizeof(DNODE)); 
 	MALLOC_CHECK(pointer); 
-	pointer = dict->hash[hash_value]; 
+	pointer = dict->hash[hash_value];    			    // access hash table for that URL hash value 
 	while (pointer) { 
-		if (strcmp(pointer->data->url, seedURL) == 0) {
+		if (strcmp(pointer->data->url, seedURL) == 0) {    // found the URL among other URLS that share the same hash key (collision) 
 			pointer->data->visited = 1; 
+			break;
 		}
 		pointer = pointer->next; 
-		hash_value = hash1(pointer->key); 
+		hash_value = hash1(pointer->key);   		  // optional... if there was a match then it would be found and exit loop 
 		if (hash_value != same_hash) {
 			break;
 		}
 	}
 
-	free(pointer); 
+	//free(pointer);   -> CAN'T FREE YET! otherwise would lead to a dangling reference 
 }
 
 /* This function checks the doubly linked list for the next node to visit that hasn't already been visited 
  * and get that address for the crawler to use. 
  */
-char *getAddressFromTheLinksToBeVisited(int depth) {
+char *getAddressFromTheLinksToBeVisited(int *depth) {
 	DNODE *current = malloc(sizeof(DNODE)); 
 	MALLOC_CHECK(current); 
 	current = dict->start; 
@@ -341,7 +366,6 @@ char *getAddressFromTheLinksToBeVisited(int depth) {
 			return current->data->url; 
 		}
 	}
-	free(current); 
 	return NULL;
 }
 
@@ -352,43 +376,42 @@ int main(int argc, char *argv[]) {
 	char *seedURL = argv[1];  // example would be "www.cs.dartmouth.edu"
 	int curr_depth = atoi(argv[2]); 
 	char *target_dir = argv[3];
-	char *page = getPage(seedURL, curr_depth, target_dir) ;
-	char **url_list = extractURLS(page, seedURL);
-	updateListLinkToBeVisited(url_list, 0); 
-	setURLasVisited(seedURL); 
-	/*
-	snprintf(url_to_visit, MAX_URL_LENGTH, "%s", getAddressFromTheLinksToBeVisited(0)); 
-	printf("Next url to visit is: %s\n", url_to_visit);
-
 	char url_to_visit[MAX_URL_LENGTH]; 
 	memset(url_to_visit, 0, MAX_URL_LENGTH); 
-	char *url_to_visit = malloc(sizeof(char) * MAX_URL_LENGTH); 
-	MALLOC_CHECK(url_to_visit); 
-	*/
-	while (getAddressFromTheLinksToBeVisited(curr_depth)) { 
+
+	char *page = getPage(seedURL, curr_depth, target_dir) ;
+	int url_list_length = 0;  // added variable 
+	char **url_list = extractURLS(page, seedURL, &url_list_length);
+	updateListLinkToBeVisited(url_list, url_list_length, curr_depth); 
+	setURLasVisited(seedURL); 
+//	snprintf(url_to_visit, MAX_URL_LENGTH, "%s", getAddressFromTheLinksToBeVisited(&curr_depth)); 
+//	printf("Next url to visit is: %s\n", url_to_visit);
+
+//	while (getAddressFromTheLinksToBeVisited(curr_depth)) { 
+	while (snprintf(url_to_visit, MAX_URL_LENGTH, "%s", getAddressFromTheLinksToBeVisited(&curr_depth))){ 
+		printf("Next url to visit is: %s\n", url_to_visit);
 		if (curr_depth > max_depth) {
 			// for urls over max_depth, set them to be visited and continue 
 			setURLasVisited(url_to_visit);  // mark current url visited 
 			continue; 
 		}
 		// get html into string and return as page. Also save as a file into target dir 
-		char *page = getPage(seedURL, curr_depth, target_dir);	
+		char *page = getPage(url_to_visit, curr_depth, target_dir);	
 		if (page == NULL) {
 			printf("warning! Cannot crawl current url. Most likely bad URL link. Continuing on..\n"); 
 			setURLasVisited(url_to_visit); // mark bad url as visited 
 			continue; 
 		}
-		char **url_list = extractURLS(page, seedURL); 
-		free(page); 
-		updateListLinkToBeVisited(url_list, curr_depth); 
-		char *url_to_visit = getAddressFromTheLinksToBeVisited(curr_depth++); 
+		char **url_list = extractURLS(page, url_to_visit, &url_list_length); 
+//		free(page);
+		updateListLinkToBeVisited(url_list, url_list_length, curr_depth++);  // here the current depth increments 
+///		char *url_to_visit = getAddressFromTheLinksToBeVisited(&curr_depth); 
 		setURLasVisited(url_to_visit); 
+		memset(url_to_visit, 0, MAX_URL_LENGTH); 
 		sleep(INTERVAL_PER_FETCH); 
 	}
 	
-
 /*	
-
 	//printf("page is:\n %s", page); 
 //	free(page); 
 */
