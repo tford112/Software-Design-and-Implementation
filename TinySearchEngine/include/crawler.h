@@ -57,6 +57,7 @@ typedef struct _URL{
 
 typedef struct _URL URLNODE;
 
+
 // Dictionary Node. This is a general double link list structure that
 // holds the key (URL - we explained into today's lecture why this is there)
 // and a pointer to void that points to a URLNODE in practice. 
@@ -123,11 +124,11 @@ char *getPage(char* url, int depth,  char* path);
 // for this GetNextURL) and store all the URLs in the url_list (defined above).
 // NULL pointer represents end of list (no more URLs). Return the url_list
 
-char **extractURLs(char* html_buffer, char* current);
+char **extractURLs(char* html_buffer, char* current, int*);
 
 // setURLasVisited: Mark the URL as visited in the URLNODE structure.
 
-void setURLasVisited(char* url);
+void setURLasVisited(char* url, int *hash_value);
 
 // updateListLinkToBeVisited: Heavy lifting function. Could be made smaller. It takes
 // the url_list and for each URL in the list it first determines if it is unique.
@@ -138,14 +139,14 @@ void setURLasVisited(char* url);
 // elements hashed at the same slot and the URL was found to be unique. It does
 // this for *all* URL in the ur-list
 
-void updateListLinkToBeVisited(char **url_list, int depth);
+void updateListLinkToBeVisited(char **url_list, int, int depth, int*);
 
 // getAddressFromTheLinksToBeVisited: Scan down thie hash table (part of dict) and
 // find the first URL that has not already been visit and return the pointer 
 // to that URL. Note, that the pointer to the depth is past too. Update the
 // depth using the depth of the URLNODE that is next to be visited. 
 
-char *getAddressFromTheLinksToBeVisited(int *depth);
+char *getAddressToBeVisited(int *depth, int *hash_value);
 
 #endif
 
