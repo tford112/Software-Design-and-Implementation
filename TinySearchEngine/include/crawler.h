@@ -9,6 +9,9 @@
 // - MACROS
 // - DATA STRUCTURES
 // - PROTOTYPES
+//
+// Note-> There are some additional parameters being passed that wasn't in the 
+// original project description such as hash_index 
 
 // DEFINES
 
@@ -118,13 +121,13 @@ extern int url_list_index;
 // to a file 1..N and save the URL and depth on the first and second 
 // line respectively.
 
-char *getPage(char* url, int depth,  char* path);
+char *getPage(char* url, int depth,  char* path, int *hash_index);
 
 // extractURL: Given a string of the HTML page, parse it (you have the code 
 // for this GetNextURL) and store all the URLs in the url_list (defined above).
 // NULL pointer represents end of list (no more URLs). Return the url_list
 
-char **extractURLs(char* html_buffer, char* current, int*);
+char **extractURLs(char* html_buffer, char* current, int *hash_index);
 
 // setURLasVisited: Mark the URL as visited in the URLNODE structure.
 
@@ -138,10 +141,17 @@ void setURLasVisited(char* url, int *hash_value);
 // at the point in the list where its key cluster is (assuming that there are
 // elements hashed at the same slot and the URL was found to be unique. It does
 // this for *all* URL in the ur-list
+//
+// NOTE: There wasn't a major need in my eyes to have a doubly linked list that also
+// doubled as a hash table. Looking online, I didn't see many people talk about this.
+// The usual hash table with linked list implementation is used when collisions occur 
+// and we resolve these collisions with a linked list. This is the approach I took. 
+// The other approach was
+// so 
 
-void updateListLinkToBeVisited(char **url_list, int, int depth, int*);
+void updateListLinkToBeVisited(char **url_list, int, int depth, int *hash_index);
 
-// getAddressFromTheLinksToBeVisited: Scan down thie hash table (part of dict) and
+// getAddressFromTheLinksToBeVisited: Scan down this hash table (part of dict) and
 // find the first URL that has not already been visit and return the pointer 
 // to that URL. Note, that the pointer to the depth is past too. Update the
 // depth using the depth of the URLNODE that is next to be visited. 
