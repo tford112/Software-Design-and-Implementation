@@ -1,20 +1,13 @@
 /*
-
   FILE: crawler.c
-
-  Description:
-
   Inputs: ./crawler [SEED URL] [TARGET DIRECTORY WHERE TO PUT THE DATA] [MAX CRAWLING DEPTH]
-
   Outputs: For each webpage crawled the crawler program will create a file in the 
   [TARGET DIRECTORY]. The name of the file will start a 1 for the  [SEED URL] 
   and be incremented for each subsequent HTML webpage crawled. 
-
-  Each file (e.g., 10) will include the URL associated with the saved webpage and the
+  Description: Each file (e.g., 10) will include the URL associated with the saved webpage and the
   depth of search in the file. The URL will be on the first line of the file 
   and the depth on the second line. The HTML will for the webpage 
   will start on the third line.
-
 */
 
 #include <stdio.h>
@@ -41,13 +34,11 @@
 // to the curr URL search. 
 
 DICTIONARY* dict = NULL; 
-const char *URL_PREFIX = "https://home.dartmouth.edu"; 
-//const char *URL_PREFIX = "https://web.cs.dartmouth.edu/";
+//const char *URL_PREFIX = "https://home.dartmouth.edu"; 
+const char *URL_PREFIX = "https://www.jhu.edu";
 int HASHES[MAX_HASH_SLOT]; 
 FILE *out; 
-int max_depth = 3; 
-
-
+int max_depth = 3 ;
 
 // (1) -- Command line processing on arguments 
 
@@ -65,12 +56,17 @@ void commandLine(int argc, char *argv[]) {
 		perror("Directory to store HTMLs not supplied\n");
 		exit(3);
 	}
+	char *url_ext = strstr(argv[1], ".edu"); 
+	if (!url_ext) {
+		perror("Need proper url extension to be an .edu");
+		exit(4);
+	}
+
 	fclose(dir); 
-
-
 }
 
-//(2) - initLists (properly intialize the Dictionary Hash Table) 
+//(2) - initLists (properly intialize the Dictionary Hash Table) as well as the hash index counter 
+//      that will make sure to keep track of all the pending URLS to expand 
 
 int *initLists(){
 	dict = (DICTIONARY*) malloc(sizeof(DICTIONARY));
@@ -87,9 +83,11 @@ int *initLists(){
 	return gh_idx; 
 }
 
-// (3) --  getPage  -> using wget 
+// (3) --  getPage  -> using wget to download HTML page from seedURL. A file will be written
+// to the target directory with specific information for the INDEXER file to work with. 
+// Such information will include the curr_hash which has to be passed in as well 
 
-char *getPage(char *seedURL, int curr_depth, char *target_directory) {
+char *getPage(char *seedURL, int curr_depth, char *target_directory, int *curr_hash) {
 	char command[MAX_URL_LENGTH];  
 	snprintf(command, MAX_URL_LENGTH, "wget %s -O buf.html", seedURL); 
 	system(command);
@@ -98,42 +96,50 @@ char *getPage(char *seedURL, int curr_depth, char *target_directory) {
 		perror("Wget didn't properly download to a temp file\n"); 
 		exit(1);
 	}
-	fseek(html, 0, SEEK_END); // seek to the end of the file 
-	int html_size = ftell(html);  // get current size of file after going to end 
-	rewind(html);  	          // rewind all the way back to read in later to buffer 
+	fseek(html, 0, SEEK_END);						 // seek to the end of the file 
+	int html_size = ftell(html); 						 // get current size of file after going to end 
+	rewind(html);  	         						 // rewind all the way back to read in later to buffer 
 
-	char *buf = malloc(sizeof(char) * html_size + 1); // +1 for null-terminator 
+	char *buf = malloc(sizeof(char) * html_size); 
 	MALLOC_CHECK(buf);
-
-
-	// BUG HERE -> need to properly allocate buf otherwise is a stack variable not a pointer 
 		
 	size_t result = fread(buf, sizeof(char), html_size, html); // read into buffer
 	if (result != html_size) {
 		fputs("reading error", stderr); 
 		exit(2); 
 	}
-	fclose(html);   // cleaning up by closing the file stream and removing the temp file
-	char remove[15]; 
-	snprintf(remove, 15, "rm buf.html"); 
-	system(remove);
+	// Create a new file whose name will start at 1 for seedURL and increment for every new file 
+	// Format of file: URL, depth, HTML 
+	char file[5]; 
+	snprintf(file, 5, "%d", *curr_hash); 					// we use the curr_hash to name our file 
+	FILE *curr = fopen(file, "wb+"); 
+	fprintf(curr, "%s\n", seedURL); 
+	fprintf(curr, "%d\n", curr_depth);
+	fprintf(curr, "%s", buf); 
+	memset(command, 0, MAX_URL_LENGTH); 
+	snprintf(command, MAX_URL_LENGTH, "mv %s %s", file, target_directory);  // moving file to TARGET_DIR
+	fprintf(out, "Moving file %s to %s\n", file, target_directory);  
+	system(command); 
+	// cleaning up by closing the file stream and removing the temp file
+	fclose(html);   
+	fclose(curr); 
+	system("rm buf.html");
 	return buf;
 }
 
-// (4) -- extractURLS(page, SEED_URL) 
+// (4) -- extractURLS(page, SEED_URL). After downlaoding the HTML, we need to get the URLs. The parser function the professor provided 
+// does not work. There is a Google open-source parser in C called Gumbo that was modified and used to parse the urls here 
 
 char **extractURLS(char *page, char *seedURL, int *url_list_length) {
-	char *url_results = all_urls(&page);  // get all the URLS from the Gumbo parser 
-	int num_of_urls = 0;   // get the number of URL strings we need to malloc later 
+	char *url_results = all_urls(&page); 					 // get all the URLS from the Gumbo parser 
+	int num_of_urls = 0;   							 // get the number of URL strings we need to malloc later 
 	for (int i = 0; i < strlen(url_results); ++i) {
-		if (url_results[i] == '\n') {  //allocating more char* memories than will actually be needed 
+		if (url_results[i] == '\n') { 					 //allocating more char* memories than will actually be needed 
 			++num_of_urls;
 		}
 	}
-
-	// This is the table that keeps pointers to a list of URL extracted
-	// from the current HTML page.
-	// reminder -> can't return array from stack so need a pointer to pointer 
+	// The table that keeps pointers to a list of URLs extracted from current HTML page 
+	// can't return array from stack so need a pointer to pointer 
 	char **url_list = malloc(sizeof(char*) * num_of_urls);
 	MALLOC_CHECK(url_list); 
 	for (int i = 0; i < num_of_urls; ++i) {
@@ -144,17 +150,17 @@ char **extractURLS(char *page, char *seedURL, int *url_list_length) {
 	int len = strlen(url_results); 
 	int n = 0;
 	int single_index = 0; 
-	char single[MAX_URL_LENGTH] ;  // buffer for a single url to be placed here 
+	char single[MAX_URL_LENGTH] ;  						// buffer for a single url to be placed here 
 	memset(single, 0, MAX_URL_LENGTH); 
 
 	int url_list_index = 0; 
-	snprintf(url_list[url_list_index++], MAX_URL_LENGTH, "%s", seedURL);// first entry will be the seedURL  
+	snprintf(url_list[url_list_index++], MAX_URL_LENGTH, "%s", seedURL);	// first entry will be the seedURL  
 	while (n < len-1) {
-		if (url_results[n] == '\n') { 	// detect line break, store/capture our single URL and check if it is valid 
+		if (url_results[n] == '\n') { 					// detect line break, store/capture our single URL and check if it is valid 
 			single[single_index] = '\0'; 
-			char *found = strstr(single, URL_PREFIX);  // detect substring of similar URL to seed
+			char *found = strstr(single, URL_PREFIX);   	        // detect substring of similar URL to seed
 			if (found) {
-				char *detect_pdf = strstr(single, ".pdf");   // don't extract pdfs 
+				char *detect_pdf = strstr(single, ".pdf");      // don't extract pdfs 
 				if (detect_pdf) {
 					;
 				}
@@ -163,17 +169,16 @@ char **extractURLS(char *page, char *seedURL, int *url_list_length) {
 					++url_list_index; 
 				}
 			}
-			memset(single, 0, MAX_URL_LENGTH);  	// reset the buffer 
-			++n; 					// go to the next line 
-			single_index = 0;  			// reset the buffer point 
+			memset(single, 0, MAX_URL_LENGTH);  			// reset the buffer 
+			++n; 							// go to the next line 
+			single_index = 0;  					// reset the buffer point 
 		}
 		else { 
 			single[single_index++] = url_results[n++]; 
 			if (single_index % 500 == 0) {  // gumbo parser can still return bad URL parsing. Need to break out
 				char *detect_bad = strstr(single, "https://"); 
 
-				fprintf(out, "DETECTED BAD URL");
-				fprintf(out, "single at this point: %s\n\n", single);
+				fprintf(out, "DETECTED BAD URL - url buffer at this point: %s\n", single);
 				if (detect_bad == NULL) {
 					break;
 				}
@@ -195,10 +200,11 @@ char **extractURLS(char *page, char *seedURL, int *url_list_length) {
 	return url_list; 
 }
 
-//(5) updateListLinkToBeVisited(URLsLists, curr_depth + 1)  
+//(5) updateListLinkToBeVisited(URLsLists, curr_depth + 1) - This is where we create a node around our URL (URLNODE) 
+// and place it in the dictionary hash table. If there are collisions, then we have to set up a linked list at that index in the 
+// hash table and iterate through the end until we can add our new node. 			
 
 void updateListLinkToBeVisited(char **url_list, int url_list_length, int depth, int*gh_idx) {
-	//fprintf(out, "current GHIDX: %d\n", *gh_idx);
 	int n =0; 
 	unsigned long hash_value = 0; 
 
@@ -209,10 +215,9 @@ void updateListLinkToBeVisited(char **url_list, int url_list_length, int depth, 
 		}
 
 		hash_value = hash1(url_list[n]) % MAX_HASH_SLOT ;
-	//	printf("%s \t: %lu\n", url_list[n], hash_value); 
-		curr_hash = hash_value;  //
+		curr_hash = hash_value;  
 		
-		// check if DICTIONARY has null space for hash value 
+	// check if DICTIONARY has null space for hash value 
 		if (dict->hash[hash_value] == NULL ) { 
 			URLNODE *node = malloc(sizeof(URLNODE)); 
 			MALLOC_CHECK(node); 
@@ -230,19 +235,17 @@ void updateListLinkToBeVisited(char **url_list, int url_list_length, int depth, 
 			snprintf(dict->hash[hash_value]->key, KEY_LENGTH, "%s", node->url); 
 			dict->hash[hash_value]->next = NULL; 
 			dict->hash[hash_value]->prev = NULL; 
+
 			HASHES[(*gh_idx)++] = curr_hash;   // store hash_value in hash index array 
-			fprintf(out, "currdepth: %d hash_val->%s\n", dict->hash[hash_value]->data->depth, dict->hash[hash_value]->data->url);
-
-
-
+			fprintf(out, "Adding node...currdepth: %d url_val->%s\n", dict->hash[hash_value]->data->depth, dict->hash[hash_value]->data->url);
 		}
-		// collision occurred with value already in Dictionary for that hash index			    
+	// collision occurred with value already in Dictionary for that hash index			    
 		
 		else if (dict->hash[hash_value]) {  
 			DNODE *coll_curr = dict->hash[hash_value]; 
-			// Collision could occur because
-			// 1.) same exact url link (so not unique) 
-			// 2.) genuine collision occurred of different values mapping to the same hash index 
+	// Collision could occur because
+	// 1.) same exact url link (so not unique) 
+	// 2.) genuine collision occurred of different values mapping to the same hash index 
 			bool proceed = true; 
 			while (coll_curr) {
 				if (strcmp(coll_curr->key, url_list[n]) == 0) { // same value (not unique) 
@@ -260,38 +263,35 @@ void updateListLinkToBeVisited(char **url_list, int url_list_length, int depth, 
 
 				DNODE *new = malloc(sizeof(DNODE)); 
 				MALLOC_CHECK(new); 
-				new->data = url_node;  // set DNODE pointer to data to point to new URLNODE 
+				new->data = url_node;  		   // set DNODE pointer to data to point to new URLNODE 
 				snprintf(new->key, KEY_LENGTH, "%s", url_list[n]); 
 				new->next = NULL;
 				new->prev = coll_curr->prev; 
 				coll_curr->prev->next = new; 
 				HASHES[(*gh_idx)++] = curr_hash;   // store hash_value in hash index array 
-				fprintf(out, "currdepth: %d hash_val->%s\n", dict->hash[hash_value]->data->depth, dict->hash[hash_value]->data->url);
-
-
-
+				fputs("Collision occurred\n", out); 
+				fprintf(out, "\nAdding node to linked list at hashed index...currdepth: %d url_val->%s\n", dict->hash[hash_value]->data->depth, dict->hash[hash_value]->data->url);
 			}
 		}
-		
 		++n;
 		--url_list_length; 
 	}
-
 }
 
-// setURLasVisited -> set url as visited so will not visit again 
+//(6) setURLasVisited -> set url as visited so will not visit again 
 
-void setURLasVisited(char *seedURL, int *curr_hash_idx) { // pass in the SEED URL 
-	unsigned long hash_value = hash1(seedURL) % MAX_HASH_SLOT;   // compute hash value for url parameter 
+void setURLasVisited(char *seedURL, int *curr_hash_idx) {          // pass in the SEED URL 
+	unsigned long hash_value = hash1(seedURL) % MAX_HASH_SLOT; // compute hash value for url parameter 
 	unsigned long same_hash = hash_value; 
-	DNODE *pointer = dict->hash[hash_value];     // access hash table for that URL hash value 
+	DNODE *pointer = dict->hash[hash_value];     		   // access hash table for that URL hash value 
 	while (pointer) { 
 		if (strcmp(pointer->data->url, seedURL) == 0) {    // found the URL that share the same hash key (collision) 
 			pointer->data->visited = 1; 
-			(*curr_hash_idx)++; 
+			fprintf(out, "Finished visiting url at hash index: %d\n", *curr_hash_idx); 
+			(*curr_hash_idx)++;    			   // increment the current hash value 
 			break;
 		}
-		pointer = pointer->next; 
+		pointer = pointer->next;      			   // else we iterate through linked list until we find the matching URL 
 		hash_value = hash1(pointer->key);
 		if (hash_value != same_hash) {
 			break;
@@ -301,9 +301,9 @@ void setURLasVisited(char *seedURL, int *curr_hash_idx) { // pass in the SEED UR
 	//free(pointer);   -> CAN'T FREE YET! otherwise would lead to a dangling reference 
 }
 
-/* This function checks the doubly linked list for the next node to visit that hasn't already been visited 
+/* (7) This function checks the hash table (and doubly linked list) for the next node to visit that hasn't already been visited 
  * and get that address for the crawler to use. 
- */
+ */		
 char *getAddressToBeVisited(int *depth, int *curr_hash_idx) {
 	int hash_value = HASHES[*curr_hash_idx]; 
 	DNODE *current = dict->hash[hash_value]; 
@@ -312,6 +312,7 @@ char *getAddressToBeVisited(int *depth, int *curr_hash_idx) {
 			current = current->next; 
 		}
 		else {
+			current->data->depth = *depth;
 			return current->data->url; 
 		}
 	}
@@ -321,23 +322,23 @@ char *getAddressToBeVisited(int *depth, int *curr_hash_idx) {
 
 
 int main(int argc, char *argv[]) {
-	out = fopen("logger.txt", "w+"); 
+	out = fopen("logger_crawler.txt", "w+"); 
 	commandLine(argc, argv); 
 	int *gh_idx = initLists() ;
-	char *seedURL = argv[1];  // example would be "www.cs.dartmouth.edu"
+	char *seedURL = argv[1];  			       	   // example would be "www.cs.dartmouth.edu"
 	char *target_dir = argv[2];
-	int max_depth  = atoi(argv[3]); 
+	int max_depth  = atoi(argv[3]);  
 	char url_to_visit[MAX_URL_LENGTH]; 
 	memset(url_to_visit, 0, MAX_URL_LENGTH); 
 	
 	int curr_depth = 0; 
-	char *page = getPage(seedURL, curr_depth, target_dir) ;
-	int url_list_length = 0;  // added variable 
 	int curr_hash_to_view = 0; 
+	char *page = getPage(seedURL, curr_depth, target_dir, &curr_hash_to_view) ;
+	int url_list_length = 0;   				  // will be used to track url_list for updateListLink.. function
 	char **url_list = extractURLS(page, seedURL, &url_list_length);
 	updateListLinkToBeVisited(url_list, url_list_length, curr_depth, gh_idx); 
 	setURLasVisited(seedURL, &curr_hash_to_view); 
-
+	fprintf(out, "Hash Index Count: %d\n", *gh_idx); 
 	while (snprintf(url_to_visit, MAX_URL_LENGTH, "%s", getAddressToBeVisited(&curr_depth, &curr_hash_to_view)) != 0){ 
 		if (strcmp(url_to_visit, "(null)") == 0) {
 			break;
@@ -345,39 +346,52 @@ int main(int argc, char *argv[]) {
 		printf("Next url to visit is: %s\n", url_to_visit);
 		fprintf(out, "Next url to visit is: %s\n", url_to_visit);
 		if (curr_depth > max_depth) {
-			// for urls over max_depth, set them to be visited and continue 
+		// for urls over max_depth, set them to be visited and continue 
 			setURLasVisited(url_to_visit, &curr_hash_to_view);  // mark current url visited 
 			continue; 
 		}
+		if (strstr(url_to_visit, "javascript")) {
+			fputs("Skipping this url because it's javascript. Wget can't download\n", out);
+			continue; 
+		}
 		// get html into string and return as page. Also save as a file into target dir 
-		char *page = getPage(url_to_visit, curr_depth, target_dir);	
-		if ((page == NULL) || (page[0] == '\0')) {
+		char *page = getPage(url_to_visit, curr_depth, target_dir, &curr_hash_to_view);	
+		if ((page == NULL) || (page[0] == '\0')  || (strcmp(page, "") == 0) || (strstr(page, "PDF"))) {
 			printf("warning! Cannot crawl current url. Most likely bad URL link. Continuing on..\n"); 
 			fprintf(out, "warning! Cannot crawl current url. Most likely bad URL link. Continuing on..\n"); 
 			setURLasVisited(url_to_visit, &curr_hash_to_view); // mark bad url as visited 
 			continue; 
 		}
 		char **url_list = extractURLS(page, url_to_visit, &url_list_length); 
-//		free(page);
+		int num_urls = url_list_length; // for cleaning up purposes 
 		updateListLinkToBeVisited(url_list, url_list_length, curr_depth+1, gh_idx);  // here the current depth increments 
-		setURLasVisited(url_to_visit, &curr_hash_to_view); 
-		memset(url_to_visit, 0, MAX_URL_LENGTH); 
-		sleep(INTERVAL_PER_FETCH+4); 
-		fprintf(out, "CURRENT HASHES: \n"); 
-/*
-		int s = 0 ; 
-		while (HASHES[s] != 0) {
-			int hv = HASHES[s];
-			fprintf(out, "currdepth: %d hash_val->%s\n", dict->hash[hv]->data->depth, dict->hash[hv]->data->url);
-			++s;
+		// free the url_list memory 
+		for (int i = 0; i < num_urls; ++i) {
+			free(url_list[i]); 
 		}
-		fprintf(out, "hash index is %d\n", *gh_idx); 
-*/
-
+		setURLasVisited(url_to_visit, &curr_hash_to_view); 
+		fprintf(out, "Hash Index Count: %d\n", *gh_idx); 
+		memset(url_to_visit, 0, MAX_URL_LENGTH); 
+		sleep(INTERVAL_PER_FETCH+1); 
 	}
+
+	// clean up the rest of the dynamically allocated memory portions 
+	for (int i = 0; i < MAX_HASH_SLOT; ++i){
+		if (dict->hash[i]){
+			fprintf(out, "freeing URLNODE at hash index: %d\n", i);
+			free(dict->hash[i]->data);
+		}			
+		free(dict->hash[i]);
+	}
+	free(dict); 
+	free(gh_idx);
+
+	fputs("Freed memory.\n", out);
+	printf("Freed memory.\n");
 	printf("Finished!\n");
-	fprintf(out, "Finished\n");
+	fprintf(out, "Finished!\n");
 	fclose(out);	
+
 	
 	return 0;
 }
