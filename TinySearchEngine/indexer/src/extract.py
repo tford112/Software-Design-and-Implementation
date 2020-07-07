@@ -23,7 +23,7 @@ def write_to(extract:str, filename_arg):
     fn = f"text_{filename_arg}"
     with open(fn, "w") as writer:
         writer.write(extract) 
-    subprocess.call(f"mv {fn} text_extracts", shell=True)
+    subprocess.call(f"mv {fn} texts", shell=True)
 
 
 ## driver for reading in file argument to be parsed with extract(). 

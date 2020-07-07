@@ -44,7 +44,6 @@ INVERTED_INDEX* initInvertedIndex(FILE*log) {
 	return index; 
 }
 
-
 void executeExtraction(FILE* log, char* dir) {
 	int nfiles = numFiles(dir); 
 	int count = 0; 
@@ -52,7 +51,7 @@ void executeExtraction(FILE* log, char* dir) {
 	char numToString[MAX_FILE_NUM];
 	memset(numToString, 0, MAX_FILE_NUM); 
 	fprintf(log, "running text extraction from HTMLS...\n"); 
-	while (count < nfiles - 1) {
+	while (count < nfiles) {
 		snprintf(numToString, MAX_FILE_NUM, "%s/%d", dir, count); // get "string" from num and pass as argument to loadDocument  
 		loadDocument(numToString);  		      
 		fprintf(log, "extracted file %s\n", numToString); 
@@ -180,7 +179,6 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 			exit(1);
 		}
 		memcpy(word, buf, strlen(buf) + 1);  // need to copy to char* from buffer 
-//		printf("word is: %s\n", word); 
 		fprintf(logger, "Word is: %s\n", word); 
 		if (checkWordInvalid(word)) {
 			printf("word %s is invalid. Freeing memory..\n", word); 
@@ -188,6 +186,7 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 			free(word); 
 		}
 		else {
+			printf("adding word %s from docid %d\n", word, docId); 
 			updateIndex(word, docId, index, logger); 
 		}
 	}
@@ -202,36 +201,53 @@ int main(int argc, char** argv){
 	INVERTED_INDEX* index = initInvertedIndex(logger); 
 	if (argc > 1) {
 		char *dir = strstr(argv[1], "url");  // need url in directory to proceed to extract
+		char *text_dir = strstr(argv[1], "text");  // need text to proceed normally with parsing
+		if (text_dir && dir) {
+			printf("Cannot have both extract directory and parse directories in argument.\n");
+			exit(1);
+		}
 		if (dir) {
 			executeExtraction(logger, dir); 
 		}
-		char *text_dir = strstr(argv[1], "text");  // need text to proceed normally with parsing
-		if (text_dir) {
+		else if (text_dir) {
 			fprintf(logger, "running parsing..\n"); 
 			int nTextFiles = numFiles(text_dir); 
-			char* filename = malloc(30); 
-			if (filename == NULL) {
-				perror("Not enough memory.\n");
-				fprintf(logger, "Not enough memory.\n"); 
-				exit(1);
-			}	
-			snprintf(filename, 30, "%s/text_%d", text_dir, 0); 
-			FILE *f = fopen(filename, "rb"); 
-			if (f == NULL) {
-				perror("file cannot be found.\n");
-				fprintf(logger, "file cannot be found.\n"); 
-				exit(2);
+			int file_count = 0; 
+			char* filename = NULL; 
+			while (file_count < nTextFiles) {
+				filename = malloc(30); 
+				if (filename == NULL) {
+					perror("Not enough memory.\n");
+					fprintf(logger, "Not enough memory.\n"); 
+					exit(1);
+				}	
+				snprintf(filename, 30, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
+				FILE *f = fopen(filename, "rb"); 
+				if (f == NULL) {
+					perror("file cannot be found.\n");
+					fprintf(logger, "file cannot be found.\n"); 
+					exit(2);
+				}
+				int docId = getDocumentId(filename); 
+				fprintf(logger, "Reading from document: %s\n\n", filename);
+				readWords(f, logger, docId, index); // start parsing this file and update index 
+				free(filename); 
+				fclose(f); 
+				++file_count; 
 			}
-			int docId = getDocumentId(filename); 
-			readWords(f, logger, docId, index); 
-			free(filename); 
+		}
+		else {
+			printf("Invalid directory argument needs to be directory to extract from or directory to parse texts\n"); 
+			exit(2);
 		}
 	}
 	else {
 		printf("Need to pass in either directory to extract text or directory to parse\n"); 
+		exit(3);
 	}
 	fprintf(logger, "Now cleaning..\n"); 
 	int cur = 0; 
+	// TODO - For each word, need to count # of docs containing word as well as frequencies per document 
 	while (cur < MAX_HASH_SLOT) {
 		if (index->hash[cur]) {
 			printf("word: %s word_freq: %d\n", index->hash[cur]->word, index->hash[cur]->page->page_word_frequency);
