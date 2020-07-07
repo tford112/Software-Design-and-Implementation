@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+  <!--[if IE 8]><html class="no-js full-page lt-ie9" lang="en" dir="ltr"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="full-page no-js" lang="en" dir="ltr"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"41d110b833",applicationID:"70692562"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<link rel="shortcut icon" href="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/favicon.ico" />
+<meta name="viewport" content="width=device-width, maximum-scale = 5.0" />
+<meta http-equiv="ImageToolbar" content="false" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://web.cs.dartmouth.edu/" />
+<link rel="shortlink" href="https://web.cs.dartmouth.edu/" />
+    <title>Department of Computer Science | Home</title>
+    <link rel="stylesheet" href="https://web.cs.dartmouth.edu/sites/department_computer_science/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" />
+<link rel="stylesheet" href="https://web.cs.dartmouth.edu/sites/department_computer_science/files/css/css_NXti8f1KG_3PtT4IIc0U3jDor0MbcpVCy5HvGkHBurk.css" media="screen" />
+<link rel="stylesheet" href="https://web.cs.dartmouth.edu/sites/department_computer_science/files/css/css_LJ0LLdIFHF7gTKwqj92ju5wTsLpaeRy7uJelbl2haeA.css" />
+<link rel="stylesheet" href="https://web.cs.dartmouth.edu/sites/department_computer_science/files/css/css_VgtO-HKv_iTTem5_YdVErQDEv_CVxN_a3ZqydS1GL-A.css" />
+<link rel="stylesheet" href="https://web.cs.dartmouth.edu/sites/department_computer_science/files/css/css_o8wBeRG-JVhhW2rGoLz2h1lfF5wJNFjkcAIivnDGxso.css" />
+    <script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/jquery/1.10/jquery.min.js?v=1.10.2"></script>
+<script src="https://web.cs.dartmouth.edu/misc/jquery-extend-3.4.0.js?v=1.10.2"></script>
+<script src="https://web.cs.dartmouth.edu/misc/jquery-html-prefilter-3.5.0-backport.js?v=1.10.2"></script>
+<script src="https://web.cs.dartmouth.edu/misc/jquery.once.js?v=1.2"></script>
+<script src="https://web.cs.dartmouth.edu/misc/drupal.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/tipsy/javascripts/jquery.tipsy.js?v=0.1.7"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/tipsy/javascripts/tipsy.js?v=0.1.7"></script>
+<script>document.createElement( "picture" );</script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/content_repository/modules/content_repository_window/js/crwindow.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/content_feature/dart_admin_main_menu/js/main-menu--admin.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/dart_emergency_banner/js/dart_emergency_banner.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/content_feature/dart_page_layouts/js/dart_page_layouts.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/content_feature/dart_top_stories/js/top-stories.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/google_cse/google_cse.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/panels_ipe_advanced/js/panels_ipe_advanced.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/konamicode/konamicode.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/custom/dart_konamicode/dart_konamicode.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/custom_search/js/custom_search.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/google_analytics/googleanalytics.js?qakx6o"></script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-17623200-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("create", "UA-17623200-3", "auto", {"name": "newTracker"});ga("send", "pageview");ga('newTracker.send', 'pageview');</script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/zurb_foundation/js/vendor/custom.modernizr.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/zurb_foundation/js/foundation.min.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/focus-visible.min.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/media.match.min.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/jquery.matchHeight.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/jquery.fittext.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/jquery.cycle2.min.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/jquery.touchSwipe.min.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/vendor/jquery.ba-dotimeout.min.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/global-header.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/global-footer.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base_academic/js/banner.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/ribbon-footer.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/promobox.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/promo-slider.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/show-more.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/map-box.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/view-page--responsive.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/skip-link.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base_academic/js/department-description.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base_academic/js/academic-department-footer.js?qakx6o"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base_academic/js/academic-inclusivity-footer.js?qakx6o"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"dartmouth_dept_cs","theme_token":"O0bCR0LXnW_3grLoNRfhHtmMiImMRW-YroA2KsWp8vE","js":{"sites\/all\/modules\/contrib\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/contrib\/picture\/picture.min.js":1,"0":1,"sites\/all\/themes\/dartmouth_base\/js\/dartmouth.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/tipsy\/javascripts\/jquery.tipsy.js":1,"sites\/all\/modules\/contrib\/tipsy\/javascripts\/tipsy.js":1,"1":1,"sites\/all\/modules\/custom\/content_repository\/modules\/content_repository_window\/js\/crwindow.js":1,"sites\/all\/modules\/custom\/content_feature\/dart_admin_main_menu\/js\/main-menu--admin.js":1,"sites\/all\/modules\/custom\/dart_emergency_banner\/js\/dart_emergency_banner.js":1,"sites\/all\/modules\/custom\/content_feature\/dart_page_layouts\/js\/dart_page_layouts.js":1,"sites\/all\/modules\/custom\/content_feature\/dart_top_stories\/js\/top-stories.js":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.js":1,"sites\/all\/modules\/custom\/panels_ipe_advanced\/js\/panels_ipe_advanced.js":1,"sites\/all\/modules\/contrib\/konamicode\/konamicode.js":1,"sites\/all\/modules\/custom\/dart_konamicode\/dart_konamicode.js":1,"sites\/all\/modules\/contrib\/custom_search\/js\/custom_search.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"2":1,"sites\/all\/themes\/zurb_foundation\/js\/vendor\/custom.modernizr.js":1,"sites\/all\/themes\/zurb_foundation\/js\/foundation.min.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/focus-visible.min.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/media.match.min.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/jquery.matchHeight.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/jquery.fittext.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/jquery.cycle2.min.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/jquery.touchSwipe.min.js":1,"sites\/all\/themes\/dartmouth_base\/js\/vendor\/jquery.ba-dotimeout.min.js":1,"sites\/all\/themes\/dartmouth_base\/js\/global-header.js":1,"sites\/all\/themes\/dartmouth_base\/js\/global-footer.js":1,"sites\/all\/themes\/dartmouth_base_academic\/js\/banner.js":1,"sites\/all\/themes\/dartmouth_base\/js\/ribbon-footer.js":1,"sites\/all\/themes\/dartmouth_base\/js\/promobox.js":1,"sites\/all\/themes\/dartmouth_base\/js\/promo-slider.js":1,"sites\/all\/themes\/dartmouth_base\/js\/show-more.js":1,"sites\/all\/themes\/dartmouth_base\/js\/map-box.js":1,"sites\/all\/themes\/dartmouth_base\/js\/view-page--responsive.js":1,"sites\/all\/themes\/dartmouth_base\/js\/skip-link.js":1,"sites\/all\/themes\/dartmouth_base_academic\/js\/department-description.js":1,"sites\/all\/themes\/dartmouth_base_academic\/js\/academic-department-footer.js":1,"sites\/all\/themes\/dartmouth_base_academic\/js\/academic-inclusivity-footer.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/contrib\/tipsy\/stylesheets\/tipsy.css":1,"sites\/all\/modules\/custom\/content_repository\/css\/content_repository.css":1,"sites\/all\/modules\/features\/dart_cse\/css\/dart_cse.css":1,"sites\/all\/modules\/custom\/dart_emergency_banner\/theme\/dart_emergency_banner.css":1,"sites\/all\/modules\/custom\/dart_events\/theme\/dart_events.css":1,"sites\/all\/modules\/custom\/dart_events_dept\/theme\/dart_events_dept.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/contrib\/deploy\/css\/deploy.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/contrib\/picture\/picture_wysiwyg.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/contrib\/ckeditor_image2\/ckeditor_image2.theme.css":1,"sites\/all\/modules\/contrib\/ckeditor_image2\/ckeditor_image2.responsive.css":1,"sites\/all\/modules\/contrib\/media\/modules\/media_wysiwyg\/css\/media_wysiwyg.base.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/modules\/contrib\/dismiss\/css\/dismiss.base.css":1,"sites\/all\/themes\/dartmouth_base\/css\/dartmouth-admin.css":1,"sites\/all\/modules\/contrib\/custom_search\/custom_search.css":1,"sites\/all\/themes\/zurb_foundation\/css\/normalize.css":1,"sites\/all\/themes\/oho_zurb_base\/css\/foundation.min.css":1,"sites\/all\/themes\/dartmouth_base\/css\/dartmouth.css":1,"sites\/all\/themes\/dartmouth_base\/css\/modal.css":1,"sites\/all\/themes\/dartmouth_base_academic\/css\/dartmouth-academic.css":1,"sites\/department_computer_science.prod\/themes\/dartmouth_dept_cs\/css\/department_cs.css":1}},"googleCSE":{"cx":"017180522165740084141:v1wbqwoih_k","resultsWidth":600,"domain":"www.google.com","showWaterMark":1},"dart_konamicode":{"invaders_path":"\/sites\/all\/modules\/custom\/dart_konamicode\/invaders"},"konamicode":{"ivyinvaders":true},"custom_search":{"form_target":"_self","solr":0},"tipsy":{"custom_selectors":[{"selector":".tipsy","options":{"fade":1,"gravity":"w","delayIn":0,"delayOut":0,"trigger":"hover","opacity":"0.8","offset":0,"html":0,"tooltip_content":{"source":"attribute","selector":"title"}}}]},"dismiss":{"fadeout":0},"picture":{"mappings":[["Not Set","not_set"]],"label":"Image size (required)","ckeditorDefaultMapping":"not_set"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"currentPath":"node\/13836","currentPathIsAdmin":false,"urlIsAjaxTrusted":{"\/":true}});</script>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="html front not-logged-in no-sidebars page-node page-node- page-node-13836 node-type-home" >
+    <div class="skip-link" role="navigation" aria-label="Quick Page Navigation">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+        <!--.page -->
+<div role="document" class="page">
+  <!--.l-header -->
+  <header role="banner" class="l-header" aria-label="Site Header">
+          <!--.l-header-region -->
+          <section class="block block-dart-wrapper block-dart-wrapper-dart-wrapper-header header">
+
+      
+      <div class="container"><div class="row"><div id="nav-dartmouth" aria-hidden="true" role="navigation" tabindex="-1"><ul class="nav-dartmouth-table" role="list"><li class="three column" role="listitem" aria-labelledby="nav-label-154701"><h3 id="nav-label-154701"><a href="#">Education<span class="arrow"></span></a></h3><ul class="group" role="menu"><li role="menuitem"><a class="universal-header-degree-finder" href="https://home.dartmouth.edu/education/degrees">Degree Finder</a></li><li role="menuitem"><a class="universal-header-departments-programs" href="https://home.dartmouth.edu/education/departments-programs-arts-sciences">Departments & Programs</a></li><li role="menuitem"><a class="universal-header-global-learning" href="https://global.dartmouth.edu/global-learning">Global Learning</a></li><li role="menuitem"><a class="universal-header-graduate-schools" href="https://home.dartmouth.edu/education/graduate-schools">Graduate Schools</a></li><li role="menuitem"><a class="universal-header-libraries" href="https://home.dartmouth.edu/education/libraries">Libraries</a></li><li role="menuitem"><a class="universal-header-lifelong-learning" href="https://home.dartmouth.edu/education/lifelong-learning">Lifelong Learning</a></li><li role="menuitem"><a class="universal-header-summer-at-dartmouth" href="https://home.dartmouth.edu/education/summer-dartmouth">Summer at Dartmouth</a></li><li role="menuitem"><a class="universal-header-the-undergraduate-experience" href="https://home.dartmouth.edu/education/undergraduate-experience">The Undergraduate Experience</a></li></ul></li><li class="three column" role="listitem" aria-labelledby="nav-label-154706"><h3 id="nav-label-154706"><a href="#">Research<span class="arrow"></span></a></h3><ul class="group" role="menu"><li role="menuitem"><a class="universal-header-research-news" href="https://news.dartmouth.edu/news/all-news-stories?field_article_tags_auto=Research">Research News</a></li><li role="menuitem"><a class="universal-header-faculty-experts" href="https://home.dartmouth.edu/research/faculty-experts">Faculty Experts</a></li><li role="menuitem"><a class="universal-header-schools-departments" href="https://home.dartmouth.edu/research/schools-departments">Schools & Departments</a></li><li role="menuitem"><a class="universal-header-research-support" href="https://home.dartmouth.edu/research/resources">Research Support</a></li></ul></li><li class="three column" role="listitem" aria-labelledby="nav-label-154711"><h3 id="nav-label-154711"><a href="#">Life & Community<span class="arrow"></span></a></h3><ul class="group" role="menu"><li role="menuitem"><a class="universal-header-explore-the-green" href="https://home.dartmouth.edu/life-community/explore-green">Explore the Green</a></li><li role="menuitem"><a class="universal-header-arts-across-campus" href="https://home.dartmouth.edu/life-community/arts-across-campus">Arts Across Campus</a></li><li role="menuitem"><a class="universal-header-athletics-recreation" href="https://home.dartmouth.edu/life-community/athletics-recreation">Athletics & Recreation</a></li><li role="menuitem"><a class="universal-header-diversity" href="https://home.dartmouth.edu/life-community/diversity">Diversity</a></li><li role="menuitem"><a class="universal-header-health-wellness" href="https://home.dartmouth.edu/life-community/health-wellness">Health & Wellness</a></li><li role="menuitem"><a class="universal-header-technology" href="https://home.dartmouth.edu/life-community/technology">Technology</a></li><li role="menuitem"><a class="universal-header-outdoors" href="https://home.dartmouth.edu/life-community/outdoors">Outdoors</a></li><li role="menuitem"><a class="universal-header-residential-life" href="https://home.dartmouth.edu/life-community/residential-life">Residential Life</a></li><li role="menuitem"><a class="universal-header-service" href="https://home.dartmouth.edu/life-community/service">Service</a></li><li role="menuitem"><a class="universal-header-student-groups-activities" href="https://home.dartmouth.edu/life-community/student-groups-activities">Student Groups & Activities</a></li><li role="menuitem"><a class="universal-header-sustainability" href="https://home.dartmouth.edu/life-community/sustainability">Sustainability</a></li></ul></li><li class="three column" role="listitem" aria-labelledby="nav-label-154716"><h3 id="nav-label-154716"><a href="#">More<span class="arrow"></span></a></h3><ul class="group" role="menu"><li role="menuitem"><a class="universal-header-admissions" href="https://home.dartmouth.edu/admissions-offices">Admissions</a></li><li role="menuitem"><a class="universal-header-schools" href="https://home.dartmouth.edu/education/graduate-schools">Schools</a></li><li role="menuitem"><a class="universal-header-centers" href="https://home.dartmouth.edu/centers-institutes">Centers</a></li><li role="menuitem"><a class="universal-header-global" href="https://global.dartmouth.edu/">Global</a></li><li role="menuitem"><a class="universal-header-arts" href="https://www.dartmouth.edu/arts">Arts</a></li><li role="menuitem"><a class="universal-header-athletics" href="http://www.dartmouthsports.com/">Athletics</a></li><li role="menuitem"><a class="universal-header-giving" href="https://calltolead.dartmouth.edu/">Giving</a></li></ul><div id="search-dartmouth" role="search"><form onsubmit="location.href='//home.dartmouth.edu/search/gss/' + document.getElementById('input-search-dartmouth').value; return false;"><label for="input-search-dartmouth" class="offscreen">Search</label><input type="text" id="input-search-dartmouth" name="input-search-dartmouth" placeholder="Search" aria-required="true"><input type="submit" class="icn-search" value="GO"></form></div></li></ul></div></div></div><div role="banner" class="container" aria-label="College-wide Universal Header"><header class="row header-main"><div class="eight column"><a href="//home.dartmouth.edu" class="logo">Dartmouth College</a></div><div class="four column"><nav id="btn-nav-dartmouth" aria-label="Universal Header Navigation"><a class="universal-header-menu-toggle closed" aria-label="Universal Header Menu Display Toggle" href="#"><span class="icn"></span><span class="btn-txt">Explore Dartmouth</span></a></nav></div></header></div>  
+</section>  <section class="block block-bean block-bean-admin-site-banner header">
+
+        <h2 class="block-title element-invisible">Computer Science</h2>
+    
+      
+<div class="row">
+  <div class="twelve-column " id="dept-container" role="contentinfo">
+    <div class="department-banner banner-blurb">
+            <header class="department-banner__header">
+        <div class="department-banner__info">
+          <h1 class="department-banner__title">
+                          <div class="field field-name-field-title-prefix field-type-text field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even">Department of</div></div></div>                        Computer Science</h1>
+                      <div class="department-banner__description">
+              <p><p>A language for modern science and technology</p></p>            </div>
+                  </div>
+      </header>
+      <div id="department-social">
+  <ul role="menubar" aria-label="Contact and Social Navigation">
+        <li class="logo-mail" role="menuitem" aria-label="Contact Information" tabindex="0">
+      <div class="mail-info">
+        <a class="social-link-email" href="/cdn-cgi/l/email-protection#b2f1dddfc2c7c6d7c09ce1d1dbd7dcd1d79cf6d7c2d3c0c6dfd7dcc6f2f6d3c0c6dfddc7c6da9cf7f6e7"><span class="__cf_email__" data-cfemail="185b7775686d6c7d6a364b7b717d767b7d365c7d68796a6c757d766c585c796a6c75776d6c70365d5c4d">[email&#160;protected]</span></a><span><a href="/department/department-computer-science" class="social-link-dept-info">Contact &amp; Department Info</a></span>      </div>
+      <a href="/department/department-computer-science"><span class="hide-txt">Mail</span></a>
+    </li>
+  </ul>
+</div>
+              <div class="department-banner__image">
+          <img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/banner_front/public/headers/banner.jpg?itok=kX6CBUYw" width="1120" height="460" />        </div>
+                    <a class="department-banner__description-toggle">more</a>
+          </div>
+  </div>
+</div>
+  
+</section>  <section class="block block-menu-block block-menu-block-header-menu header">
+
+        <h2 class="block-title element-invisible">Main menu</h2>
+    
+      <div class="row"><div class="main-menu--admin twelve column"><div class="mobile-nav__toggle"><span>Menu</span></div><div class="main-menu--admin__header-home header-button"><a href="/" class="header-home__link active"><span>Home</span></a></div><div class="main-menu--admin__header-menu"><ul class="menu"><li class="first expanded menu-mlid-16791 menu__top-level"><i class="arrow-down"></i><i class="arrow-up"></i><span class="dropmenu-toggle" data-menu-id-js="Undergraduate"><span>Undergraduate</span></span></li>
+<div class="dropmenu no-feature" aria-hidden="true" data-menu-id-js="Undergraduate"><section class="dropmenu__menu" aria-label="Undergraduate Sub-Menu Navigation"><ul class="menu"><li class="first expanded menu-mlid-16796"><a href="/undergraduate" title="Information for Undergraduates">Overview</a><ul class="menu"><li class="first leaf menu-mlid-16861"><a href="/undergraduate/what-you-will-learn" title="Learning outcomes">What You Will Learn</a></li>
+<li class="last leaf menu-mlid-16901"><a href="/undergraduate/advice" title="Advice for a successfully CS undergrad experience">Advice &amp; Contact</a></li>
+</ul></li>
+<li class="expanded menu-mlid-16876"><a href="/undergraduate/undergraduate-courses" title="Overview of Undergraduate courses">Courses</a><ul class="menu"><li class="first leaf menu-mlid-16896"><a href="/undergraduate/upcoming-class-schedule" title="Upcoming class schedule">Upcoming Class Schedule</a></li>
+<li class="leaf menu-mlid-16911"><a href="https://sites.dartmouth.edu/cs-spring2020/" title="A centralized course guide for our remote Spring 2020 classes.">Spring 2020 course guide</a></li>
+<li class="last leaf menu-mlid-16916"><a href="/undergraduate/ait-budapest" title="Information about AIT-Budapest for Dartmouth Students">AIT-Budapest for Dartmouth Students</a></li>
+</ul></li>
+<li class="expanded menu-mlid-16856"><a href="/undergraduate/major" title="The Major">The Major</a><ul class="menu"><li class="first leaf menu-mlid-16936"><a href="/undergraduate/modified-majors" title="Modified Majors Involving Computer Science">Modified Majors</a></li>
+<li class="leaf menu-mlid-17156"><a href="/undergraduate/advice-contact/declaring-your-cs-majorminor">Declaring your CS Major/Minor</a></li>
+<li class="leaf menu-mlid-16866"><a href="/undergraduate/honors-program" title="About the honors program">Honors Program</a></li>
+<li class="last leaf has-children menu-mlid-16871"><a href="/undergraduate/john-g-kemeny-computing-prize" title="Awards for computing projects">Prizes</a></li>
+</ul></li>
+<li class="leaf menu-mlid-16941"><a href="/undergraduate/minors" title="Computer Science and Digital Arts Minors">The Minors</a></li>
+<li class="expanded menu-mlid-16881"><a href="/undergraduate/graduate-school-advice" title="Advice for majors considering graduate school.">Considering Graduate School?</a><ul class="menu"><li class="first leaf menu-mlid-16886"><a href="https://web.cs.dartmouth.edu/graduate/41-abms-program-computer-science">4+1 AB/MS in CS</a></li>
+<li class="last leaf menu-mlid-16926"><a href="/graduate/ms-programs/41-ms-concentration-digital-arts">4+1 MS in CS with Digital Arts</a></li>
+</ul></li>
+<li class="last expanded menu-mlid-16921"><a href="/undergraduate/funding-sponsorship-opportunities">Funding &amp; Sponsorship Opportunities</a><ul class="menu"><li class="first leaf menu-mlid-16906"><a href="/undergraduate/be-ta" title="Become an undergrad TA">Be a TA</a></li>
+<li class="last leaf menu-mlid-16931"><a href="https://web.cs.dartmouth.edu/research/labs/dali-lab" title="Digital Applied Learning and Innovation">DALI Lab</a></li>
+</ul></li>
+</ul></section><section class="dropmenu__feature"></section><div class="dropclose clearfix"><span class="element-invisible">Back to Top Nav</span></div></div><li class="expanded menu-mlid-16801 menu__top-level"><i class="arrow-down"></i><i class="arrow-up"></i><span class="dropmenu-toggle" data-menu-id-js="Graduate"><span>Graduate</span></span></li>
+<div class="dropmenu no-feature" aria-hidden="true" data-menu-id-js="Graduate"><section class="dropmenu__menu" aria-label="Graduate Sub-Menu Navigation"><ul class="menu"><li class="first leaf menu-mlid-16806"><a href="/graduate-program" title="Information for Graduates">Overview</a></li>
+<li class="leaf menu-mlid-16976"><a href="/graduate/phd-program" title="Apply to the PhD program!">PhD Program</a></li>
+<li class="expanded menu-mlid-16981"><a href="/graduate/ms-programs" title="Apply to one of our MS programs!">MS Programs</a><ul class="menu"><li class="first leaf menu-mlid-17141"><a href="/graduate/ms-programs/ms-cs-concentration-digital-arts">MS in CS with Digital Arts</a></li>
+<li class="leaf menu-mlid-17146"><a href="/graduate/ms-programs/41-ms-concentration-digital-arts">4+1 MS in CS with Digital Arts</a></li>
+<li class="last leaf menu-mlid-17136"><a href="/graduate/41-abms-program-computer-science">4+1 AB/MS in CS</a></li>
+</ul></li>
+<li class="leaf menu-mlid-16951"><a href="https://app.applyyourself.com/?id=dart-grad" title="Graduate program application">Apply</a></li>
+<li class="leaf menu-mlid-16956"><a href="/graduate/courses" title="Graduate courses">Courses</a></li>
+<li class="expanded menu-mlid-16986"><a href="/graduate/expectations-policies-and-procedures" title="Expectations, policies, and procedures">Expectations, policies, and procedures</a><ul class="menu"><li class="first last leaf menu-mlid-17151"><a href="/graduate/expectations-policies-and-procedures/transferring-courses-elsewhere-cs-graduate-programs">Course Transfer Policy</a></li>
+</ul></li>
+<li class="leaf menu-mlid-16961"><a href="/graduate/life" title="Graduate student life">Graduate Life</a></li>
+<li class="leaf menu-mlid-16971"><a href="/graduate/alumni-professors" title="Program graduates who now have teaching positions">Alumni Professors</a></li>
+<li class="leaf menu-mlid-16991"><a href="/undergraduate/funding-sponsorship-opportunities">Funding &amp; Sponsorship Opportunities</a></li>
+<li class="last leaf menu-mlid-16996"><a href="https://web.cs.dartmouth.edu/research/labs/dali-lab" title="Digital Applied Learning and Innovation Lab">DALI Lab</a></li>
+</ul></section><section class="dropmenu__feature"></section><div class="dropclose clearfix"><span class="element-invisible">Back to Top Nav</span></div></div><li class="expanded menu-mlid-16811 menu__top-level"><i class="arrow-down"></i><i class="arrow-up"></i><span class="dropmenu-toggle" data-menu-id-js="Research"><span>Research</span></span></li>
+<div class="dropmenu no-feature" aria-hidden="true" data-menu-id-js="Research"><section class="dropmenu__menu" aria-label="Research Sub-Menu Navigation"><ul class="menu"><li class="first leaf menu-mlid-16816"><a href="/research" title="Research in Computer Science">Overview</a></li>
+<li class="leaf menu-mlid-17036"><a href="/recent-publications">Faculty Publications</a></li>
+<li class="leaf menu-mlid-17041"><a href="/research/faculty-research-areas" title="Faculty research areas">Faculty Research Areas</a></li>
+<li class="expanded menu-mlid-17031"><a href="/research/research-groups-labs" title="Research Groups &amp; Labs">Research Groups &amp; Labs</a><ul class="menu"><li class="first last leaf menu-mlid-17131"><a href="/research/labs/dali-lab" title="Digital Applied Learning and Innovation">DALI Lab</a></li>
+</ul></li>
+<li class="leaf menu-mlid-17051"><a href="http://www.cs.dartmouth.edu/reports/" title="Department technical reports">Technical Reports</a></li>
+<li class="last leaf menu-mlid-17101"><a href="/article-tags-local/jobs">Job Openings</a></li>
+</ul></section><section class="dropmenu__feature"></section><div class="dropclose clearfix"><span class="element-invisible">Back to Top Nav</span></div></div><li class="expanded menu-mlid-16821 menu__top-level"><span class="dropmenu-notoggle"><a href="/news-events">What&#039;s New</a></span></li>
+<li class="leaf menu-mlid-16831 menu__top-level"><span class="dropmenu-notoggle"><a href="/people">People</a></span></li>
+<li class="last expanded menu-mlid-16836 menu__top-level"><i class="arrow-down"></i><i class="arrow-up"></i><span class="dropmenu-toggle" data-menu-id-js="Jobs"><span>Jobs</span></span></li>
+<div class="dropmenu no-feature" aria-hidden="true" data-menu-id-js="Jobs"><section class="dropmenu__menu" aria-label="Jobs Sub-Menu Navigation"><ul class="menu"><li class="first leaf menu-mlid-17116"><a href="/article-tags-local/jobs">CS Faculty Positions and Other Jobs</a></li>
+<li class="last leaf menu-mlid-17111"><a href="http://dartgo.org/facjobs" title="Other faculty positions available at Dartmouth">All Faculty Openings at Dartmouth</a></li>
+</ul></section><section class="dropmenu__feature"></section><div class="dropclose clearfix"><span class="element-invisible">Back to Top Nav</span></div></div></ul></div><div class="main-menu--admin__header-search header-button"><form class="search-form" role="search" action="/" method="post" id="search-block-form" accept-charset="UTF-8"><div>
+  <h2 class="element-invisible">Search form</h2>
+<div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search this site </label>
+ <input title="Search this site" class="custom-search-box small-8 columns search-input form-text" placeholder="Search this site" aria-label="Search Query" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<a href="#" aria-label="Hide Search Form" class="search-close"><span>Close</span></a><button class="secondary button radius postfix small-4 columns form-submit" aria-label="Go" id="edit-submit" name="op" value="Go" type="submit">Go</button>
+<input type="hidden" name="form_build_id" value="form-JhcCt4KzB3BtwAO5jMlM3aypqIU7KQY8i2zxU1gswmA" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div></form><a class="search-toggle" href="#"><span>Search</span></a></div></div></div>  
+</section>      <!--/.l-header-region -->
+      </header>
+  <!--/.l-header -->
+
+  
+  
+  <main role="main" class="l-main">
+    <a id="main-content"></a>
+    
+    
+      
+      
+      
+<div class="panelizer-view-mode node node-full node-home node-13836">
+          <div class="row">
+    <div class="panel-pane pane-block pane-views-top-stories-block pane-views"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="row">
+  <section class="module top-stories-module twelve column view view-top-stories view-id-top_stories view-display-id-block view-dom-id-84ff7a667317774d8a0d8e98d446d9b0" aria-label="Top Stories">
+    <header class="mod-home-hdr">
+      <div class="row">
+        <div class="twelve column">
+                                <h3 class="module-title ital">Top Stories</h3>
+                    
+                    <nav class="nav-top-stories prev-next" aria-label="Top Stories Slideshow Navigation">
+            <a class="prev disabled" aria-hidden="true"><span class="hide-txt">Previous</span></a>
+            <a class="next" aria-hidden="true"><span class="hide-txt">Next</span></a>
+          </nav>
+                  </div>
+      </div>
+
+          </header>
+
+    
+    
+          <div class="view-content row twelve top-stories-mask ">
+            <ul class="top-stories">          <li class="top-story"><article aria-label="The Hidden Life of Viruses" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/05/hidden-life-viruses">The Hidden Life of Viruses</a></h4>
+  <p>In an article published by Nautilus, Daniel N. Rockmore and David Krakauer describe how "the COVID-19 crisis has made the dark energy of evolution visible."</p>
+
+      
+  <article aria-label="The Hidden Life of Viruses">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/05/hidden-life-viruses" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/department_computer_science/images/hidden-virus-cover.png?itok=wT80FrI9" width="500" height="281" alt="The Hidden Life of Viruses - Cover Image" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label=" Rendering Millions of Dynamic Lights in Realtime" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/05/rendering-millions-dynamic-lights-realtime"> Rendering Millions of Dynamic Lights in Realtime</a></h4>
+  <p>NVIDIA's tech blog is featuring research from Dartmouth CS PhD student Benedikt Bitterli and Visual Computing Lab advisor Wojciech Jarosz.</p>
+
+      
+  <article aria-label="Subway Train">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/05/rendering-millions-dynamic-lights-realtime" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/department_computer_science/images/subway.png?itok=03GKZ3O-" width="500" height="281" alt="Subway train." /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="Want to know how many people have the coronavirus? Test randomly" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/04/want-know-how-many-people-have-coronavirus-test-randomly">Want to know how many people have the coronavirus? Test randomly</a></h4>
+  <p>Dartmouth professors Daniel N. Rockmore and Michael Herron describe how random testing can help us understand the spread of the coronavirus in the US.</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 2">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/04/want-know-how-many-people-have-coronavirus-test-randomly" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/pill-bottle-random.jpg?itok=29RTYm1n" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="Two VCL students receive top industry fellowships" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/04/two-vcl-students-receive-top-industry-fellowships">Two VCL students receive top industry fellowships</a></h4>
+  <p>Benedikt Bitterli and Zack Misso, both PhD students in the Dartmouth Visual Computing Lab supervised by Wojciech Jarosz, have been awarded top industry fellowships from NVIDIA and Facebook.</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 1">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/04/two-vcl-students-receive-top-industry-fellowships" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/benedikt-zack-fellowship_0.png?itok=JHmLegLa" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="Spring 2020 CS course guide" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/03/spring-2020-cs-course-guide">Spring 2020 CS course guide</a></h4>
+  <p>Check out our centralized guide for all online CS courses during the Spring 2020 academic term.</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 3">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/03/spring-2020-cs-course-guide" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/spring2020-online.png?itok=xEdOFBmU" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="Work on Air-Water Laser Link Won NSDI Best Paper Award" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/03/work-air-water-laser-link-won-nsdi-best-paper-award">Work on Air-Water Laser Link Won NSDI Best Paper Award</a></h4>
+  <p>A paper from DartNets and RLab at CS and a research group at Thayer Engineering school examining air-water communication using laser light won the Best Paper Award at NSDI'20.</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 7">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/03/work-air-water-laser-link-won-nsdi-best-paper-award" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/webform/amphilight.jpg?itok=LUFOyRlB" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="CS majors have the highest average salaries among Dartmouth graduates" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/01/cs-majors-have-highest-average-salaries-among-dartmouth-graduates">CS majors have the highest average salaries among Dartmouth graduates</a></h4>
+  <p>A Dartmouth graduate’s average salary can range from $38,900 to $100,500 (with CS majors taking that top spot), according to government data published in the Wall Street Journal. (graphic by Bella Jacoby / The Dartmouth Senior Staff)</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 8">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/01/cs-majors-have-highest-average-salaries-among-dartmouth-graduates" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/salaries.jpg?itok=EvZx_hQQ" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="What Happens When Machines Learn to Write Poetry" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/01/what-happens-when-machines-learn-write-poetry">What Happens When Machines Learn to Write Poetry</a></h4>
+  <p>Prof. Dan Rockmore asks "Should artificial intelligence alter our appreciation of art?" in his article in the New Yorker. (Illustration by Shawna X)</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 10">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/01/what-happens-when-machines-learn-write-poetry" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/rockmore-aipoetry_1.jpg?itok=GctMSSSY" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="CS25 (UI/UX Design) funded by DCAL grant" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/01/cs25-uiux-design-funded-dcal-grant">CS25 (UI/UX Design) funded by DCAL grant</a></h4>
+  <p>An Experiential Learning DCAL grant funded the creation of a two-term course on UI/UX Design as part of the Digital Arts Program. This video highlights the course. </p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 11">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/01/cs25-uiux-design-funded-dcal-grant" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/webform/screen_shot_2020-01-20_at_9.35.06_am.png?itok=ruvOr_dX" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+          <li class="top-story"><article aria-label="Rachael Rhee &amp;#039;16 applies CS skills as 1st Lt. in US Army" class="node-article node-teaser">
+
+  <h4 class="all-caps"><a href="/news/2020/01/rachael-rhee-16-applies-cs-skills-1st-lt-us-army">Rachael Rhee &#039;16 applies CS skills as 1st Lt. in US Army</a></h4>
+  <p>US Army features a story of Dartmouth CS alumna's role in new algorithmic platform (U.S. Army photo by Katelyn Campbell).</p>
+
+      
+  <article aria-label="Homepage Image Article Slide - Image 9">
+  <div class="field field-name-field-slide-image field-type-image field-label-hidden field-wrapper"><div class="field-items" class="field-items"><div class="field-item odd" class="field-item even"><a href="/news/2020/01/rachael-rhee-16-applies-cs-skills-1st-lt-us-army" tabindex="-1"><img src="https://web.cs.dartmouth.edu/sites/department_computer_science/files/styles/dart_teaser/public/rachal-rhee.jpg?itok=-ZJKnFmZ" width="500" height="281" /></a></div></div></div></article>
+  
+</article>
+</li>
+      </ul>      </div>
+    
+    
+    
+    
+    
+    
+    <section class="top-stories-grid" aria-label="Top Stories Grid">
+      <div class="row">
+        <div class="four column"></div>
+      </div>
+    </section>
+  </section>
+</div>
+  </div>
+
+  
+  </div>
+  </div>
+
+
+  <div class="row">
+    <div class="panel-pane pane-block pane-dart-events-dept-dept-home pane-dart-events-dept"  >
+  
+      
+  
+  <div class="pane-content">
+    <!--// START EVENTS OUTPUT //-->
+<div class="row">
+  <section class="module events twelve column" aria-label="Events">
+    <header class="mod-home-hdr">
+      <div class="row">
+        <div class="twelve column">
+                      <h3 class="module-title ital">Events</h3>
+                    <a href="news-events" class="btn" aria-label="view all">view all</a>
+        </div>
+      </div>
+    </header>
+
+    <ul class="row event-list" role="list">
+              <li class="two column event first" role="listitem">
+          <article role="article" aria-labelledby="event00">
+            <header>
+              <span class="month" aria-label="June">Jun</span>
+              <span class="day">09</span>
+            </header>
+            <footer>
+              <div class="event-details">
+                <span class="time">
+                  12:00AM                </span>
+                <h4 class="title">
+                  <a href="/events/event?event=60310&amp;listing=1" id="event00">Spring Term 2020</a>                </h4>
+                <em class="venue">
+                  no location                </em>
+              </div>
+              <p class="event-desc">
+                <a href="/events/event?event=60310" id="event00">Spring term ends</a>              </p>
+            </footer>
+          </article>
+        </li>
+              <li class="two column event second" role="listitem">
+          <article role="article" aria-labelledby="event01">
+            <header>
+              <span class="month" aria-label="June">Jun</span>
+              <span class="day">25</span>
+            </header>
+            <footer>
+              <div class="event-details">
+                <span class="time">
+                  12:00AM                </span>
+                <h4 class="title">
+                  <a href="/events/event?event=60312&amp;listing=1" id="event01">Summer Term 2020</a>                </h4>
+                <em class="venue">
+                  No location                </em>
+              </div>
+              <p class="event-desc">
+                <a href="/events/event?event=60312" id="event01">Summer term begins</a>              </p>
+            </footer>
+          </article>
+        </li>
+              <li class="two column event third" role="listitem">
+          <article role="article" aria-labelledby="event02">
+            <header>
+              <span class="month" aria-label="September">Sep</span>
+              <span class="day">01</span>
+            </header>
+            <footer>
+              <div class="event-details">
+                <span class="time">
+                  12:00AM                </span>
+                <h4 class="title">
+                  <a href="/events/event?event=60313&amp;listing=1" id="event02">Summer Term 2020</a>                </h4>
+                <em class="venue">
+                  no location                </em>
+              </div>
+              <p class="event-desc">
+                <a href="/events/event?event=60313" id="event02">Summer term ends</a>              </p>
+            </footer>
+          </article>
+        </li>
+              <li class="two column event fourth" role="listitem">
+          <article role="article" aria-labelledby="event03">
+            <header>
+              <span class="month" aria-label="September">Sep</span>
+              <span class="day">14</span>
+            </header>
+            <footer>
+              <div class="event-details">
+                <span class="time">
+                  12:00AM                </span>
+                <h4 class="title">
+                  <a href="/events/event?event=60314&amp;listing=1" id="event03">Fall Term 2020</a>                </h4>
+                <em class="venue">
+                  no location                </em>
+              </div>
+              <p class="event-desc">
+                <a href="/events/event?event=60314" id="event03">Fall term begins</a>              </p>
+            </footer>
+          </article>
+        </li>
+              <li class="two column event fifth" role="listitem">
+          <article role="article" aria-labelledby="event04">
+            <header>
+              <span class="month" aria-label="November">Nov</span>
+              <span class="day">25</span>
+            </header>
+            <footer>
+              <div class="event-details">
+                <span class="time">
+                  12:00AM                </span>
+                <h4 class="title">
+                  <a href="/events/event?event=60315&amp;listing=1" id="event04">Fall Term 2020</a>                </h4>
+                <em class="venue">
+                  no location                </em>
+              </div>
+              <p class="event-desc">
+                <a href="/events/event?event=60315" id="event04">Fall term ends</a>              </p>
+            </footer>
+          </article>
+        </li>
+          </ul>
+  </section>
+</div>
+<!--// END EVENTS OUTPUT //-->
+  </div>
+
+  
+  </div>
+  </div>
+</div>
+  
+
+      </main>
+  <!--/.l-main region -->
+
+  <!--.l-footer-->
+      <footer class="l-footer" role="contentinfo" aria-label="Page Footer">
+              <div class="footer-top">
+          <div class="row">
+                <section class="block block-dart-related block-dart-related-dart-related">
+
+      
+      <div class="six column group"></div>  
+</section>  <section class="block block-dart-related block-dart-related-dart-dept-listing">
+
+      
+      <div class="two column"><a href="#" id="all-departments">Departments<span></span></a></div><div id="dept-listing" class="twelve column group" role="menubar" aria-labelledby="all-departments"><div class="three column" role="menuitem" aria-label="View Alphabetized All Departments List 1"><ul><li role="menuitem"><a href="http://aaas.dartmouth.edu">African and African American Studies</a></li><li role="menuitem"><a href="http://anthropology.dartmouth.edu">Anthropology</a></li><li role="menuitem"><a href="http://arthistory.dartmouth.edu">Art History</a></li><li role="menuitem"><a href="https://www.dartmouth.edu/~damell/">Asian and Middle Eastern Languages and Literatures</a></li><li role="menuitem"><a href="https://www.dartmouth.edu/~asia">Asian and Middle-Eastern Studies</a></li><li role="menuitem"><a href="http://biology.dartmouth.edu">Biological Sciences</a></li><li role="menuitem"><a href="http://chemistry.dartmouth.edu">Chemistry</a></li><li role="menuitem"><a href="http://classics.dartmouth.edu">Classics</a></li><li role="menuitem"><a href="http://cognitive-science.dartmouth.edu">Cognitive Science</a></li><li role="menuitem"><a href="http://complit.dartmouth.edu">Comparative Literature</a></li><li role="menuitem"><a href="https://web.cs.dartmouth.edu">Computer Science</a></li></ul></div><div class="three column" role="menuitem" aria-label="View Alphabetized All Departments List 11"><ul><li role="menuitem"><a href="http://earthsciences.dartmouth.edu">Earth Sciences</a></li><li role="menuitem"><a href="http://economics.dartmouth.edu">Economics</a></li><li role="menuitem"><a href="http://educ.dartmouth.edu/">Education</a></li><li role="menuitem"><a href="http://thayer.dartmouth.edu">Engineering Sciences</a></li><li role="menuitem"><a href="http://english.dartmouth.edu">English</a></li><li role="menuitem"><a href="http://envs.dartmouth.edu">Environmental Studies</a></li><li role="menuitem"><a href="http://film-media.dartmouth.edu">Film and Media Studies</a></li><li role="menuitem"><a href="http://frandit.dartmouth.edu">French and Italian</a></li><li role="menuitem"><a href="http://geography.dartmouth.edu">Geography</a></li><li role="menuitem"><a href="https://www.dartmouth.edu/~german">German Studies</a></li><li role="menuitem"><a href="http://govt.dartmouth.edu/">Government</a></li></ul></div><div class="three column" role="menuitem" aria-label="View Alphabetized All Departments List 22"><ul><li role="menuitem"><a href="http://history.dartmouth.edu">History</a></li><li role="menuitem"><a href="https://www.dartmouth.edu/~hums1-2">Humanities 1 & 2</a></li><li role="menuitem"><a href="http://writing-speech.dartmouth.edu/">Institute for Writing and Rhetoric</a></li><li role="menuitem"><a href="http://jewish.dartmouth.edu/">Jewish Studies</a></li><li role="menuitem"><a href="http://lalacs.dartmouth.edu">Latin American, Latino and Caribbean Studies</a></li><li role="menuitem"><a href="http://linguistics.dartmouth.edu">Linguistics</a></li><li role="menuitem"><a href="http://math.dartmouth.edu">Mathematics</a></li><li role="menuitem"><a href="http://medren.dartmouth.edu">Medieval and Renaissance Studies</a></li><li role="menuitem"><a href="http://music.dartmouth.edu">Music</a></li><li role="menuitem"><a href="http://native-american.dartmouth.edu">Native American Studies</a></li><li role="menuitem"><a href="http://philosophy.dartmouth.edu">Philosophy</a></li></ul></div><div class="three column" role="menuitem" aria-label="View Alphabetized All Departments List 33"><ul><li role="menuitem"><a href="http://physics.dartmouth.edu">Physics and Astronomy</a></li><li role="menuitem"><a href="http://pbs.dartmouth.edu">Psychological and Brain Sciences</a></li><li role="menuitem"><a href="http://religion.dartmouth.edu">Religion</a></li><li role="menuitem"><a href="http://russian.dartmouth.edu">Russian</a></li><li role="menuitem"><a href="http://sociology.dartmouth.edu">Sociology</a></li><li role="menuitem"><a href="http://spanport.dartmouth.edu">Spanish and Portuguese</a></li><li role="menuitem"><a href="http://studioart.dartmouth.edu">Studio Art</a></li><li role="menuitem"><a href="http://theater.dartmouth.edu">Theater</a></li><li role="menuitem"><a href="http://wgs.dartmouth.edu/">Women’s and Gender Studies</a></li></ul></div></div>  
+</section>  <section class="block block-dart-related block-dart-related-dart-inclusive">
+
+      
+      <div class="two column"><a href="#" id="ie-ribbon-button">Inclusivity<span></span></a></div><div id="ie-ribbon" class="twelve column group" role="menubar" aria-labelledby="ie-ribbon"><div><p>Dartmouth&#39;s capacity to advance its dual mission of education and research depends upon the full diversity and inclusivity of this community. We must increase diversity, particularly among our faculty and staff. As we do so, we must also create a community in which every individual, regardless of gender, gender identity, sexual orientation, race, ethnicity, socio-economic status, disability, nationality, political or religious views, or position within the institution, is respected. On this close-knit and intimate campus, we must ensure that every person knows that he, she, or they is a valued member of our community.</p></div></div>  
+</section>          </div>
+        </div>
+                        <section class="block block-menu-block block-menu-block-mobile-nav">
+
+        <h2 class="block-title">Main menu</h2>
+    
+      <div tabindex="-1" id="mobile-nav" aria-hidden="true"><header><span class="logo">Dartmouth College</span></header><div class="mobile-nav__toggle"><span></span></div><div class="site-name"><a href="/" aria-hidden="true" tabindex="-1" class="active">Department of Computer Science</a></div><div class="mobile-nav__menu"><ul class="menu"><li class="first expanded menu-mlid-16791 menu__top-level"><span class="mobile-nav__top-level-item">Undergraduate</span><div class="menu__toggle"><span></span></div><ul class="menu"><li class="first expanded menu-mlid-16796"><a href="/undergraduate" title="Information for Undergraduates" tabindex="-1" aria-hidden="true">Overview</a><ul class="menu"><li class="first leaf menu-mlid-16861"><a href="/undergraduate/what-you-will-learn" title="Learning outcomes" tabindex="-1" aria-hidden="true">What You Will Learn</a></li>
+<li class="last leaf menu-mlid-16901"><a href="/undergraduate/advice" title="Advice for a successfully CS undergrad experience" tabindex="-1" aria-hidden="true">Advice &amp; Contact</a></li>
+</ul></li>
+<li class="expanded menu-mlid-16876"><a href="/undergraduate/undergraduate-courses" title="Overview of Undergraduate courses" tabindex="-1" aria-hidden="true">Courses</a><ul class="menu"><li class="first leaf menu-mlid-16896"><a href="/undergraduate/upcoming-class-schedule" title="Upcoming class schedule" tabindex="-1" aria-hidden="true">Upcoming Class Schedule</a></li>
+<li class="leaf menu-mlid-16911"><a href="https://sites.dartmouth.edu/cs-spring2020/" title="A centralized course guide for our remote Spring 2020 classes." tabindex="-1" aria-hidden="true">Spring 2020 course guide</a></li>
+<li class="last leaf menu-mlid-16916"><a href="/undergraduate/ait-budapest" title="Information about AIT-Budapest for Dartmouth Students" tabindex="-1" aria-hidden="true">AIT-Budapest for Dartmouth Students</a></li>
+</ul></li>
+<li class="expanded menu-mlid-16856"><a href="/undergraduate/major" title="The Major" tabindex="-1" aria-hidden="true">The Major</a><ul class="menu"><li class="first leaf menu-mlid-16936"><a href="/undergraduate/modified-majors" title="Modified Majors Involving Computer Science" tabindex="-1" aria-hidden="true">Modified Majors</a></li>
+<li class="leaf menu-mlid-17156"><a href="/undergraduate/advice-contact/declaring-your-cs-majorminor" tabindex="-1" aria-hidden="true">Declaring your CS Major/Minor</a></li>
+<li class="leaf menu-mlid-16866"><a href="/undergraduate/honors-program" title="About the honors program" tabindex="-1" aria-hidden="true">Honors Program</a></li>
+<li class="last leaf has-children menu-mlid-16871"><a href="/undergraduate/john-g-kemeny-computing-prize" title="Awards for computing projects" tabindex="-1" aria-hidden="true">Prizes</a></li>
+</ul></li>
+<li class="leaf menu-mlid-16941"><a href="/undergraduate/minors" title="Computer Science and Digital Arts Minors" tabindex="-1" aria-hidden="true">The Minors</a></li>
+<li class="expanded menu-mlid-16881"><a href="/undergraduate/graduate-school-advice" title="Advice for majors considering graduate school." tabindex="-1" aria-hidden="true">Considering Graduate School?</a><ul class="menu"><li class="first leaf menu-mlid-16886"><a href="https://web.cs.dartmouth.edu/graduate/41-abms-program-computer-science" tabindex="-1" aria-hidden="true">4+1 AB/MS in CS</a></li>
+<li class="last leaf menu-mlid-16926"><a href="/graduate/ms-programs/41-ms-concentration-digital-arts" tabindex="-1" aria-hidden="true">4+1 MS in CS with Digital Arts</a></li>
+</ul></li>
+<li class="last expanded menu-mlid-16921"><a href="/undergraduate/funding-sponsorship-opportunities" tabindex="-1" aria-hidden="true">Funding &amp; Sponsorship Opportunities</a><ul class="menu"><li class="first leaf menu-mlid-16906"><a href="/undergraduate/be-ta" title="Become an undergrad TA" tabindex="-1" aria-hidden="true">Be a TA</a></li>
+<li class="last leaf menu-mlid-16931"><a href="https://web.cs.dartmouth.edu/research/labs/dali-lab" title="Digital Applied Learning and Innovation" tabindex="-1" aria-hidden="true">DALI Lab</a></li>
+</ul></li>
+</ul></li>
+<li class="expanded menu-mlid-16801 menu__top-level"><span class="mobile-nav__top-level-item">Graduate</span><div class="menu__toggle"><span></span></div><ul class="menu"><li class="first leaf menu-mlid-16806"><a href="/graduate-program" title="Information for Graduates" tabindex="-1" aria-hidden="true">Overview</a></li>
+<li class="leaf menu-mlid-16976"><a href="/graduate/phd-program" title="Apply to the PhD program!" tabindex="-1" aria-hidden="true">PhD Program</a></li>
+<li class="expanded menu-mlid-16981"><a href="/graduate/ms-programs" title="Apply to one of our MS programs!" tabindex="-1" aria-hidden="true">MS Programs</a><ul class="menu"><li class="first leaf menu-mlid-17141"><a href="/graduate/ms-programs/ms-cs-concentration-digital-arts" tabindex="-1" aria-hidden="true">MS in CS with Digital Arts</a></li>
+<li class="leaf menu-mlid-17146"><a href="/graduate/ms-programs/41-ms-concentration-digital-arts" tabindex="-1" aria-hidden="true">4+1 MS in CS with Digital Arts</a></li>
+<li class="last leaf menu-mlid-17136"><a href="/graduate/41-abms-program-computer-science" tabindex="-1" aria-hidden="true">4+1 AB/MS in CS</a></li>
+</ul></li>
+<li class="leaf menu-mlid-16951"><a href="https://app.applyyourself.com/?id=dart-grad" title="Graduate program application" tabindex="-1" aria-hidden="true">Apply</a></li>
+<li class="leaf menu-mlid-16956"><a href="/graduate/courses" title="Graduate courses" tabindex="-1" aria-hidden="true">Courses</a></li>
+<li class="expanded menu-mlid-16986"><a href="/graduate/expectations-policies-and-procedures" title="Expectations, policies, and procedures" tabindex="-1" aria-hidden="true">Expectations, policies, and procedures</a><ul class="menu"><li class="first last leaf menu-mlid-17151"><a href="/graduate/expectations-policies-and-procedures/transferring-courses-elsewhere-cs-graduate-programs" tabindex="-1" aria-hidden="true">Course Transfer Policy</a></li>
+</ul></li>
+<li class="leaf menu-mlid-16961"><a href="/graduate/life" title="Graduate student life" tabindex="-1" aria-hidden="true">Graduate Life</a></li>
+<li class="leaf menu-mlid-16971"><a href="/graduate/alumni-professors" title="Program graduates who now have teaching positions" tabindex="-1" aria-hidden="true">Alumni Professors</a></li>
+<li class="leaf menu-mlid-16991"><a href="/undergraduate/funding-sponsorship-opportunities" tabindex="-1" aria-hidden="true">Funding &amp; Sponsorship Opportunities</a></li>
+<li class="last leaf menu-mlid-16996"><a href="https://web.cs.dartmouth.edu/research/labs/dali-lab" title="Digital Applied Learning and Innovation Lab" tabindex="-1" aria-hidden="true">DALI Lab</a></li>
+</ul></li>
+<li class="expanded menu-mlid-16811 menu__top-level"><span class="mobile-nav__top-level-item">Research</span><div class="menu__toggle"><span></span></div><ul class="menu"><li class="first leaf menu-mlid-16816"><a href="/research" title="Research in Computer Science" tabindex="-1" aria-hidden="true">Overview</a></li>
+<li class="leaf menu-mlid-17036"><a href="/recent-publications" tabindex="-1" aria-hidden="true">Faculty Publications</a></li>
+<li class="leaf menu-mlid-17041"><a href="/research/faculty-research-areas" title="Faculty research areas" tabindex="-1" aria-hidden="true">Faculty Research Areas</a></li>
+<li class="expanded menu-mlid-17031"><a href="/research/research-groups-labs" title="Research Groups &amp; Labs" tabindex="-1" aria-hidden="true">Research Groups &amp; Labs</a><ul class="menu"><li class="first last leaf menu-mlid-17131"><a href="/research/labs/dali-lab" title="Digital Applied Learning and Innovation" tabindex="-1" aria-hidden="true">DALI Lab</a></li>
+</ul></li>
+<li class="leaf menu-mlid-17051"><a href="http://www.cs.dartmouth.edu/reports/" title="Department technical reports" tabindex="-1" aria-hidden="true">Technical Reports</a></li>
+<li class="last leaf menu-mlid-17101"><a href="/article-tags-local/jobs" tabindex="-1" aria-hidden="true">Job Openings</a></li>
+</ul></li>
+<li class="expanded menu-mlid-16821 menu__top-level"><li class="mobile-nav__top-level-item dropmenu-notoggle"><a href="/news-events" aria-hidden="true" tabindex="-1">What&#039;s New</a></li></li>
+<li class="leaf menu-mlid-16831 menu__top-level"><li class="mobile-nav__top-level-item dropmenu-notoggle"><a href="/people" aria-hidden="true" tabindex="-1">People</a></li></li>
+<li class="last expanded menu-mlid-16836 menu__top-level"><span class="mobile-nav__top-level-item">Jobs</span><div class="menu__toggle"><span></span></div><ul class="menu"><li class="first leaf menu-mlid-17116"><a href="/article-tags-local/jobs" tabindex="-1" aria-hidden="true">CS Faculty Positions and Other Jobs</a></li>
+<li class="last leaf menu-mlid-17111"><a href="http://dartgo.org/facjobs" title="Other faculty positions available at Dartmouth" tabindex="-1" aria-hidden="true">All Faculty Openings at Dartmouth</a></li>
+</ul></li>
+</ul></div></div>  
+</section>  <section class="block block-dart-wrapper block-dart-wrapper-dart-wrapper-footer">
+
+      
+      <footer class="container" id="footer-container" role="contentinfo" aria-label="Page Footer"><div class="row"><div class="eight column main-footer"><ul class="row" role="menu"><li class="nav-footer four column" role="menuitem" aria-labelledby="footer-label-my-dartmouth"><h3 id="footer-label-my-dartmouth">My Dartmouth<span></span></h3><ul role="menu"><li role="menuitem"><a class="universal-footer-students" href="https://www.dartmouth.edu/quicklinks/students/">Students</a></li><li role="menuitem"><a class="universal-footer-faculty" href="https://www.dartmouth.edu/quicklinks/faculty/">Faculty</a></li><li role="menuitem"><a class="universal-footer-staff" href="https://www.dartmouth.edu/quicklinks/staff/">Staff</a></li><li role="menuitem"><a class="universal-footer-alumni" href="https://alumni.dartmouth.edu">Alumni</a></li><li role="menuitem"><a class="universal-footer-families" href="https://www.dartmouth.edu/quicklinks/families/">Families</a></li></ul></li><li class="nav-footer four column" role="menuitem" aria-labelledby="footer-label-find-it-fast"><h3 id="footer-label-find-it-fast">Find it Fast<span></span></h3><ul role="menu"><li role="menuitem"><a class="universal-footer-campus-map" href="https://www.dartmouth.edu/~maps">Campus Map</a></li><li role="menuitem"><a class="universal-footer-directory" href="https://home.dartmouth.edu/directory">Directory</a></li><li role="menuitem"><a class="universal-footer-events" href="https://news.dartmouth.edu/events">Events</a></li><li role="menuitem"><a class="universal-footer-news" href="https://news.dartmouth.edu/">News</a></li><li role="menuitem"><a class="universal-footer-visit" href="https://home.dartmouth.edu/visit">Visit</a></li></ul></li><li class="nav-footer four column" role="menuitem" aria-labelledby="footer-label-resources"><h3 id="footer-label-resources">Resources<span></span></h3><ul role="menu"><li role="menuitem"><a class="universal-footer-dartmouth-at-a-glance" href="https://home.dartmouth.edu/dartmouth-glance">Dartmouth at a Glance</a></li><li role="menuitem"><a class="universal-footer-accessibility" href="https://home.dartmouth.edu/accessibility">Accessibility</a></li><li role="menuitem"><a class="universal-footer-administrative-offices" href="https://home.dartmouth.edu/administrative-offices">Administrative Offices</a></li><li role="menuitem"><a class="universal-footer-emergency-preparedness" href="https://www.dartmouth.edu/~prepare/">Emergency Preparedness</a></li><li role="menuitem"><a class="universal-footer-careers" href="https://jobs.dartmouth.edu/">Careers</a></li><li role="menuitem"><a class="universal-footer-sexual-respect-title-ix" href="https://sexual-respect.dartmouth.edu/">Sexual Respect & Title IX</a></li></ul></li></ul></div><div class="four column social-footer"><nav class="nav-footer nav-footer-four" aria-labelledby="footer-label-follow"><h3 id="footer-label-follow">Connect With Us</h3><ul id="footer-social" class="group" role="menu"><li role="menuitem"><a href="https://www.facebook.com/Dartmouth" class="logo-facebook hide-txt" aria-label="Facebook"><div class="show-for-sr">Facebook</div></a></li><li role="menuitem"><a href="https://www.instagram.com/dartmouthcollege/" class="logo-instagram hide-txt" aria-label="Instagram"><div class="show-for-sr">Instagram</div></a></li><li role="menuitem"><a href="https://www.twitter.com/dartmouth" class="logo-twitter hide-txt" aria-label="Twitter"><div class="show-for-sr">Twitter</div></a></li><li role="menuitem"><a href="https://www.youtube.com/Dartmouth" class="logo-youtube hide-txt" aria-label="YouTube"><div class="show-for-sr">YouTube</div></a></li></ul></nav></div></div><div class="row tiny-footer"><div class="twelve column"><ul id="nav-privacy" role="menu"><li role="menuitem"><a class="universal-sub-footer-link" href="https://www.dartmouth.edu/copyright/">Copyright © 2020 Trustees of Dartmouth College</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a class="universal-sub-footer-link" href="https://home.dartmouth.edu/privacy">Privacy</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a class="universal-sub-footer-link" href="https://home.dartmouth.edu/index">A-Z Index</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a class="universal-sub-footer-link" href="https://home.dartmouth.edu/contact">Contact</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a class="universal-sub-footer-link" href="https://itc.dartmouth.edu/site-feedback">Site or Accessibility Feedback</a></li></ul></div></div></footer>  
+</section>          </footer>
+    <!--/.footer-->
+
+  </div>
+<!--/.page -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/picture/picturefill2/picturefill.min.js?v=2.3.1"></script>
+<script src="https://web.cs.dartmouth.edu/sites/all/modules/contrib/picture/picture.min.js?v=7.70"></script>
+<script>/**
+ * @file
+ *   Main JavaScript file for Dismiss module
+ */
+
+(function ($) {
+
+  Drupal.behaviors.dismiss = {
+    attach: function (context, settings) {
+
+      // Prepend the Dismiss button to each message box.
+      $('.messages').each(function () {
+        var flag = $(this).children().hasClass('dismiss');
+
+        if (!flag) {
+          $(this).prepend('<button class="dismiss"><span class="element-invisible">' + Drupal.t('Close this message.') + '</span></button>');
+        }
+      });
+
+      // When the Dismiss button is clicked hide this set of messages.
+      $('.dismiss').click(function (event) {
+        $(this).parent().hide('fast');
+        // In case this message is inside a form, prevent form submission.
+        event.preventDefault();
+      });
+
+      // Fadeout out status messages when positive value defined.
+      if (Drupal.settings.dismiss.fadeout > 0) {
+        setTimeout(function () { $('.messages.status').fadeOut(); }, Drupal.settings.dismiss.fadeout);
+      }
+
+    }
+  }
+
+})(jQuery);
+</script>
+<script src="https://web.cs.dartmouth.edu/sites/all/themes/dartmouth_base/js/dartmouth.js?qakx6o"></script>
+        <script>
+      (function ($, Drupal, window, document, undefined) {
+        $(document).foundation();
+      })(jQuery, Drupal, this, this.document);
+    </script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"41d110b833","applicationID":"70692562","transactionName":"MVxQZ0EDCkpYU0JcDggWZ0FaTQ1XXVVOGxEOSQ==","queueTime":0,"applicationTime":15,"atts":"HRtTEQkZGUQ=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

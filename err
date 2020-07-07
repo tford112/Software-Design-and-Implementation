@@ -1,0 +1,71 @@
+--2020-06-16 18:59:32--  http://www.dartmouth.edu/
+Resolving www.dartmouth.edu (www.dartmouth.edu)... 129.170.171.111
+Connecting to www.dartmouth.edu (www.dartmouth.edu)|129.170.171.111|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: http://home.dartmouth.edu/ [following]
+--2020-06-16 18:59:32--  http://home.dartmouth.edu/
+Resolving home.dartmouth.edu (home.dartmouth.edu)... 104.16.118.63, 104.16.117.63
+Connecting to home.dartmouth.edu (home.dartmouth.edu)|104.16.118.63|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://home.dartmouth.edu/ [following]
+--2020-06-16 18:59:32--  https://home.dartmouth.edu/
+Connecting to home.dartmouth.edu (home.dartmouth.edu)|104.16.118.63|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘buf.html’
+
+     0K .......... .......... .......... .......... .......... 3.59M
+    50K .......... .......... ...                              4.63M=0.02s
+
+2020-06-16 18:59:32 (3.86 MB/s) - ‘buf.html’ saved [75019]
+
+--2020-06-16 18:59:32--  https://home.dartmouth.edu/admissions-offices
+Resolving home.dartmouth.edu (home.dartmouth.edu)... 104.16.118.63, 104.16.117.63
+Connecting to home.dartmouth.edu (home.dartmouth.edu)|104.16.118.63|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘buf.html’
+
+     0K .......... .......... .......... .......... .......... 2.47M
+    50K ..                                                     11.5M=0.02s
+
+2020-06-16 18:59:33 (2.56 MB/s) - ‘buf.html’ saved [53729]
+
+--2020-06-16 18:59:34--  https://home.dartmouth.edu/education/graduate-schools
+Resolving home.dartmouth.edu (home.dartmouth.edu)... 104.16.118.63, 104.16.117.63
+Connecting to home.dartmouth.edu (home.dartmouth.edu)|104.16.118.63|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘buf.html’
+
+     0K .......... .......... .......... .......... .......... 1.11M
+    50K ...                                                    4.60M=0.04s
+
+2020-06-16 18:59:34 (1.16 MB/s) - ‘buf.html’ saved [54706]
+
+--2020-06-16 18:59:35--  https://home.dartmouth.edu/centers-institutes
+Resolving home.dartmouth.edu (home.dartmouth.edu)... 104.16.118.63, 104.16.117.63
+Connecting to home.dartmouth.edu (home.dartmouth.edu)|104.16.118.63|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘buf.html’
+
+     0K .......... .......... .......... .......... .......... 1.14M
+    50K .......... ....                                        4.35M=0.05s
+
+2020-06-16 18:59:36 (1.37 MB/s) - ‘buf.html’ saved [66507]
+
+--2020-06-16 18:59:37--  https://home.dartmouth.edu/education/degrees
+Resolving home.dartmouth.edu (home.dartmouth.edu)... 104.16.118.63, 104.16.117.63
+Connecting to home.dartmouth.edu (home.dartmouth.edu)|104.16.118.63|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘buf.html’
+
+     0K .......... .......... .......... .......... .......... 4.29M
+    50K .......... .......... .......... .......... .......... 3.52M
+   100K .......... .......... .......... .......... .......... 4.40M
+   150K .......... .......... ...                              3.49M=0.04s
+
+2020-06-16 18:59:37 (3.95 MB/s) - ‘buf.html’ saved [177867]
+
