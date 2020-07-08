@@ -20,4 +20,4 @@ $(EXEC): $(OBJ)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJ) $(EXEC) logger_index.txt 
+	rm -f $(OBJ) $(EXEC) logger_index.txt index.dat

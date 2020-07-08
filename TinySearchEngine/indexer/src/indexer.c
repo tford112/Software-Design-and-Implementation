@@ -97,7 +97,7 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 		wnode->next = NULL;
 		wnode->prev = NULL; 
 		index->hash[hash_value] = wnode; 
-		fprintf(logger, "word %s at hash %lu\n", word, hash_value); 
+		fprintf(logger, "word \"%s\" at hash %lu\n", word, hash_value); 
 
 		return 1; 
 	}	
@@ -112,7 +112,7 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 		while (coll_curr) {
 			if (strcmp(coll_curr->word, word) == 0) {  
 				if (coll_curr->page->docId == docId) {   // case 1i. 
-					fprintf(logger, "collision occurred for %s at hash idx: %lu in same doc.\n", word, hash_value); 
+					fprintf(logger, "collision occurred for \"%s\" at hash idx: %lu in same doc.\n", word, hash_value); 
 					++coll_curr->page->page_word_frequency; 
 					return 1; 	
 				}
@@ -132,7 +132,7 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 					curr->next = dnode; 
 					dnode->next = NULL; 
 
-					fprintf(logger, "diff doc for word %s at hash %lu\n", word, hash_value); 
+					fprintf(logger, "diff doc for word \"%s\" at hash %lu\n", word, hash_value); 
 					return 1; 
 				}
 			}
@@ -172,21 +172,27 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 	char buf[WORD_LENGTH]; 
 	memset(buf, 0, WORD_LENGTH);
 	while (fscanf(text_file, " %s", buf) == 1) {
-		char *word = malloc(strlen(buf) + 1); // strlen doesn't handle +1 null-terminator  
+		int buf_size = strlen(buf) ;
+		if (buf[buf_size - 1] == '.') {       // words that end with a period would otherwise be treated as different 
+			buf_size = buf_size - 1; 
+		}
+		for (int i = 0; i < buf_size; ++ i) {
+			buf[i] = tolower(buf[i]);    
+		}
+		char *word = malloc((buf_size + 1));
 		if (word == NULL) {
 			perror("Not enough memory.\n");
 			fprintf(logger, "Not enough memory.\n"); 
 			exit(1);
 		}
-		memcpy(word, buf, strlen(buf) + 1);  // need to copy to char* from buffer 
-		fprintf(logger, "Word is: %s\n", word); 
+		memcpy(word, buf, buf_size + 1);  			// need to copy to char* from buffer 
+		fprintf(logger, "Word is: \"%s\"\n", word); 
 		if (checkWordInvalid(word)) {
 			printf("word %s is invalid. Freeing memory..\n", word); 
-			fprintf(logger, "word %s is invalid. Freeing memory..\n", word); 
+			fprintf(logger, "word \"%s\" is invalid. Freeing memory..\n", word); 
 			free(word); 
 		}
 		else {
-			printf("adding word %s from docid %d\n", word, docId); 
 			updateIndex(word, docId, index, logger); 
 		}
 	}
@@ -248,9 +254,29 @@ int main(int argc, char** argv){
 	fprintf(logger, "Now cleaning..\n"); 
 	int cur = 0; 
 	// TODO - For each word, need to count # of docs containing word as well as frequencies per document 
+	int doc_count = 0 ; 
+	FILE *index_output = fopen("index.dat", "wb"); 
+	if (index_output == NULL) {
+		perror("Error occurred trying to open file\n");
+		exit(4);
+	}
 	while (cur < MAX_HASH_SLOT) {
 		if (index->hash[cur]) {
-			printf("word: %s word_freq: %d\n", index->hash[cur]->word, index->hash[cur]->page->page_word_frequency);
+//			fprintf(logger, "\nword: \"%s\"\n", index->hash[cur]->word); 
+			DocNode* doc_page = index->hash[cur]->page;
+			DocNode* cur_page = index->hash[cur]->page; 
+			while (doc_page) {  
+				++doc_count; 	
+				doc_page = doc_page->next; 
+			}
+			fprintf(index_output, "\n%s %d ", index->hash[cur]->word, doc_count); 
+			while (cur_page) {  			 // get document id and frequency for index.dat 
+//				fprintf(logger, "doc: %d word_freq: %d\n", cur_page->docId, cur_page->page_word_frequency);
+				fprintf(index_output, "%d %d ", cur_page->docId, cur_page->page_word_frequency); 
+				cur_page = cur_page->next; 
+			}
+			fprintf(logger, "Total doc count for word \"%s\": %d\n", index->hash[cur]->word, doc_count);
+			doc_count = 0; 				 // reset for next word 
 		}
 		++cur; 
 	}
@@ -263,9 +289,9 @@ int main(int argc, char** argv){
 		}
 		else {
 			DocNode* dnode = wnode->page; 
-			while (dnode) {     // free every allocated document node 
+			while (dnode) {     			 // free every allocated document node 
 				DocNode* freedNode = dnode;
-				dnode = dnode->next;   // need to make sure they are all set to NULL before freeing
+				dnode = dnode->next;  		 // need to make sure they are all set to NULL before freeing
 				free(freedNode); 
 				freedNode = NULL; 
 			}
