@@ -3,5 +3,6 @@
 #define _LOADDOC_H_
 
 int numFiles();
-char* loadDocument(char*); 
+void loadDocument(char*); 
+void executeExtraction(FILE* log, char* dir); 
 #endif 
