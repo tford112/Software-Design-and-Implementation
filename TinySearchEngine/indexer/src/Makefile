@@ -26,5 +26,5 @@ $(RECREATE): $(RECREATE_OBJ)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJ) $(EXEC) $(RECREATE) $(TEST_OBJ) logger_index.txt index.dat recreate_index_logger.txt 
+	rm -f $(OBJ) $(EXEC) $(RECREATE) $(TEST_OBJ) $(RECREATE_OBJ) logger_index.txt index.dat recreate_index_logger.txt 
 
