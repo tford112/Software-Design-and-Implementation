@@ -1,15 +1,4 @@
 
-/*
- *  1. char loadDocument(char* filename) -> load HTML document from a file from the TARGET_DIRECTORY from crawler output 
- *
- *  2. int getDocumentId(char* filename) -> generate doc identifier from file name. 
- *
- *  4. int updateIndex(char* word, int docId, INVERTED_INDEX* index) -> updates data structure containing the index. Receives as input the string 
- *     containing the word and docID. Returns 1 if successful or else 0 
- *
- *  5. int saveFile(INVERTED_INDEX* index) -> saves the inverted index to a file. Receives pointer to inverted index as input
- *     returns 1 if successful else 0 
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,7 +7,7 @@
 #include "../include/loadDoc.h"
 #include "../include/indexer.h" 
 #include "../include/hash.h" 
-#define MAX_FILE_NUM 25   // used for text extraction 
+#include "../include/saveClean.h" 
 
 // get doc id from filename. We assume that the crawler saves files using progressive numbers as unique identifiers. 
 int getDocumentId(char* filename) {  // don't extract the actual "text_" part  
@@ -27,7 +16,6 @@ int getDocumentId(char* filename) {  // don't extract the actual "text_" part
 	char num[5]; 
 	memcpy(num, &filename[idx+1], 4); 
 	num[4] = '\0'; 
-	printf("num is %s\n", num);
 	return atoi(num); 
 }
 
@@ -42,22 +30,6 @@ INVERTED_INDEX* initInvertedIndex(FILE*log) {
 		index->hash[i] = NULL; 
 	}
 	return index; 
-}
-
-void executeExtraction(FILE* log, char* dir) {
-	int nfiles = numFiles(dir); 
-	int count = 0; 
-	fprintf(log, "Num files: %d\n", nfiles);
-	char numToString[MAX_FILE_NUM];
-	memset(numToString, 0, MAX_FILE_NUM); 
-	fprintf(log, "running text extraction from HTMLS...\n"); 
-	while (count < nfiles) {
-		snprintf(numToString, MAX_FILE_NUM, "%s/%d", dir, count); // get "string" from num and pass as argument to loadDocument  
-		loadDocument(numToString);  		      
-		fprintf(log, "extracted file %s\n", numToString); 
-		memset(numToString, 0, MAX_FILE_NUM); 		      // good practice to clear out buffer 
-		++count; 
-	}
 }
 
 int checkWordInvalid(char* word) {
@@ -97,27 +69,40 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 		wnode->next = NULL;
 		wnode->prev = NULL; 
 		index->hash[hash_value] = wnode; 
-		fprintf(logger, "word \"%s\" at hash %lu\n", word, hash_value); 
+		fprintf(logger, "word \"%s\" at hash %lu for docid %d\n", word, hash_value, docId); 
 
 		return 1; 
 	}	
 	// There is a collision 
 	// case 1. the word is found in hash_table. If so, then 
 	// i. It was the same document -> only need to update the page_word_frequency 
-	// ii. It was a diff document -> Then need to initialize that new document and set pointer 
+	// 	Note: We need to go through the hash list at a word collision to check whether the match exists in another doc. 
+	// ii. It was a new document -> Then need to initialize that new document and set pointer 
 	// case 2. there was a collision because identical hash value. If so, then 
 	// i. Create a new WordNode. 
 	else {
 		WordNode* coll_curr = index->hash[hash_value]; 	
 		while (coll_curr) {
 			if (strcmp(coll_curr->word, word) == 0) {  
-				if (coll_curr->page->docId == docId) {   // case 1i. 
+				if (coll_curr->page->docId == docId) {   	 // case 1 i. 
 					fprintf(logger, "collision occurred for \"%s\" at hash idx: %lu in same doc.\n", word, hash_value); 
 					++coll_curr->page->page_word_frequency; 
 					return 1; 	
 				}
-				else {
-					DocNode* dnode = malloc(sizeof(DocNode)); 
+				else {   					
+					DocNode* curr_page = coll_curr->page; 
+					while (curr_page) {
+						if (curr_page->docId == docId) { 
+							fprintf(logger, "found doc match (%d)  within hash list for word \"%s\". Updating word freq\n", docId, word);
+							++curr_page->page_word_frequency; 
+							return 1; 
+						}
+						if (curr_page->next == NULL) {
+							break;
+						}
+						curr_page = curr_page->next; 
+					}
+					DocNode* dnode = malloc(sizeof(DocNode));        // case 1 ii.  
 					if (dnode == NULL) {
 						perror("Not enough memory.\n");
 						fprintf(logger, "Not enough memory.\n");
@@ -125,14 +110,10 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 					}
 					dnode->docId = docId; 
 					dnode->page_word_frequency = 1; 
-					DocNode* curr = coll_curr->page; // insert new DocNode at end 
-					while (curr->next) {
-						curr = curr->next; 
-					}
-					curr->next = dnode; 
+					curr_page->next = dnode; 			// insert new DocNode at end  
 					dnode->next = NULL; 
 
-					fprintf(logger, "diff doc for word \"%s\" at hash %lu\n", word, hash_value); 
+					fprintf(logger, "diff doc (%d) for word \"%s\" at hash %lu\n", docId, word, hash_value); 
 					return 1; 
 				}
 			}
@@ -173,7 +154,7 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 	memset(buf, 0, WORD_LENGTH);
 	while (fscanf(text_file, " %s", buf) == 1) {
 		int buf_size = strlen(buf) ;
-		if (buf[buf_size - 1] == '.') {       // words that end with a period would otherwise be treated as different 
+		if (buf[buf_size - 1] == '.') {       			// words that end with a period would otherwise be treated as different 
 			buf_size = buf_size - 1; 
 		}
 		for (int i = 0; i < buf_size; ++ i) {
@@ -186,15 +167,41 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 			exit(1);
 		}
 		memcpy(word, buf, buf_size + 1);  			// need to copy to char* from buffer 
-		fprintf(logger, "Word is: \"%s\"\n", word); 
 		if (checkWordInvalid(word)) {
-			printf("word %s is invalid. Freeing memory..\n", word); 
 			fprintf(logger, "word \"%s\" is invalid. Freeing memory..\n", word); 
 			free(word); 
 		}
 		else {
 			updateIndex(word, docId, index, logger); 
 		}
+	}
+}
+
+void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
+	fprintf(logger, "running parsing..\n"); 
+	int nTextFiles = numFiles(text_dir); 
+	int file_count = 0; 
+	char* filename = NULL; 
+	while (file_count < nTextFiles) {
+		filename = malloc(30); 
+		if (filename == NULL) {
+			perror("Not enough memory.\n");
+			fprintf(logger, "Not enough memory.\n"); 
+			exit(1);
+		}	
+		snprintf(filename, 30, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
+		FILE *f = fopen(filename, "rb"); 
+		if (f == NULL) {
+			perror("file cannot be found.\n");
+			fprintf(logger, "file cannot be found.\n"); 
+			exit(2);
+		}
+		int docId = getDocumentId(filename); 
+		fprintf(logger, "Reading from document: %s\n\n", filename);
+		readWords(f, logger, docId, index); // start parsing this file and update index 
+		free(filename); 
+		fclose(f); 
+		++file_count; 
 	}
 }
 
@@ -216,31 +223,8 @@ int main(int argc, char** argv){
 			executeExtraction(logger, dir); 
 		}
 		else if (text_dir) {
-			fprintf(logger, "running parsing..\n"); 
-			int nTextFiles = numFiles(text_dir); 
-			int file_count = 0; 
-			char* filename = NULL; 
-			while (file_count < nTextFiles) {
-				filename = malloc(30); 
-				if (filename == NULL) {
-					perror("Not enough memory.\n");
-					fprintf(logger, "Not enough memory.\n"); 
-					exit(1);
-				}	
-				snprintf(filename, 30, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
-				FILE *f = fopen(filename, "rb"); 
-				if (f == NULL) {
-					perror("file cannot be found.\n");
-					fprintf(logger, "file cannot be found.\n"); 
-					exit(2);
-				}
-				int docId = getDocumentId(filename); 
-				fprintf(logger, "Reading from document: %s\n\n", filename);
-				readWords(f, logger, docId, index); // start parsing this file and update index 
-				free(filename); 
-				fclose(f); 
-				++file_count; 
-			}
+			executeParsing(logger, text_dir, index); 
+			printf("Done parsing..\n");
 		}
 		else {
 			printf("Invalid directory argument needs to be directory to extract from or directory to parse texts\n"); 
@@ -251,56 +235,8 @@ int main(int argc, char** argv){
 		printf("Need to pass in either directory to extract text or directory to parse\n"); 
 		exit(3);
 	}
-	fprintf(logger, "Now cleaning..\n"); 
-	int cur = 0; 
-	// TODO - For each word, need to count # of docs containing word as well as frequencies per document 
-	int doc_count = 0 ; 
-	FILE *index_output = fopen("index.dat", "wb"); 
-	if (index_output == NULL) {
-		perror("Error occurred trying to open file\n");
-		exit(4);
-	}
-	while (cur < MAX_HASH_SLOT) {
-		if (index->hash[cur]) {
-//			fprintf(logger, "\nword: \"%s\"\n", index->hash[cur]->word); 
-			DocNode* doc_page = index->hash[cur]->page;
-			DocNode* cur_page = index->hash[cur]->page; 
-			while (doc_page) {  
-				++doc_count; 	
-				doc_page = doc_page->next; 
-			}
-			fprintf(index_output, "\n%s %d ", index->hash[cur]->word, doc_count); 
-			while (cur_page) {  			 // get document id and frequency for index.dat 
-//				fprintf(logger, "doc: %d word_freq: %d\n", cur_page->docId, cur_page->page_word_frequency);
-				fprintf(index_output, "%d %d ", cur_page->docId, cur_page->page_word_frequency); 
-				cur_page = cur_page->next; 
-			}
-			fprintf(logger, "Total doc count for word \"%s\": %d\n", index->hash[cur]->word, doc_count);
-			doc_count = 0; 				 // reset for next word 
-		}
-		++cur; 
-	}
-
-	for (int i =0; i < MAX_HASH_SLOT; ++i) {
-		WordNode* wnode = index->hash[i]; 
-		if (wnode == NULL) {
-			free(wnode); 
-			wnode = NULL; 
-		}
-		else {
-			DocNode* dnode = wnode->page; 
-			while (dnode) {     			 // free every allocated document node 
-				DocNode* freedNode = dnode;
-				dnode = dnode->next;  		 // need to make sure they are all set to NULL before freeing
-				free(freedNode); 
-				freedNode = NULL; 
-			}
-			free(wnode); 
-			wnode = NULL; 
-		}
-	}
-	free(index); 
-	index = NULL;
+	saveIndex(index, "index.dat", logger); 
+	cleanUp(index, logger);
 	fprintf(logger, "Finished!\n"); 
 	fclose(logger);	
 	exit(0);
