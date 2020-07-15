@@ -8,6 +8,7 @@
 #include "../include/indexer.h" 
 #include "../include/hash.h" 
 #include "../include/saveClean.h" 
+#include "../include/allocate.h"
 
 // get doc id from filename. We assume that the crawler saves files using progressive numbers as unique identifiers. 
 int getDocumentId(char* filename) {  // don't extract the actual "text_" part  
@@ -17,19 +18,6 @@ int getDocumentId(char* filename) {  // don't extract the actual "text_" part
 	memcpy(num, &filename[idx+1], 4); 
 	num[4] = '\0'; 
 	return atoi(num); 
-}
-
-INVERTED_INDEX* initInvertedIndex(FILE*log) {
-	INVERTED_INDEX* index = malloc(sizeof(INVERTED_INDEX)); 
-	if (index == NULL) {
-		perror("Not enough memory. Exiting..\n"); 
-		fprintf(log, "Not enough memory. Exiting..\n"); 
-		exit(1);
-	}
-	for (int i = 0; i < MAX_HASH_SLOT; ++i) {
-		index->hash[i] = NULL; 
-	}
-	return index; 
 }
 
 int checkWordInvalid(char* word) {
@@ -49,28 +37,14 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 	unsigned long hash_value; 
 	hash_value = hash1(word) % MAX_HASH_SLOT;
 	if (index->hash[hash_value] == NULL) {      // case where no instance of word found in hash table 
-		WordNode* wnode = malloc(sizeof(WordNode)); 
-		if (wnode == NULL) {
-			perror("Not enough memory.\n");
-			fprintf(logger, "Not enough memory.\n"); 
-			exit(1);
-		}	
-		DocNode* dnode = malloc(sizeof(DocNode)); 
-		if (dnode == NULL) {
-			perror("Not enough memory.\n");
-			fprintf(logger, "Not enough memory.\n");
-			exit(1); 
-		}
+		DocNode* dnode = allocateDocNode(logger); 
 		dnode->docId = docId; 
 		dnode->page_word_frequency = 1;
+		WordNode* wnode = allocateWordNode(logger); 
 		wnode->page = dnode; 
-		dnode->next = NULL; 
 		strlcpy(wnode->word, word, WORD_LENGTH);  
-		wnode->next = NULL;
-		wnode->prev = NULL; 
 		index->hash[hash_value] = wnode; 
 		fprintf(logger, "word \"%s\" at hash %lu for docid %d\n", word, hash_value, docId); 
-
 		return 1; 
 	}	
 	// There is a collision 
@@ -102,17 +76,10 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 						}
 						curr_page = curr_page->next; 
 					}
-					DocNode* dnode = malloc(sizeof(DocNode));        // case 1 ii.  
-					if (dnode == NULL) {
-						perror("Not enough memory.\n");
-						fprintf(logger, "Not enough memory.\n");
-						exit(1); 
-					}
+					DocNode* dnode = allocateDocNode(logger); 
 					dnode->docId = docId; 
 					dnode->page_word_frequency = 1; 
 					curr_page->next = dnode; 			// insert new DocNode at end  
-					dnode->next = NULL; 
-
 					fprintf(logger, "diff doc (%d) for word \"%s\" at hash %lu\n", docId, word, hash_value); 
 					return 1; 
 				}
@@ -122,27 +89,14 @@ int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
 			}
 			coll_curr = coll_curr->next; 
 		}
-		WordNode* wnode = malloc(sizeof(WordNode)); 
-		if (wnode == NULL) {
-			perror("Not enough memory.\n");
-			fprintf(logger, "Not enough memory.\n"); 
-			exit(2); 
-		}
-		DocNode* dnode = malloc(sizeof(DocNode)); 
-		if (dnode == NULL) {
-			perror("Not enough memory.\n");
-			fprintf(logger, "Not enough memory.\n");
-			exit(1); 
-		}
+		DocNode* dnode = allocateDocNode(logger); 
 		dnode->docId = docId; 
 		dnode->page_word_frequency = 1;
-		dnode->next = NULL;
+		WordNode* wnode = allocateWordNode(logger); 
 		wnode->page = dnode; 
 		strlcpy(wnode->word, word, WORD_LENGTH);  
-		wnode->next = NULL;
 		wnode->prev = coll_curr; 
 		coll_curr->next = wnode; 
-
 		return 1; 
 	}
 	return 0; 
@@ -183,19 +137,14 @@ void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
 	int file_count = 0; 
 	char* filename = NULL; 
 	while (file_count < nTextFiles) {
-		filename = malloc(30); 
+		filename = malloc(FILE_LENGTH); 
 		if (filename == NULL) {
 			perror("Not enough memory.\n");
 			fprintf(logger, "Not enough memory.\n"); 
 			exit(1);
 		}	
-		snprintf(filename, 30, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
-		FILE *f = fopen(filename, "rb"); 
-		if (f == NULL) {
-			perror("file cannot be found.\n");
-			fprintf(logger, "file cannot be found.\n"); 
-			exit(2);
-		}
+		snprintf(filename, FILE_LENGTH, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
+		FILE *f = openFile(filename, "rb"); 
 		int docId = getDocumentId(filename); 
 		fprintf(logger, "Reading from document: %s\n\n", filename);
 		readWords(f, logger, docId, index); // start parsing this file and update index 
@@ -207,10 +156,7 @@ void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
 
 // driver 
 int main(int argc, char** argv){
-	FILE *logger = fopen("logger_index.txt", "wb"); 
-	if (logger == NULL) {
-		perror("file cannot be found\n");
-	}
+	FILE *logger = openFile("logger_index.txt", "wb"); 
 	INVERTED_INDEX* index = initInvertedIndex(logger); 
 	if (argc > 1) {
 		char *dir = strstr(argv[1], "url");  // need url in directory to proceed to extract

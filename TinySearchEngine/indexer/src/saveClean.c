@@ -1,21 +1,14 @@
 
 #include <stdio.h> 
 #include <stdlib.h> 
-
-#ifndef INDEXER_H
-#define INDEXER_H 
 #include "../include/indexer.h" 
-#endif 
+#include "../include/allocate.h"
 
 void saveIndex(INVERTED_INDEX* index, char* filename, FILE* logger) {
 	int cur, doc_count;
 	cur = 0; 
 	doc_count = 0; 
-	FILE *index_output = fopen(filename, "wb"); 
-	if (index_output == NULL) {
-		perror("Error occurred trying to open file\n");
-		exit(4);
-	}
+	FILE *index_output = openFile(filename, "wb"); 
 	while (cur < MAX_HASH_SLOT) {
 		if (index->hash[cur]) {   			// we won't know how many values in the hash are NULL 
 			DocNode* doc_page = index->hash[cur]->page;
@@ -49,7 +42,7 @@ void cleanUp(INVERTED_INDEX* index, FILE* logger) {
 			DocNode* dnode = wnode->page; 
 			while (dnode) {     			 // free every allocated document node 
 				DocNode* freedNode = dnode;
-				dnode = dnode->next;  		 // need to make sure they are all set to NULL before freeing
+				dnode = dnode->next;  		 // need to make sure they are all set to NULL after freeing
 				free(freedNode); 
 				freedNode = NULL; 
 			}
