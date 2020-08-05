@@ -15,6 +15,6 @@ INVERTED_INDEX* allocateInvertedIndex(FILE*);
 WordNode* allocateWordNode(FILE*); 
 DocNode* allocateDocNode(FILE*); 
 DocNode** allocateDocNodeArray(FILE*, int); 
-int* allocateIntArray(int);
+sharedDocId* allocateSharedId(); 
 #endif 
 

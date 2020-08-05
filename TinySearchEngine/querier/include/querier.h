@@ -15,6 +15,7 @@
 #define EXIT_RETURN 1 
 #define SUCCESS 1 
 #define FAIL 0 
+#define NUM_SEARCH_RESULTS 100 
 
 // DATA STRUCTURES. All these structures should be malloc 'd
 
@@ -44,6 +45,13 @@ typedef struct _INVERTED_INDEX {
 } _INVERTED_INDEX;
 
 typedef struct _INVERTED_INDEX INVERTED_INDEX; 
+
+typedef struct _SharedDocId {
+	struct _SharedDocId *next;
+	int id; 
+} _SharedDocId; 
+
+typedef struct _SharedDocId sharedDocId; 
 
 //PROTOTYPES
 int getDocumentId(char*);

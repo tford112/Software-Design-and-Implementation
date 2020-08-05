@@ -9,5 +9,4 @@
 
 void saveIndex(INVERTED_INDEX*, char*, FILE*); 
 void cleanIndex(INVERTED_INDEX*, FILE*); 
-void cleanIntArray(int**, int); 
 #endif 

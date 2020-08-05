@@ -10,8 +10,6 @@
 #include "../include/recreate.h"
 #include "../include/hash.h" 
 
-#define NUM_SEARCH_RESULTS 100 
-
 int readInUserInput(char*, int);
 FILE* openFileContainingURL(DocNode*, char*); 
 bool isWordAnd(char*); 
@@ -20,16 +18,22 @@ bool doesQueryContainAnd(char*);
 bool doesQueryContainOr(char*); 
 void sendQueryPiecesToBeRead(INVERTED_INDEX*, char*, FILE*);
 DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX*, char*, FILE*);
-void filterQueryResults(DocNode*, DocNode**, int*, bool, bool);
-int getNumOfDocsInArray(DocNode**);
-int getNumOfSharedDocs(int*);
-bool checkIfDocAlreadyInArray(DocNode*, DocNode**, int*, bool);
+bool checkIfDocAlreadyInArray(DocNode*, DocNode**);
 
+void initializeQueryDocArray(DocNode*, DocNode**);
+void initializeSharedIds(sharedDocId*, DocNode**);
+void filterFromSharedIds(DocNode*, sharedDocId*);
+int removeSharedDocId(sharedDocId**, int);
+void removeNonSharedIdsFromDocArray(DocNode**, sharedDocId*);
+
+int getNumOfDocsInArray(DocNode**);
+int getNumOfSharedDocs(sharedDocId*);
 void displayQueryResults(DocNode**);
 char* removeSpacesAndMakeLowerCase(char*);
 
 
  /* TODO: rank results based on how many occurrences of each word appear in each document 
+ *  TODO: prompt user to open a text file based on the query results 
  */
 int main(int argc, char** argv) {
 	if (argc < 2) {
@@ -96,37 +100,43 @@ char* removeSpacesAndMakeLowerCase(char* query) {
 	return cleanQuery; 
 }
 
-// break the cleaned up query (no unnecessary whitespaces) into pieces (if query is multiple words long) to be read in filterQueryResults
+// break the cleaned up query (no unnecessary whitespaces) into pieces (if query is multiple words long) to be read in filterFromSharedIds
 void sendQueryPiecesToBeRead(INVERTED_INDEX* index, char* cleanQuery, FILE* log) {
 	char query[BUFSIZE]; 
 	memset(query, '\0', BUFSIZE); 
 	int origIter = 0, queryPieceIter = 0;  						
 	bool queryContainsAnd = doesQueryContainAnd(cleanQuery); 
 	bool queryContainsOr = doesQueryContainOr(cleanQuery); 
+	if (queryContainsAnd && queryContainsOr) {
+		printf("Cannot have both AND and OR in query. Exiting..\n"); 
+		exit(FAIL); 
+	}
 	DocNode** queryDocArray = allocateDocNodeArray(log, NUM_SEARCH_RESULTS);  
 	DocNode* currDoc; 
-	int* sharedDocIntegers = allocateIntArray(NUM_SEARCH_RESULTS); // store into int array for AND case to filter only for these 
+	sharedDocId* sdoc = NULL; 
 	while (cleanQuery[origIter] != '\0') {
 		if (cleanQuery[origIter] != ' ') {         			// add to buffer until reach space
 			query[queryPieceIter++] = cleanQuery[origIter]; 
 		}
 		if (cleanQuery[origIter] == ' ' || (origIter+1 == strlen(cleanQuery))) {
 			currDoc = searchIndexForAllDocQueryMatches(index, query, log); 
-			if (currDoc && !queryContainsAnd && !queryContainsOr) {  	// case 1 -> no AND or OR in query overall 
-				printf("case1 sending...%s\n", query); 
-				filterQueryResults(currDoc, queryDocArray, sharedDocIntegers, false, false); 
+			if (queryContainsOr && !isWordOr(query)) {      
+				initializeQueryDocArray(currDoc, queryDocArray);     	  
 			}
-			else if (currDoc && queryContainsAnd && !isWordAnd(query)) {	// case 2 -> AND detected in overall query but word itself is not 
-				printf("case2\n");
-				filterQueryResults(currDoc, queryDocArray, sharedDocIntegers, true, false); 
-			}
-			else if (currDoc && queryContainsOr && !isWordOr(query)) {      // case 3 -> OR detected in overall query but word itself is not
-				filterQueryResults(currDoc, queryDocArray, sharedDocIntegers, false, true); 
+			else if (currDoc && !isWordAnd(query)) {		// case 2 -> AND detected in overall query but word itself is not 
+				initializeQueryDocArray(currDoc, queryDocArray);     	  
+				initializeSharedIds(sdoc, queryDocArray); 
+				filterFromSharedIds(currDoc, sdoc);
+				removeNonSharedIdsFromDocArray(queryDocArray, sdoc); 
 			}
 			memset(query, '\0', BUFSIZE); 
 			queryPieceIter = 0; 
 		}	
 		++origIter; 
+	}
+	if (sdoc == NULL && queryContainsAnd) { 
+		printf("Sorry, but no documents match complete query\n"); 
+		exit(FAIL); 
 	}
 	displayQueryResults(queryDocArray); 
 }
@@ -149,59 +159,115 @@ DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX* index, char* queryPiec
 	return currDoc; 
 }
 
-// Filter all the DocNode results based on whether AND or OR was detected in query 
-void filterQueryResults(DocNode* currDoc, DocNode** queryDocArray, int* sharedDocIntegers, bool andDetected, bool orDetected) { 
+// filling in our Query Doc Array with the results we got from searchIndexForAllDocQueryMatches 
+void initializeQueryDocArray(DocNode* currDoc, DocNode** queryDocArray) {
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
-
-	bool isDocAlreadyInArray = false;  				
-	printf("currdoc before %d\n", currDoc->docId); 
 	while (currDoc) {					// iterate through all docs and check for each doc if it already exists in array
-		isDocAlreadyInArray = checkIfDocAlreadyInArray(currDoc, queryDocArray, sharedDocIntegers, andDetected); 
-		if (!isDocAlreadyInArray) {       
+		if (!checkIfDocAlreadyInArray(currDoc, queryDocArray)) { 
 			queryDocArray[numDocsInQueryDocArray++] = currDoc; 
 		}
 		currDoc = currDoc->next; 
 	}		
-	if (andDetected) {
-		int currSharedDocIndex = 0; 		// iterator for shared integer array containing doc nums that already exist in array
-		bool foundInSharedArray = false; 
-		int currQueryDocIndex = 0;				        // iterator for queryDoc Array  
-		int numSharedDocs = getNumOfSharedDocs(sharedDocIntegers); 
-		while (currQueryDocIndex < numDocsInQueryDocArray && numSharedDocs > 0) {
-			while (currSharedDocIndex < numSharedDocs) {
-				if (sharedDocIntegers[currSharedDocIndex] == queryDocArray[currQueryDocIndex]->docId) {
-					foundInSharedArray = true;
-					break; 
-				}
-				++currSharedDocIndex; 
-			}
-			if (!foundInSharedArray) { 
-				queryDocArray[currQueryDocIndex]->page_word_frequency = 0;  // we'll be checking later for non-blank page word freqs 
-			}
-			++currQueryDocIndex; 
-			currSharedDocIndex = 0; 
-			foundInSharedArray = false; 
-		}
-	}
 }
 
-bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode** queryDocArray, int* sharedDocIntegers, bool andDetected) {
+// check if a document is already in our queryDocArray. If it is, we can add this docId to our sharedDocIntegers array 
+bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode** queryDocArray) {
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
-	int numSharedDocs = getNumOfSharedDocs(sharedDocIntegers); 
 	int currQueryDocIndex = 0;				        // iterator for queryDoc Array  
 	bool isDocAlreadyInArray = false; 
 	while (currQueryDocIndex < numDocsInQueryDocArray) { 			
 		if (queryDocArray[currQueryDocIndex] != NULL && queryDocArray[currQueryDocIndex]->docId == currDoc->docId) {      
 			isDocAlreadyInArray = true; 
-			if (andDetected) {
-				sharedDocIntegers[numSharedDocs] = currDoc->docId;   
-				//printf("Found doc match already in array: %d\n", sharedDocIntegers[numSharedDocs]); 
-			}
 			break; 
 		}
 		++currQueryDocIndex; 
 	}
 	return isDocAlreadyInArray; 
+}
+
+void initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
+	int numSharedDocs = getNumOfSharedDocs(sdoc); 
+	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
+	int currQueryDocIndex = 0; 
+	int count = 0; 
+	if (numSharedDocs == 0) {    // only initialize if there is no shared ids to begin with 
+		while (currQueryDocIndex < numDocsInQueryDocArray && count < NUM_SEARCH_RESULTS) { 
+			if (sdoc == NULL) {     	// linked list if head is NULL 
+				sdoc = allocateSharedId(); 
+				sdoc->id = queryDocArray[currQueryDocIndex]->docId; 
+				continue;
+			}
+			while (sdoc->next != NULL) {    // add next ID at end of linked list 
+				sdoc = sdoc->next; 
+			}
+			sdoc->next = allocateSharedId(); 
+			sdoc->id = queryDocArray[currQueryDocIndex]->docId; 
+		}
+	}
+}
+
+void filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
+	DocNode* currDoc = searchResult; 
+	bool isDocIdInShared = false; 
+	while (sdoc != NULL)	{ 
+		while (currDoc != NULL) {
+			if (sdoc->id == currDoc->docId) {
+				isDocIdInShared = true; 
+				break;
+			}
+			currDoc = currDoc->next; 
+		}
+		if (!isDocIdInShared) {
+			removeSharedDocId(&sdoc, currDoc->docId); 
+		}
+		currDoc = searchResult;  // start process again 
+		sdoc = sdoc->next; 
+	}
+}
+
+int removeSharedDocId(sharedDocId** head, int docId) {
+	sharedDocId* next = NULL; 
+	if (*head != NULL && (*head)->id == docId) {
+		next = (*head)->next;
+		free(*head); 
+		*head = next; 
+		return docId; 
+	}
+	sharedDocId* curr = (*head)->next; 
+	sharedDocId* replace = (*head)->next; 
+	while (curr != NULL) {
+		if (curr->id == docId) {
+			replace = curr->next; 
+			free(curr);
+			return docId; 			
+		}
+		replace = curr; 
+		curr = curr->next; 
+	}
+	return -1;
+}
+
+// Filter all the DocNode results based on whether AND or OR was detected in query 
+void removeNonSharedIdsFromDocArray(DocNode** queryDocArray, sharedDocId* sdoc) { 
+	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray);
+	bool foundInSharedArray = false; 
+	int currQueryDocIndex = 0;				        // iterator for queryDoc Array  
+	sharedDocId* curr = sdoc; 
+	while (currQueryDocIndex < numDocsInQueryDocArray && curr != NULL) {
+		while (curr != NULL) {
+			if (curr->id == queryDocArray[currQueryDocIndex]->docId) {
+				foundInSharedArray = true;
+				break; 
+			}
+			curr = curr->next;	
+		}
+		if (!foundInSharedArray) { 
+			queryDocArray[currQueryDocIndex]->page_word_frequency = 0;  // we'll be checking later for non-zero page word freqs 
+		}
+		++currQueryDocIndex; 
+		foundInSharedArray = false; 
+		curr = sdoc; 
+	}
 }
 
 // return the results of the query to screen 
@@ -257,16 +323,11 @@ int getNumOfDocsInArray(DocNode** queryDocArray) {
 	return numDocsInQueryDocArray; 
 }
 
-int getNumOfSharedDocs(int* sharedDocs) {
+int getNumOfSharedDocs(sharedDocId* sdoc) {
 	int count = 0; 
-	if (sharedDocs[0] == 0 && sharedDocs[1] == 0) {     // shared docs is calloc'ed but there is a doc w/ id 0 so check id0 and id1  
-		return count;
-	}
-	for (int i = 0; i < NUM_SEARCH_RESULTS; ++i) {
-		if (sharedDocs[i] == 0 && sharedDocs[i+1] != NUM_SEARCH_RESULTS && sharedDocs[i+1] == 0) {
-			break; 
-		}
+	while (sdoc != NULL) {
 		++count; 
+		sdoc = sdoc->next; 
 	}
 	return count; 
 }

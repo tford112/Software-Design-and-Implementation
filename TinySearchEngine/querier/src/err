@@ -1,0 +1,9 @@
+querier.c:256:6: warning: unused variable 'currSharedDocIndex' [-Wunused-variable]
+        int currSharedDocIndex = 0;             // iterator for shared integer array containing doc nums that already exist in array
+            ^
+1 warning generated.
+allocate.c:90:6: error: unexpected type name 'sharedDocId': expected expression
+        if (sharedDocId == NULL) {
+            ^
+1 error generated.
+make: *** [allocate.o] Error 1

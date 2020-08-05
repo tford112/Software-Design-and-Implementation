@@ -84,6 +84,18 @@ int* allocateIntArray(int num) {
 	return node; 
 }
 
+// for the AND case only -> since we're filtering down with each successive AND query we only need to do this once 
+sharedDocId* allocateSharedId() {
+	sharedDocId* sdoc = malloc(sizeof(sharedDocId)); 
+	printf("yo\n");
+	if (sdoc == NULL) {
+		perror("Couldn't allocate memory for shared doc list\n"); 
+		exit(EXIT_RETURN); 
+	}
+	sdoc->next = NULL; 
+	sdoc->id = -1; 
+	return sdoc; 
+}
 
 
 
