@@ -21,9 +21,9 @@ DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX*, char*, FILE*);
 bool checkIfDocAlreadyInArray(DocNode*, DocNode**);
 
 void initializeQueryDocArray(DocNode*, DocNode**);
-void initializeSharedIds(sharedDocId*, DocNode**);
-void filterFromSharedIds(DocNode*, sharedDocId*);
-int removeSharedDocId(sharedDocId**, int);
+sharedDocId* initializeSharedIds(sharedDocId*, DocNode**);
+sharedDocId* filterFromSharedIds(DocNode*, sharedDocId*);
+void removeSharedDocId(sharedDocId**, int);
 void removeNonSharedIdsFromDocArray(DocNode**, sharedDocId*);
 
 int getNumOfDocsInArray(DocNode**);
@@ -125,8 +125,8 @@ void sendQueryPiecesToBeRead(INVERTED_INDEX* index, char* cleanQuery, FILE* log)
 			}
 			else if (currDoc && !isWordAnd(query)) {		// case 2 -> AND detected in overall query but word itself is not 
 				initializeQueryDocArray(currDoc, queryDocArray);     	  
-				initializeSharedIds(sdoc, queryDocArray); 
-				filterFromSharedIds(currDoc, sdoc);
+				sdoc = initializeSharedIds(sdoc, queryDocArray); 
+				sdoc = filterFromSharedIds(currDoc, sdoc);
 				removeNonSharedIdsFromDocArray(queryDocArray, sdoc); 
 			}
 			memset(query, '\0', BUFSIZE); 
@@ -185,7 +185,7 @@ bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode** queryDocArray) {
 	return isDocAlreadyInArray; 
 }
 
-void initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
+sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
 	int numSharedDocs = getNumOfSharedDocs(sdoc); 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
 	int currQueryDocIndex = 0; 
@@ -195,56 +195,64 @@ void initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
 			if (sdoc == NULL) {     	// linked list if head is NULL 
 				sdoc = allocateSharedId(); 
 				sdoc->id = queryDocArray[currQueryDocIndex]->docId; 
-				continue;
 			}
-			while (sdoc->next != NULL) {    // add next ID at end of linked list 
-				sdoc = sdoc->next; 
+			else {
+				sharedDocId* curr = sdoc; 
+				while (true) {
+					if (curr->next == NULL) {
+						curr->next = allocateSharedId(); 
+						curr->next->id = queryDocArray[currQueryDocIndex]->docId; 
+						break; 
+					}
+					curr = curr->next; 
+				}
 			}
-			sdoc->next = allocateSharedId(); 
-			sdoc->id = queryDocArray[currQueryDocIndex]->docId; 
+			++currQueryDocIndex; 
 		}
 	}
+	return sdoc; 
 }
 
-void filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
+sharedDocId* filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
 	DocNode* currDoc = searchResult; 
 	bool isDocIdInShared = false; 
-	while (sdoc != NULL)	{ 
+	sharedDocId* currSId = sdoc; 
+	while (currSId != NULL)	{ 
 		while (currDoc != NULL) {
-			if (sdoc->id == currDoc->docId) {
+			if (currSId->id == currDoc->docId) {
 				isDocIdInShared = true; 
 				break;
 			}
 			currDoc = currDoc->next; 
 		}
 		if (!isDocIdInShared) {
-			removeSharedDocId(&sdoc, currDoc->docId); 
+			removeSharedDocId(&sdoc, currSId->id); 
+			currSId = currSId->next; 
+		}
+		else {
+			currSId = currSId->next; 
+			isDocIdInShared = false; 
 		}
 		currDoc = searchResult;  // start process again 
-		sdoc = sdoc->next; 
 	}
+	return sdoc; 
 }
 
-int removeSharedDocId(sharedDocId** head, int docId) {
-	sharedDocId* next = NULL; 
-	if (*head != NULL && (*head)->id == docId) {
-		next = (*head)->next;
-		free(*head); 
-		*head = next; 
-		return docId; 
-	}
-	sharedDocId* curr = (*head)->next; 
-	sharedDocId* replace = (*head)->next; 
-	while (curr != NULL) {
+void removeSharedDocId(sharedDocId** head, int docId) {
+	sharedDocId* curr;
+	sharedDocId* prev = NULL; 
+	for (curr = *head; curr != NULL; prev = curr, curr = curr->next) {
 		if (curr->id == docId) {
-			replace = curr->next; 
-			free(curr);
-			return docId; 			
+			if (prev == NULL) {
+				*head = curr->next; 
+			}
+			else {
+				prev->next = curr->next; 
+			}
+			free(curr); 
+
 		}
-		replace = curr; 
-		curr = curr->next; 
 	}
-	return -1;
 }
 
 // Filter all the DocNode results based on whether AND or OR was detected in query 
