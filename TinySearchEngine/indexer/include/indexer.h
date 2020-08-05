@@ -1,7 +1,6 @@
 #ifndef _INDEXER_H_
 #define _INDEXER_H_
 
-
 // *****************Impementation Spec********************************
 // File: indexer.c
 // This file contains useful information for implementing the crawler:
@@ -11,6 +10,7 @@
 // - PROTOTYPES
 
 #define WORD_LENGTH 1000
+#define FILE_LENGTH 30 
 #define MAX_HASH_SLOT 20000
 #define EXIT_RETURN 1 
 
@@ -43,7 +43,7 @@ typedef struct _INVERTED_INDEX {
 
 typedef struct _INVERTED_INDEX INVERTED_INDEX; 
 
-//PROTOTYPES used by indexer.c You have to code them.
+//PROTOTYPES
 int getDocumentId(char*);
 INVERTED_INDEX* initInvertedIndex(FILE*);
 int checkWordInvalid(char*);
@@ -51,7 +51,6 @@ int updateIndex(char*, int, INVERTED_INDEX*, FILE*);
 void readWords(FILE*, FILE*, int, INVERTED_INDEX*); 
 void saveIndex(INVERTED_INDEX*, char*, FILE*);
 void executeParsing(FILE*, char*, INVERTED_INDEX*);
-void cleanUp(INVERTED_INDEX*, FILE*); 
 
 #endif
 

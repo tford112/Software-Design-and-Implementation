@@ -13,7 +13,7 @@ def extract(filename):
             tot_str = " ".join(tot)
             soup = BeautifulSoup(tot_str, "html.parser")
             texts = soup.findAll("p")
-            texts = [text.text.strip().replace(",", "") for text in texts if text]
+            texts = [text.get_text(" ").strip().replace(",", "") for text in texts if text] 
             return " ".join(texts)
     except FileNotFoundError as f:
         raise SystemExit(f"{filename} is not found in target directory")
