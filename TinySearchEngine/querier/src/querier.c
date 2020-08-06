@@ -29,10 +29,12 @@ void removeNonSharedIdsFromDocArray(DocNode**, sharedDocId*);
 int getNumOfDocsInArray(DocNode**);
 int getNumOfSharedDocs(sharedDocId*);
 void displayQueryResults(DocNode**);
+int highestWordFrequency(DocNode**); 
+void printCurrentQueryResult(DocNode*);
+
 char* removeSpacesAndMakeLowerCase(char*);
 
-
- /* TODO: rank results based on how many occurrences of each word appear in each document 
+/*
  *  TODO: prompt user to open a text file based on the query results 
  */
 int main(int argc, char** argv) {
@@ -112,7 +114,7 @@ void sendQueryPiecesToBeRead(INVERTED_INDEX* index, char* cleanQuery, FILE* log)
 		exit(FAIL); 
 	}
 	DocNode** queryDocArray = allocateDocNodeArray(log, NUM_SEARCH_RESULTS);  
-	DocNode* currDoc; 
+	DocNode* currDoc = NULL; 
 	sharedDocId* sdoc = NULL; 
 	while (cleanQuery[origIter] != '\0') {
 		if (cleanQuery[origIter] != ' ') {         			// add to buffer until reach space
@@ -148,12 +150,16 @@ DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX* index, char* queryPiec
 	}
 	unsigned hash_value = hash1(queryPiece) % MAX_HASH_SLOT; 
 	WordNode* currWord = index->hash[hash_value]; 
-	if (!currWord) { 
+	if (currWord == NULL) { 
 		printf("query: %s does not exist in index\n", queryPiece); 
 		return FAIL; 
 	}
-	while (strcmp(currWord->word, queryPiece) != 0) {   	     // hash collision -- iterate through chained list to check where's the match  
+	while (currWord != NULL && strcmp(currWord->word, queryPiece) != 0) {       // hash collision -- iterate through chained list to check where's the match  
 		currWord = currWord->next;  
+		if (currWord == NULL) { 					   // no more words to iterate through and since no match, we exit 
+			printf("query: %s does not exist in index\n", queryPiece); 
+			return FAIL; 
+		}
 	}
 	DocNode* currDoc = currWord->page; 
 	return currDoc; 
@@ -185,6 +191,7 @@ bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode** queryDocArray) {
 	return isDocAlreadyInArray; 
 }
 
+// for the AND case => we can initialize our shared Ids from our queryDocArray one time. This will be pared down later in our filterFromSharedIds 
 sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
 	int numSharedDocs = getNumOfSharedDocs(sdoc); 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
@@ -213,6 +220,9 @@ sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
 	return sdoc; 
 }
 
+// for the AND case -> we will have to filter down our shared Ids with each query Piece 
+// (e.g. computer AND science -> we gather all the docIds that are generated from searching the index for "computer", 
+//  we then have to pare down our result search with "science" right after to find the intersecting results) 
 sharedDocId* filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
 	DocNode* currDoc = searchResult; 
 	bool isDocIdInShared = false; 
@@ -226,7 +236,7 @@ sharedDocId* filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
 			currDoc = currDoc->next; 
 		}
 		if (!isDocIdInShared) {
-			removeSharedDocId(&sdoc, currSId->id); 
+			removeSharedDocId(&sdoc, currSId->id);       // if the search result isn't found in the shared Ids, we need to remove it from shared 
 			currSId = currSId->next; 
 		}
 		else {
@@ -238,6 +248,7 @@ sharedDocId* filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
 	return sdoc; 
 }
 
+// helper function for filterFromSharedIds to remove ids from our shared array 
 void removeSharedDocId(sharedDocId** head, int docId) {
 	sharedDocId* curr;
 	sharedDocId* prev = NULL; 
@@ -250,12 +261,12 @@ void removeSharedDocId(sharedDocId** head, int docId) {
 				prev->next = curr->next; 
 			}
 			free(curr); 
-
 		}
 	}
 }
 
-// Filter all the DocNode results based on whether AND or OR was detected in query 
+// for the AND case -> now that we have a (pared) down shared Id array, we can remove all the doc results from our queryDocArray that don't have matching 
+// ids in the shared array 
 void removeNonSharedIdsFromDocArray(DocNode** queryDocArray, sharedDocId* sdoc) { 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray);
 	bool foundInSharedArray = false; 
@@ -280,20 +291,49 @@ void removeNonSharedIdsFromDocArray(DocNode** queryDocArray, sharedDocId* sdoc) 
 
 // return the results of the query to screen 
 void displayQueryResults(DocNode** queryDocArray) {
-	char url[BUFSIZE]; 
-	FILE* url_file; 
-	for (int i = 0; i < NUM_SEARCH_RESULTS; ++i) { 	
-		if (queryDocArray[i] == NULL || queryDocArray[i]->page_word_frequency == 0) {
-			continue;
+	int bestIndexOfDoc = -1;
+	while (true) {
+		bestIndexOfDoc = highestWordFrequency(queryDocArray); 
+		if (bestIndexOfDoc == NUM_SEARCH_RESULTS) {
+			break; 
 		}
-		url_file = openFileContainingURL(queryDocArray[i], url);
-		memset(url, '\0', BUFSIZE); 
-		fgets(url, BUFSIZE, url_file); 			     	     // extract the first line which contains the URL 
-		printf("Document ID: %d URL: %s", queryDocArray[i]->docId, url); 
-		fclose(url_file); 
-		memset(url, '\0', BUFSIZE); 
+		printCurrentQueryResult(queryDocArray[bestIndexOfDoc]); 
+		queryDocArray[bestIndexOfDoc]->page_word_frequency = 0; 
 	}
 }
+
+// simple ranking algorithm to output the doc node with the highest page word frequency. 
+int highestWordFrequency(DocNode** queryDocArray) {
+	int max = -1;
+	int max_index = 0;
+	int emptyCount = 0; 
+	for (int i = 0; i < NUM_SEARCH_RESULTS; ++i) {
+		if (queryDocArray[i] == NULL || queryDocArray[i]->page_word_frequency == 0) {
+			++emptyCount; 
+			continue;
+		}
+		if (queryDocArray[i]->page_word_frequency > max) {
+			max = queryDocArray[i]->page_word_frequency; 
+			max_index = i; 
+		}
+	}
+	if (emptyCount == NUM_SEARCH_RESULTS) {    // will occur once there are no more results 
+		return emptyCount; 
+	}
+	return max_index;  
+}
+
+// helper function for displayQueryResults -> here we display our current doc query result to user 
+void printCurrentQueryResult(DocNode* currBestDocNode) {
+	char url[BUFSIZE]; 
+	memset(url, '\0', BUFSIZE); 
+	FILE* url_file; 
+	url_file = openFileContainingURL(currBestDocNode, url);
+	fgets(url, BUFSIZE, url_file); 			     	     // extract the first line which contains the URL 
+	printf("Document ID: %d with word frequency: %d URL: %s", currBestDocNode->docId, currBestDocNode->page_word_frequency, url); 
+	fclose(url_file); 
+}
+
 
 bool doesQueryContainAnd(char* cleanQuery) {
 	if (strstr(cleanQuery, "and") != NULL) {
