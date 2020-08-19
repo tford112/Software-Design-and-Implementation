@@ -9,7 +9,9 @@
 
 // MACRO 
 #define BUFSIZE 1000
-
+#include <string.h>
+#include <stdlib.h> 
+#include "nums.h" 
 // PROTOTYPES 
 
 INVERTED_INDEX* recreateIndex(FILE*, FILE*); 

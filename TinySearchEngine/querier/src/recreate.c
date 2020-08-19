@@ -1,8 +1,7 @@
 
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h> 
-#include "../include/querier.h"
+#include "../include/query.h" 
 #include "../include/hash.h"
 #include "../include/recreate.h" 
 #include "../include/allocate.h" 

@@ -2,7 +2,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
-#include "../include/querier.h" 
+#include "../include/query.h" 
 #include "../include/allocate.h" 
 
 FILE* openFile(char* filename, char* mode) {
@@ -73,15 +73,6 @@ DocNode** allocateDocNodeArray(FILE* log, int totalDocs) { // number of total dn
 		allDocNodesPerWord[i] = allocateDocNode(log); 
 	}
 	return allDocNodesPerWord; 
-}
-
-int* allocateIntArray(int num) {
-	int* node = calloc(sizeof(int), num); 
-	if (node == NULL) {
-		perror("Couldn't allocate space for int\n"); 
-		exit(EXIT_RETURN); 
-	}
-	return node; 
 }
 
 // for the AND case only -> since we're filtering down with each successive AND query we only need to do this once 

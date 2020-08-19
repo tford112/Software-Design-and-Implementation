@@ -1,3 +1,5 @@
+
+
 // File: hash.h
 // Description: Includes a number of sample hash functions.
 // 

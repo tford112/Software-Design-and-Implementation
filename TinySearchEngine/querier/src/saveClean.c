@@ -1,7 +1,7 @@
 
 #include <stdio.h> 
 #include <stdlib.h> 
-#include "../include/querier.h" 
+#include "../include/query.h" 
 #include "../include/allocate.h"
 
 void saveIndex(INVERTED_INDEX* index, char* filename, FILE* logger) {

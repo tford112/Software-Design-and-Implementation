@@ -1,8 +1,6 @@
 
-#ifndef STDIO_H_
-#define STDIO_H_
 #include <stdio.h>
-#endif 
+#include "../include/and.h" 
 
 sharedDocId* initializeSharedIds(sharedDocId*, DocNode**);
 sharedDocId* filterFromSharedIds(DocNode*, sharedDocId*);
