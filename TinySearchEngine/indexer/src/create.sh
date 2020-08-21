@@ -24,6 +24,8 @@ then
 	echo "indices do not match" 
 else 
 	echo "Parsed index and recreated index match" 
+	echo "Copying sorted_index.dat to querier bin directory" 
+	cp sorted_index.dat ../../querier/bin
 	mv sorted_index.dat ../bin/
 	mv indexer ../bin/
 	mv recreate ../bin/ 
