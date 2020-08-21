@@ -98,7 +98,7 @@ int getNumOfSharedDocs(sharedDocId* sdoc) {
 // helper function for collectAndDisplayQueryResults to return the file that has the URL from queried page 
 FILE* openFileContainingURL(DocNode* currDoc, char* url) {
 	FILE* url_file; 
-	snprintf(url, BUFSIZE, "urls/%d", currDoc->docId);   	     // the original URL text file has the url 
+	snprintf(url, BUFSIZE, "../src/urls/%d", currDoc->docId);   	     // the original URL text file has the url 
 	url_file = openFile(url, "rb"); 
 	return url_file; 
 }
