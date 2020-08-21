@@ -10,6 +10,63 @@
 #include "../include/saveClean.h" 
 #include "../include/allocate.h"
 
+// driver 
+int main(int argc, char** argv){
+	FILE *logger = openFile("logger_index.txt", "wb"); 
+	INVERTED_INDEX* index = initInvertedIndex(logger); 
+	if (argc > 1) {
+		char *dir = strstr(argv[1], "url");  // need url in directory to proceed to extract
+		char *text_dir = strstr(argv[1], "text");  // need text to proceed normally with parsing
+		if (text_dir && dir) {
+			printf("Cannot have both extract directory and parse directories in argument.\n");
+			exit(1);
+		}
+		if (dir) {
+			executeExtraction(logger, dir); 
+		}
+		else if (text_dir) {
+			executeParsing(logger, text_dir, index); 
+			printf("Done parsing..\n");
+		}
+		else {
+			printf("Invalid directory argument needs to be directory to extract from or directory to parse texts\n"); 
+			exit(2);
+		}
+	}
+	else {
+		printf("Need to pass in either directory to extract text or directory to parse\n"); 
+		exit(3);
+	}
+	saveIndex(index, "index.dat", logger); 
+	cleanUp(index, logger);
+	fprintf(logger, "Finished!\n"); 
+	fclose(logger);	
+	exit(0);
+}
+
+void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
+	fprintf(logger, "running parsing..\n"); 
+	int nTextFiles = numFiles(text_dir); 
+	int file_count = 0; 
+	char* filename = NULL; 
+	while (file_count < nTextFiles) {
+		filename = malloc(FILE_LENGTH); 
+		if (filename == NULL) {
+			perror("Not enough memory.\n");
+			fprintf(logger, "Not enough memory.\n"); 
+			exit(1);
+		}	
+		snprintf(filename, FILE_LENGTH, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
+		FILE *f = openFile(filename, "rb"); 
+		int docId = getDocumentId(filename); 
+		fprintf(logger, "Reading from document: %s\n\n", filename);
+		readWords(f, logger, docId, index); // start parsing this file and update index 
+		free(filename); 
+		fclose(f); 
+		++file_count; 
+	}
+}
+
 // get doc id from filename. We assume that the crawler saves files using progressive numbers as unique identifiers. 
 int getDocumentId(char* filename) {  // don't extract the actual "text_" part  
 	char* underscore = strchr(filename, '_'); // get first occurrence of '_' 
@@ -131,59 +188,4 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 	}
 }
 
-void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
-	fprintf(logger, "running parsing..\n"); 
-	int nTextFiles = numFiles(text_dir); 
-	int file_count = 0; 
-	char* filename = NULL; 
-	while (file_count < nTextFiles) {
-		filename = malloc(FILE_LENGTH); 
-		if (filename == NULL) {
-			perror("Not enough memory.\n");
-			fprintf(logger, "Not enough memory.\n"); 
-			exit(1);
-		}	
-		snprintf(filename, FILE_LENGTH, "%s/text_%d", text_dir, file_count);  // create string arg for fopen 
-		FILE *f = openFile(filename, "rb"); 
-		int docId = getDocumentId(filename); 
-		fprintf(logger, "Reading from document: %s\n\n", filename);
-		readWords(f, logger, docId, index); // start parsing this file and update index 
-		free(filename); 
-		fclose(f); 
-		++file_count; 
-	}
-}
 
-// driver 
-int main(int argc, char** argv){
-	FILE *logger = openFile("logger_index.txt", "wb"); 
-	INVERTED_INDEX* index = initInvertedIndex(logger); 
-	if (argc > 1) {
-		char *dir = strstr(argv[1], "url");  // need url in directory to proceed to extract
-		char *text_dir = strstr(argv[1], "text");  // need text to proceed normally with parsing
-		if (text_dir && dir) {
-			printf("Cannot have both extract directory and parse directories in argument.\n");
-			exit(1);
-		}
-		if (dir) {
-			executeExtraction(logger, dir); 
-		}
-		else if (text_dir) {
-			executeParsing(logger, text_dir, index); 
-			printf("Done parsing..\n");
-		}
-		else {
-			printf("Invalid directory argument needs to be directory to extract from or directory to parse texts\n"); 
-			exit(2);
-		}
-	}
-	else {
-		printf("Need to pass in either directory to extract text or directory to parse\n"); 
-		exit(3);
-	}
-	saveIndex(index, "index.dat", logger); 
-	cleanUp(index, logger);
-	fprintf(logger, "Finished!\n"); 
-	fclose(logger);	
-	exit(0);
-}

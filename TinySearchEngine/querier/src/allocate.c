@@ -16,6 +16,8 @@ FILE* openFile(char* filename, char* mode) {
 
 void checkIndexDataFile(FILE* index_dat) {
 	char checkEmpty[LINE_LENGTH]; 
+	fgets(checkEmpty, LINE_LENGTH, index_dat);  // ignore first line 
+	memset(checkEmpty, 0, LINE_LENGTH); 
 	while (fgets(checkEmpty, LINE_LENGTH, index_dat)) {
 		if (strcmp(checkEmpty, "\n") == 0) {
 			perror("Empty line detected in index.dat. Exiting\n"); 

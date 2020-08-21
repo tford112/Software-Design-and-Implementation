@@ -4,7 +4,6 @@
 
 make clean
 make 
-#sed '/^$/d' index.dat > no_emplines_index.dat ## remove empty lines to avoid segfault in ./recreate 
 echo "finished compiling" 
 echo "moving 'querier' executable to bin" 
 mv querier ../bin 

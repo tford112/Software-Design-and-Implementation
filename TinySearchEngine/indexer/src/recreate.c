@@ -67,7 +67,9 @@ INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) {
 
 int main(int argc, char** argv) {
 	FILE* logger = openFile("recreate_index_logger.txt", "wb");
-	FILE* data = openFile("no_emplines_index.dat", "r"); 
+	FILE* data = openFile("index.dat", "r"); 
+	char skipFirstLine[WORD_LENGTH];  		// skip first line because it is empty 
+	fgets(skipFirstLine, WORD_LENGTH, data); 
 	INVERTED_INDEX* test = recreateIndex(data, logger); 
 	saveIndex(test, "test_index.dat", logger); 
 	cleanUp(test, logger); 

@@ -23,6 +23,11 @@ INVERTED_INDEX* returnRecreatedIndex(FILE* data, FILE* logger) {
 // 40 two times. 
 INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) { 
 	char buf[BUFSIZE] = {0}; 
+	fgets(buf, BUFSIZE, data); 
+	if (strcmp(buf, "\n") != 0) {
+		fputs("First line was not empty\n", logger);
+	}
+	memset(buf, 0, BUFSIZE); 
 	INVERTED_INDEX* index = allocateInvertedIndex(data); 
 	int docCounter = 0; 
 	int totalDocs = 0; 
