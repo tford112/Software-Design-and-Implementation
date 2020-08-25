@@ -19,5 +19,5 @@ $(EXEC): $(OBJ)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJ) $(EXEC) logger_querier.txt no_emplines_index.dat sorted_index.dat
+	rm -f $(OBJ) $(EXEC) logger_querier.txt 
 

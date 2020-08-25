@@ -7,30 +7,13 @@
 #include "../include/allocate.h" 
 #include "../include/saveClean.h"
 
-INVERTED_INDEX* returnRecreatedIndex(FILE* data, FILE* logger) { 
-	INVERTED_INDEX* index = recreateIndex(data, logger); 
-	return index; 
-}
-
-// We convert our "index.dat" into an INVERTED_INDEX for our querier to use and search against. 
-// We have to keep using strtok() to continually break up our line into multiple pieces each of which 
-// will need to be handled differently based on the index of the split word. The first "split" after 
-// strtok will be the word itself. The second strtok will be the # of documents that word appears in. 
-// The rest of the splits are the text documents and the number of times that word appears in that 
-// specific text doc. 
-// For instance, the first line might be "contract 3 28 1 31 1 40 2". This means the word "contract" 
-// appears in 3 documents in total. It appears in document 28 1 time, document 31 1 time, and document 
-// 40 two times. 
 INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) { 
-	char buf[BUFSIZE] = {0}; 
-	fgets(buf, BUFSIZE, data); 
-	if (strcmp(buf, "\n") != 0) {
-		fputs("First line was not empty\n", logger);
-	}
-	memset(buf, 0, BUFSIZE); 
+	char buf[BUFSIZE]; 
+	memset(buf, '\0', BUFSIZE); 
 	INVERTED_INDEX* index = allocateInvertedIndex(data); 
 	int docCounter = 0; 
 	int totalDocs = 0; 
+		
 	while (fgets(buf, BUFSIZE, data)) {
 		char* split = strtok(buf, " "); 
 		fprintf(logger, "Word is: \"%s\"\n", split); 
@@ -68,7 +51,7 @@ INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) {
 		}
 		else { 
 			WordNode* currWord = index->hash[hash_value];  
-			while (currWord->next != NULL) { 			// collision occurred in hash table. Add new word at end of hash list 
+			while (currWord->next != NULL) { 		// collision occurred in hash table. Add new word at end of hash list 
 				currWord = currWord->next; 
 			}	
 			fputs("Collision occurred at same hash value..iterated through DocNode list. Now adding at end\n", logger); 
@@ -81,3 +64,9 @@ INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) {
 	return index; 
 }
 
+INVERTED_INDEX* returnRecreatedIndex(FILE* data, FILE* logger) { 
+	char skipFirstLine[WORD_LENGTH]; 
+	fgets(skipFirstLine, WORD_LENGTH, data); 
+	INVERTED_INDEX* index = recreateIndex(data, logger); 
+	return index; 
+}
