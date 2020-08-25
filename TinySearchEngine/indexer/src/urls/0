@@ -33,8 +33,8 @@ https://www.jhu.edu
 
     
 
-    <meta property="og:image" content="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg" />
-  <meta property="og:image:secure_url" content="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg" />
+    <meta property="og:image" content="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg" />
+  <meta property="og:image:secure_url" content="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg" />
 	<meta property="og:image:width" content="1600" />
 	<meta property="og:image:height" content="800" />
 
@@ -138,9 +138,9 @@ https://www.jhu.edu
   
 
 <div id="bbHeroSection" class="hero default section"
-  data-backup="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/03/JHU-64-800x400.jpg 800w"
-  data-mp4="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-66B_Web.mp4"
-  data-poster="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-66B_Web-960x540.jpg"
+  data-backup="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/08/11-800x400.jpg 800w"
+  data-mp4="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-67B_Web.mp4"
+  data-poster="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-67B_Web-960x540.jpg"
   data-autoplay="autoplay"
   data-loop="loop"
   data-preload="auto"
@@ -162,12 +162,12 @@ https://www.jhu.edu
         </div>
 
         <noscript>
-                    <img width="1600" height="800" src="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg" class="backup-nojs fullwidth" alt="Lantern sculptures hanging from ceiling" srcset="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/03/JHU-64-800x400.jpg 800w" sizes="(max-width: 1600px) 100vw, 1600px" />
+                    <img width="1600" height="800" src="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg" class="backup-nojs fullwidth" alt="Homewood Campus" srcset="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/08/11-800x400.jpg 800w" sizes="(max-width: 1600px) 100vw, 1600px" />
         </noscript>
 
-        <div class="while-loading" style="background-image: url(https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-66B_Web-960x540.jpg);"></div>
+        <div class="while-loading" style="background-image: url(https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-67B_Web-960x540.jpg);"></div>
 
-                <p class="visuallyhidden" id="hero-video-description">Video footage: A female doctor walks through a sunlit hospital breezeway, a health care provider in PPE puts on purple gloves, a male doctor wears a mask and face shield, a 3D geometric structure is examined on a computer screen, a 3D printer in motion, a woman in a lab environment refines a 3D-printed part under a large magnifying glass, close-up images of a 3D-printed piece for sharing ventilator air flow, pink liquid is removed from test tubes, close-up image of a petri dish in a lab environment, a woman in a red headscarf works in a lab, a medical team in a surgical setting wearing face masks</p>
+                <p class="visuallyhidden" id="hero-video-description">Video footage: Close-up images of the Johns Hopkins COVID-19 tracking map, Socially distanced volunteers feel hand sanitizer bottles in a warehouse, Volunteers assemble protective face masks in a warehouse, Engineers work on a device that would allow two patients to share a ventilator, Health care workers don personal protective equipment, Community members line up in cars to pick up groceries at East Baltimore food distribution site</p>
 
       </div>
 
@@ -380,8 +380,8 @@ https://www.jhu.edu
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1935027713" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1935027713" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1031476343" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1031476343" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -4308,7 +4308,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/kirby-leo/"
+    <a href="https://www.jhu.edu/profiles/ishpreet-singh/"
          target="_self"
          class="image column gtm-link-click"
 
@@ -4316,16 +4316,16 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Kirby"
+          data-label="Profile: Ishpreet"
         
-      ><div class="accent-element"><img width="700" height="700" src="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-700x700.jpg" class="attachment-xlarge_thumb size-xlarge_thumb" alt="Kirby Leo" sizes="(min-width: 1728px) 702px, (min-width: 1296px) 579px, (min-width: 864px) 631px, (min-width: 576px) 421px, 477px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-300x300.jpg 300w" /></div></a>
+      ><div class="accent-element"><img width="700" height="700" src="https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-700x700.jpg" class="attachment-xlarge_thumb size-xlarge_thumb" alt="Ishpreet Singh" sizes="(min-width: 1728px) 702px, (min-width: 1296px) 579px, (min-width: 864px) 631px, (min-width: 576px) 421px, 477px" srcset="https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-300x300.jpg 300w" /></div></a>
   
 
 
         
         <div class="quote column">
           <blockquote>
-            <p>The atmosphere at Hopkins is special. You can get involved so early in research and entrepreneurship.</p>
+            <p>Every day, I get to see from a different perspective and tackle problems in a new way.</p>
 
 
                                     
@@ -4333,7 +4333,7 @@ We want...
     
     
               
-    <a href="https://www.jhu.edu/profiles/kirby-leo/"
+    <a href="https://www.jhu.edu/profiles/ishpreet-singh/"
          target="_self"
          class="gtm-link-click"
 
@@ -4341,9 +4341,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Kirby"
+          data-label="Profile: Ishpreet"
         
-      >More from Kirby</a>
+      >More from Ishpreet</a>
   
 
 
@@ -4358,7 +4358,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/ishpreet-singh/"
+    <a href="https://www.jhu.edu/profiles/kale-hyder/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4366,9 +4366,30 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Ishpreet"
+          data-label="Profile: Kale"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Ishpreet Singh" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kale Hyder" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-300x300.jpg 300w" /></a>
+  
+
+
+      
+        
+                        
+  
+    
+              
+              
+    <a href="https://www.jhu.edu/profiles/heather-michaelson/"
+         target="_self"
+         class="secondary profile column gtm-link-click"
+
+        
+        
+                  data-action="Click"
+          data-category="Homepage"
+          data-label="Profile: Heather Michaelson"
+        
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Heather Michaelson" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4400,7 +4421,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/logan-lyons/"
+    <a href="https://www.jhu.edu/profiles/liz-mengel/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4408,9 +4429,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Logan Lyons"
+          data-label="Profile: Liz Mengel"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Logan Lyons" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/mengel_main-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Liz Mengel" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/mengel_main-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/mengel_main-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/mengel_main-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/mengel_main-300x300.jpg 300w" /></a>
   
 
 
@@ -4421,7 +4442,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/kale-hyder/"
+    <a href="https://www.jhu.edu/profiles/john-beauchamp/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4429,72 +4450,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Kale"
+          data-label="Profile: John Beauchamp"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kale Hyder" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-300x300.jpg 300w" /></a>
-  
-
-
-      
-        
-                        
-  
-    
-              
-              
-    <a href="https://www.jhu.edu/profiles/melissa-mai/"
-         target="_self"
-         class="secondary profile column gtm-link-click"
-
-        
-        
-                  data-action="Click"
-          data-category="Homepage"
-          data-label="Profile: Melissa"
-        
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Melissa Mai" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-300x300.jpg 300w" /></a>
-  
-
-
-      
-        
-                        
-  
-    
-              
-              
-    <a href="https://www.jhu.edu/profiles/maya-foster/"
-         target="_self"
-         class="secondary profile column gtm-link-click"
-
-        
-        
-                  data-action="Click"
-          data-category="Homepage"
-          data-label="Profile: Maya"
-        
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/foster_featured-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Maya Foster" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/foster_featured-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/foster_featured-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/foster_featured-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/foster_featured-300x300.jpg 300w" /></a>
-  
-
-
-      
-        
-                        
-  
-    
-              
-              
-    <a href="https://www.jhu.edu/profiles/kristofer-madu/"
-         target="_self"
-         class="secondary profile column gtm-link-click"
-
-        
-        
-                  data-action="Click"
-          data-category="Homepage"
-          data-label="Profile: Kristofer"
-        
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kristofer Madu" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="John Beauchamp" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4526,6 +4484,27 @@ We want...
     
               
               
+    <a href="https://www.jhu.edu/profiles/kirby-leo/"
+         target="_self"
+         class="secondary profile column gtm-link-click"
+
+        
+        
+                  data-action="Click"
+          data-category="Homepage"
+          data-label="Profile: Kirby"
+        
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kirby Leo" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-300x300.jpg 300w" /></a>
+  
+
+
+      
+        
+                        
+  
+    
+              
+              
     <a href="https://www.jhu.edu/profiles/autumn-hughes/"
          target="_self"
          class="secondary profile column gtm-link-click"
@@ -4537,6 +4516,27 @@ We want...
           data-label="Profile: Autumn"
         
       ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Autumn Hughes" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-300x300.jpg 300w" /></a>
+  
+
+
+      
+        
+                        
+  
+    
+              
+              
+    <a href="https://www.jhu.edu/profiles/logan-lyons/"
+         target="_self"
+         class="secondary profile column gtm-link-click"
+
+        
+        
+                  data-action="Click"
+          data-category="Homepage"
+          data-label="Profile: Logan Lyons"
+        
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Logan Lyons" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4581,8 +4581,8 @@ We want...
 
       
       
-      <label for="search-program_explorer-1111254196" class="visuallyhidden">Search programs</label>
-      <input aria-label="Search programs" id="search-program_explorer-1111254196" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-program_explorer-348373216" class="visuallyhidden">Search programs</label>
+      <input aria-label="Search programs" id="search-program_explorer-348373216" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -4946,8 +4946,8 @@ We want...
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1527001565" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1527001565" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1627228126" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1627228126" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>

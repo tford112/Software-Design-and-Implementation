@@ -444,8 +444,8 @@ https://www.jhu.edu/admissions/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-234005551" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-234005551" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1954588199" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1954588199" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5677,8 +5677,8 @@ https://www.jhu.edu/admissions/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-140961006" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-140961006" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-156304380" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-156304380" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6640,7 +6640,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "73b0d6d045" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -6694,11 +6694,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
-lick"
-          data-category="Homepage"
-          data-label="Profile: Anthony"
-        
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Anthony Boutros" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-300x300.jpg 300w" /></a>
+ass="attachment-large_thumb size-large_thumb" alt="Autumn Hughes" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-300x300.jpg 300w" /></a>
   
 
 
@@ -6709,7 +6705,7 @@ lick"
     
               
               
-    <a href="https://www.jhu.edu/profiles/autumn-hughes/"
+    <a href="https://www.jhu.edu/profiles/logan-lyons/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -6717,9 +6713,9 @@ lick"
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Autumn"
+          data-label="Profile: Logan Lyons"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Autumn Hughes" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Logan Lyons" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -6764,8 +6760,8 @@ lick"
 
       
       
-      <label for="search-program_explorer-1111254196" class="visuallyhidden">Search programs</label>
-      <input aria-label="Search programs" id="search-program_explorer-1111254196" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-program_explorer-348373216" class="visuallyhidden">Search programs</label>
+      <input aria-label="Search programs" id="search-program_explorer-348373216" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -7129,8 +7125,8 @@ lick"
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1527001565" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1527001565" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1627228126" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1627228126" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>

@@ -65,8 +65,6 @@ INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) {
 }
 
 INVERTED_INDEX* returnRecreatedIndex(FILE* data, FILE* logger) { 
-	char skipFirstLine[WORD_LENGTH]; 
-	fgets(skipFirstLine, WORD_LENGTH, data); 
 	INVERTED_INDEX* index = recreateIndex(data, logger); 
 	return index; 
 }

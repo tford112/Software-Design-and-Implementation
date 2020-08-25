@@ -446,8 +446,8 @@ https://www.jhu.edu/about/history/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1961076763" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1961076763" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1283585222" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1283585222" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5737,8 +5737,8 @@ https://www.jhu.edu/about/history/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-649331079" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-649331079" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-873059479" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-873059479" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6700,7 +6700,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "73b0d6d045" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -6755,23 +6755,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
   </body>
 </html>
 ml>
-class="fa fa-fw fa-search" aria-hidden="true"></i>
-        <span class="text">Search Programs</span>
-      </button>
-
-      
-
-    </form>
-
-  </div>
-
-
-
-      </div>
-
-      <div class="row schools">
-
-        <h2><span class="highlight">Our nine schools prepare students to excel in today's world</span></h2>
+ class="highlight">Our nine schools prepare students to excel in today's world</span></h2>
 
         
         <ul>
@@ -7116,8 +7100,8 @@ class="fa fa-fw fa-search" aria-hidden="true"></i>
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1527001565" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1527001565" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1627228126" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1627228126" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>

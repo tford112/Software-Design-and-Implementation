@@ -447,8 +447,8 @@ https://www.jhu.edu/about/community/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1946723690" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1946723690" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-855774204" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-855774204" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5506,6 +5506,65 @@ https://www.jhu.edu/about/community/
     <div class="article teaser column force has-image">
 
           <div class="thumbnail">
+        <a class="force " href="https://hub.jhu.edu/2020/08/21/small-business-town-hall/" data-label="Article: Cardin: Support small businesses during COVID-19"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/cardin0821120.jpg?itok=wNZQqMt3" alt="U.S. Sen. Ben Cardin" class="column"/><div class="caption column"><p><span class="visuallyhidden">Image caption: </span>U.S. Sen. Ben Cardin
+</p></div></div></a>
+      </div>
+    
+    <div class="text">
+
+      <div class="accent-element">
+
+        			<div class="kicker">HOPKINSLOCAL</div>
+	
+        <h5><a class="" href="https://hub.jhu.edu/2020/08/21/small-business-town-hall/" data-label="Article: Cardin: Support small businesses during COVID-19">Cardin: Support small businesses during COVID-19</a></h5>
+
+        
+				
+		
+		<span class="visuallyhidden">Published</span>
+
+		
+		
+		
+		
+						
+		
+														
+		<span class="publish-date convert-pubdate" data-timestamp="1598037300">
+	
+	Aug 21, 2020
+
+</span>
+
+	
+
+        
+	
+	
+
+
+        <div class="summary">1,500 of Maryland&#8217;s small business owners, leaders, and advocates took part in a virtual town hall with U.S. Sen. Ben Cardin hosted by Johns Hopkins University on Friday 
+				
+	
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+    
+  
+          
+	
+    
+  						
+		
+    <div class="article teaser column force has-image">
+
+          <div class="thumbnail">
         <a class="force " href="https://hub.jhu.edu/2020/08/19/johns-hopkins-distributes-85000-cotton-masks/" data-label="Article: Johns Hopkins distributes 85,000 face masks to Baltimore community"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/mask_distribution_7.jpg?itok=5zAkq-3e" alt="Volunteers load pallets with boxes of masks" class="column"/><div class="caption column"><p class="credit"><span class="visuallyhidden">Credit: </span>Will Kirk / Johns Hopkins University</p></div></div></a>
       </div>
     
@@ -5717,64 +5776,6 @@ https://www.jhu.edu/about/community/
 
 
         <div class="summary">Baltimore chapter of Frontline Foods, founded by a Johns Hopkins undergraduate, has purchased more than 2,000 meals for those working directly with COVID-19 patients 
-				
-	
-</div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-    
-  
-          
-	
-    
-  						
-		
-    <div class="article teaser column force has-image">
-
-          <div class="thumbnail">
-        <a class="force " href="https://hub.jhu.edu/2020/06/08/government-community-affairs-brief-maryland-general-assembly/" data-label="Article: Experts brief state legislators about health disparities during COVID-19"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/statehouse.jpg?itok=sKW3_tsa" alt="Maryland State House" class="column"/></div></a>
-      </div>
-    
-    <div class="text">
-
-      <div class="accent-element">
-
-        			<div class="kicker">Community</div>
-	
-        <h5><a class="" href="https://hub.jhu.edu/2020/06/08/government-community-affairs-brief-maryland-general-assembly/" data-label="Article: Experts brief state legislators about health disparities during COVID-19">Experts brief state legislators about health disparities during COVID-19</a></h5>
-
-        
-				
-		
-		<span class="visuallyhidden">Published</span>
-
-		
-		
-		
-		
-						
-		
-														
-		<span class="publish-date convert-pubdate" data-timestamp="1591620600">
-	
-	June 8, 2020
-
-</span>
-
-	
-
-        
-	
-	
-
-
-        <div class="summary">Beth Blauer, Sherita Hill Golden, and Deidra Crews join State Affairs team of Johns Hopkins Office of Government and Community Affairs for briefings 
 				
 	
 </div>
@@ -6007,8 +6008,8 @@ https://www.jhu.edu/about/community/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1937709539" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1937709539" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1943135511" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1943135511" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6970,7 +6971,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "73b0d6d045" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
