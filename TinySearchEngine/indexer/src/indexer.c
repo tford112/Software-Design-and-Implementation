@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-//#include "loadDoc.h"  // doesn't work at the moment...
 #include "../include/loadDoc.h"
 #include "../include/indexer.h" 
 #include "../include/hash.h" 
@@ -13,7 +12,7 @@
 // driver 
 int main(int argc, char** argv){
 	FILE *logger = openFile("logger_index.txt", "wb"); 
-	INVERTED_INDEX* index = initInvertedIndex(logger); 
+	INVERTED_INDEX* index = allocateInvertedIndex(logger); 
 	if (argc > 1) {
 		char *dir = strstr(argv[1], "url");  // need url in directory to proceed to extract
 		char *text_dir = strstr(argv[1], "text");  // need text to proceed normally with parsing

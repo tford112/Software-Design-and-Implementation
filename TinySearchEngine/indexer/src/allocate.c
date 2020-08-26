@@ -12,7 +12,7 @@ FILE* openFile(char* filename, char* mode) {
 	return out; 
 }
 
-INVERTED_INDEX* initInvertedIndex(FILE*log) {
+INVERTED_INDEX* allocateInvertedIndex(FILE*log) {
 	INVERTED_INDEX* index = malloc(sizeof(INVERTED_INDEX)); 
 	if (index == NULL) {
 		perror("Not enough memory for index. Exiting..\n"); 

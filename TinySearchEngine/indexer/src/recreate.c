@@ -11,7 +11,7 @@
 INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) { 
 	char buf[BUFSIZE]; 
 	memset(buf, '\0', BUFSIZE); 
-	INVERTED_INDEX* index = initInvertedIndex(data); 
+	INVERTED_INDEX* index = allocateInvertedIndex(data); 
 	int docCounter = 0; 
 	int totalDocs = 0; 
 		
