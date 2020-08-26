@@ -64,6 +64,9 @@ DocNode* allocateDocNode(FILE* log) {
 
 DocNode** allocateDocNodeArray(FILE* log, int totalDocs) { // number of total dnodes to allocate for a word  
 	DocNode** allDocNodesPerWord = malloc(sizeof(DocNode*) * totalDocs);  
+	for (int i = 0; i < totalDocs; ++i) {
+		allDocNodesPerWord[i] = NULL;  // easier to check later for cleanup with while loop instead of passing totalDocs
+	}
 	if (allDocNodesPerWord == NULL) {
 		perror("Couldn't allocate memory for array of DocNodes for word");
 		fputs("Couldn't allocate memory for array of DocNodes for word", log);

@@ -6,7 +6,7 @@
 #include <stdbool.h>
 #include "../include/query.h" 
 #include "../include/allocate.h" 
-#include "../include/saveClean.h" 
+#include "../include/clean.h" 
 #include "../include/recreate.h"
 #include "../include/hash.h" 
 #include "../include/utils.h" 
@@ -63,6 +63,10 @@ void breakAndReadQuery(INVERTED_INDEX* index, char* cleanQuery, FILE* log) {
 	else {
 		printf("Sorry, but no documents match the requested query\n"); 
 	}
+	cleanUpDocNodeArray(queryDocArray); 
+	fputs("Cleaned queryDocArray..", log);
+	cleanSharedIds(sdoc); 
+	fputs("Cleaned sharedDocIds..", log); 
 }
 
 // search the Index to get the first doc that matches with the query. We will iterate through the rest of the docs from this first doc.
@@ -90,7 +94,7 @@ DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX* index, char* queryPiec
 // filling in our Query Doc Array with the results we got from searchIndexForAllDocQueryMatches 
 void updateQueryDocArray(DocNode* currDoc, DocNode** queryDocArray) {
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
-	while (currDoc) {					// iterate through all docs and check for each doc if it already exists in array
+	while (currDoc) {		// iterate through all docs and check for each doc if it already exists in array
 		if (!checkIfDocAlreadyInArray(currDoc, queryDocArray)) { 
 			queryDocArray[numDocsInQueryDocArray++] = currDoc; 
 		}

@@ -33,7 +33,10 @@ int numFiles(char* directory) {
 		exit(1);
 	}
 	while (n--) {
-		if ((strcmp(namelist[n]->d_name,".") == 0) || (strcmp(namelist[n]->d_name,"..") == 0)) continue; 
+		if ((strcmp(namelist[n]->d_name,".") == 0) || (strcmp(namelist[n]->d_name,"..") == 0)) {
+			free(namelist[n]); 
+			continue; 
+		}
 		++num_files;
 		free(namelist[n]);
 	}

@@ -6,7 +6,7 @@
 #include <stdbool.h>
 #include "../include/query.h"
 #include "../include/allocate.h" 
-#include "../include/saveClean.h" 
+#include "../include/clean.h" 
 #include "../include/recreate.h"
 #include "../include/hash.h" 
 #include "../include/utils.h" 

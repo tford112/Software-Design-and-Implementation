@@ -5,7 +5,7 @@
 #include "../include/hash.h"
 #include "../include/recreate.h" 
 #include "../include/allocate.h" 
-#include "../include/saveClean.h"
+#include "../include/clean.h"
 
 INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) { 
 	char buf[BUFSIZE]; 
