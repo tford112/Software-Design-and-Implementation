@@ -2,13 +2,8 @@
 #include <stdio.h>
 #include "../include/and.h" 
 
-sharedDocId* initializeSharedIds(sharedDocId*, DocNode**);
-sharedDocId* filterFromSharedIds(DocNode*, sharedDocId*);
-void removeSharedDocId(sharedDocId**, int);
-void removeNonSharedIdsFromDocArray(DocNode**, sharedDocId*);
-
 // we can initialize our shared Ids from our queryDocArray one time. This will be pared down later in our filterFromSharedIds 
-sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
+sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode* queryDocArray) {
 	int numSharedDocs = getNumOfSharedDocs(sdoc); 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
 	int currQueryDocIndex = 0; 
@@ -17,14 +12,14 @@ sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode** queryDocArray) {
 		while (currQueryDocIndex < numDocsInQueryDocArray && count < NUM_SEARCH_RESULTS) { 
 			if (sdoc == NULL) {     	// linked list if head is NULL 
 				sdoc = allocateSharedId(); 
-				sdoc->id = queryDocArray[currQueryDocIndex]->docId; 
+				sdoc->id = queryDocArray[currQueryDocIndex].docId; 
 			}
 			else {
 				sharedDocId* curr = sdoc; 
 				while (true) {
 					if (curr->next == NULL) {
 						curr->next = allocateSharedId(); 
-						curr->next->id = queryDocArray[currQueryDocIndex]->docId; 
+						curr->next->id = queryDocArray[currQueryDocIndex].docId; 
 						break; 
 					}
 					curr = curr->next; 
@@ -83,21 +78,21 @@ void removeSharedDocId(sharedDocId** head, int docId) {
 
 // for the AND case -> now that we have a (pared) down shared Id array, we can remove all the doc results from our queryDocArray that don't have matching 
 // ids in the shared array 
-void removeNonSharedIdsFromDocArray(DocNode** queryDocArray, sharedDocId* sdoc) { 
+void removeNonSharedIdsFromDocArray(DocNode* queryDocArray, sharedDocId* sdoc) { 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray);
 	bool foundInSharedArray = false; 
 	int currQueryDocIndex = 0;				        // iterator for queryDoc Array  
 	sharedDocId* curr = sdoc; 
 	while (currQueryDocIndex < numDocsInQueryDocArray && curr != NULL) {
 		while (curr != NULL) {
-			if (curr->id == queryDocArray[currQueryDocIndex]->docId) {
+			if (curr->id == queryDocArray[currQueryDocIndex].docId) {
 				foundInSharedArray = true;
 				break; 
 			}
 			curr = curr->next;	
 		}
 		if (!foundInSharedArray) { 
-			queryDocArray[currQueryDocIndex]->page_word_frequency = 0;  // we'll be checking later for non-zero page word freqs 
+			queryDocArray[currQueryDocIndex].page_word_frequency = 0;  // we'll be checking later for non-zero page word freqs 
 		}
 		++currQueryDocIndex; 
 		foundInSharedArray = false; 

@@ -78,9 +78,9 @@ bool isWordOr(char* queryPiece) {
 	return false; 
 }
 
-int getNumOfDocsInArray(DocNode** queryDocArray) {
+int getNumOfDocsInArray(DocNode* queryDocArray) {
 	int numDocsInQueryDocArray = 0; 
-	while (queryDocArray[numDocsInQueryDocArray]->page_word_frequency != 0) {   // iterate through array until empty for an update 
+	while (queryDocArray[numDocsInQueryDocArray].page_word_frequency != 0) {   // iterate through array until empty for an update 
 		++numDocsInQueryDocArray; 
 	}
 	return numDocsInQueryDocArray; 

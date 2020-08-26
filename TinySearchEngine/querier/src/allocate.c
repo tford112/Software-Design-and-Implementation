@@ -8,6 +8,7 @@
 FILE* openFile(char* filename, char* mode) {
 	FILE* out = fopen(filename, mode); 
 	if (out == NULL) {
+		printf("Filename: %s", filename); 
 		perror("Can't open file. Exiting...\n");
 		exit(EXIT_RETURN); 
 	}
@@ -51,29 +52,15 @@ WordNode* allocateWordNode(FILE* log) {
 	return wnode; 
 }
 
-DocNode* allocateDocNode(FILE* log) {
-	DocNode* dnode = malloc(sizeof(DocNode)); 
-	if (dnode == NULL) {
-		perror("Couldn't allocate memory for docnode\n");
-		fputs("Couldn't allocate memory for docnode\n", log); 
-		exit(EXIT_RETURN); 
-	}
-	dnode->next = NULL; 
-	return dnode; 
-}
-
-DocNode** allocateDocNodeArray(FILE* log, int totalDocs) { // number of total dnodes to allocate for a word  
-	DocNode** allDocNodesPerWord = malloc(sizeof(DocNode*) * totalDocs);  
-	for (int i = 0; i < totalDocs; ++i) {
-		allDocNodesPerWord[i] = NULL;  // easier to check later for cleanup with while loop instead of passing totalDocs
-	}
+DocNode* allocateDocNodeArray(int totalDocs) {
+	DocNode* allDocNodesPerWord = malloc(sizeof(DocNode) * totalDocs); 
 	if (allDocNodesPerWord == NULL) {
-		perror("Couldn't allocate memory for array of DocNodes for word");
-		fputs("Couldn't allocate memory for array of DocNodes for word", log);
-		exit(EXIT_RETURN); 
+		perror("Couldn't allocate enough memory for array of DocNodes for word\n"); 
 	}
 	for (int i = 0; i < totalDocs; ++i) {
-		allDocNodesPerWord[i] = allocateDocNode(log); 
+		allDocNodesPerWord[i].docId = -1; 
+	      	allDocNodesPerWord[i].page_word_frequency = 0; 
+		allDocNodesPerWord[i].next = NULL; 
 	}
 	return allDocNodesPerWord; 
 }

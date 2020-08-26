@@ -14,10 +14,10 @@
 #include "query.h" 
 #include "utils.h" 
 #include "allocate.h" 
-sharedDocId* initializeSharedIds(sharedDocId*, DocNode**);
+sharedDocId* initializeSharedIds(sharedDocId*, DocNode*);
 sharedDocId* filterFromSharedIds(DocNode*, sharedDocId*);
 void removeSharedDocId(sharedDocId**, int);
-void removeNonSharedIdsFromDocArray(DocNode**, sharedDocId*);
+void removeNonSharedIdsFromDocArray(DocNode*, sharedDocId*);
 
 
 #endif 

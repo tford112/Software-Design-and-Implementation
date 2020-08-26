@@ -19,6 +19,7 @@ void collectQueryResults(INVERTED_INDEX* index, FILE* log) {
 		query[strlen(query)-1] = '\0';					// remove newline char from fgets  
 		char* cleanQuery = removeSpacesAndMakeLowerCase(query); 
 		breakAndReadQuery(index, cleanQuery, log); 
+		free(cleanQuery); 
 	}
 }
 
@@ -33,9 +34,10 @@ void breakAndReadQuery(INVERTED_INDEX* index, char* cleanQuery, FILE* log) {
 		printf("Cannot have both AND and OR in query. Exiting..\n"); 
 		exit(FAIL); 
 	}
-	DocNode** queryDocArray = allocateDocNodeArray(log, NUM_SEARCH_RESULTS);  
+	DocNode* queryDocArray = allocateDocNodeArray(NUM_SEARCH_RESULTS);  
 	DocNode* currDoc = NULL; 
 	sharedDocId* sdoc = NULL; 
+	sharedDocId* remaining = NULL; 
 	while (cleanQuery[origIter] != '\0') {
 		if (cleanQuery[origIter] != ' ') {         			// add to buffer until reach space
 			query[queryPieceIter++] = cleanQuery[origIter]; 
@@ -57,15 +59,16 @@ void breakAndReadQuery(INVERTED_INDEX* index, char* cleanQuery, FILE* log) {
 		++origIter; 
 	}
 	if (areThereAnyResults(queryDocArray, sdoc, queryContainsAnd)) {
-		sharedDocId* remaining = displayQueryResults(queryDocArray); 
+		remaining = displayQueryResults(queryDocArray); 
 		promptUserForRequest(remaining);
 	}
 	else {
 		printf("Sorry, but no documents match the requested query\n"); 
 	}
-	cleanUpDocNodeArray(queryDocArray); 
+	free(queryDocArray); 
 	fputs("Cleaned queryDocArray..", log);
 	cleanSharedIds(sdoc); 
+	cleanSharedIds(remaining);
 	fputs("Cleaned sharedDocIds..", log); 
 }
 
@@ -77,13 +80,13 @@ DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX* index, char* queryPiec
 	unsigned hash_value = hash1(queryPiece) % MAX_HASH_SLOT; 
 	WordNode* currWord = index->hash[hash_value]; 
 	if (currWord == NULL) { 
-		printf("query: %s does not exist in index\n", queryPiece); 
+		printf("%s does not exist in index\n", queryPiece); 
 		return FAIL; 
 	}
 	while (currWord != NULL && strcmp(currWord->word, queryPiece) != 0) {       // hash collision -- iterate through chained list to check where's the match  
 		currWord = currWord->next;  
 		if (currWord == NULL) { 					   // no more words to iterate through and since no match, we exit 
-			printf("query: %s does not exist in index\n", queryPiece); 
+			printf("%s does not exist in index\n", queryPiece); 
 			return FAIL; 
 		}
 	}
@@ -92,23 +95,26 @@ DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX* index, char* queryPiec
 }
 
 // filling in our Query Doc Array with the results we got from searchIndexForAllDocQueryMatches 
-void updateQueryDocArray(DocNode* currDoc, DocNode** queryDocArray) {
+void updateQueryDocArray(DocNode* currDoc, DocNode* queryDocArray) {
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
 	while (currDoc) {		// iterate through all docs and check for each doc if it already exists in array
 		if (!checkIfDocAlreadyInArray(currDoc, queryDocArray)) { 
-			queryDocArray[numDocsInQueryDocArray++] = currDoc; 
+			queryDocArray[numDocsInQueryDocArray].docId = currDoc->docId; 
+			queryDocArray[numDocsInQueryDocArray].page_word_frequency = currDoc->page_word_frequency; 
+			queryDocArray[numDocsInQueryDocArray].next = currDoc->next; 
+			numDocsInQueryDocArray++; 
 		}
 		currDoc = currDoc->next; 
 	}		
 }
 
 // check if a document is already in our queryDocArray. If it is, we can add this docId to our sharedDocIntegers array 
-bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode** queryDocArray) {
+bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode* queryDocArray) {
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
 	int currQueryDocIndex = 0;				        // iterator for queryDoc Array  
 	bool isDocAlreadyInArray = false; 
 	while (currQueryDocIndex < numDocsInQueryDocArray) { 			
-		if (queryDocArray[currQueryDocIndex] != NULL && queryDocArray[currQueryDocIndex]->docId == currDoc->docId) {      
+		if (queryDocArray[currQueryDocIndex].docId == currDoc->docId) {      
 			isDocAlreadyInArray = true; 
 			break; 
 		}
@@ -117,13 +123,13 @@ bool checkIfDocAlreadyInArray(DocNode* currDoc, DocNode** queryDocArray) {
 	return isDocAlreadyInArray; 
 }
 
-bool areThereAnyResults(DocNode** queryDocArray, sharedDocId* sdoc, bool queryContainsAnd) {
+bool areThereAnyResults(DocNode* queryDocArray, sharedDocId* sdoc, bool queryContainsAnd) {
 	if (sdoc == NULL && queryContainsAnd) { 
 		return false; 
 	}
 	int count = 0; 
 	for (int i = 0; i < NUM_SEARCH_RESULTS; ++i) {
-		if (queryDocArray[i]->page_word_frequency == 0) {
+		if (queryDocArray[i].page_word_frequency == 0) {
 			++count; 
 		}
 	}
@@ -134,7 +140,7 @@ bool areThereAnyResults(DocNode** queryDocArray, sharedDocId* sdoc, bool queryCo
 }
 
 // return the results of the query to screen 
-sharedDocId* displayQueryResults(DocNode** queryDocArray) {
+sharedDocId* displayQueryResults(DocNode* queryDocArray) {
 	int bestIndexOfDoc = -1;
 	sharedDocId* remaining = NULL;
 	while (true) {
@@ -142,25 +148,25 @@ sharedDocId* displayQueryResults(DocNode** queryDocArray) {
 		if (bestIndexOfDoc == NUM_SEARCH_RESULTS) {
 			break; 
 		}
-		trackQueryIdsForUser(&remaining, queryDocArray[bestIndexOfDoc]->docId); 
-		printCurrentQueryResult(queryDocArray[bestIndexOfDoc]); 
-		queryDocArray[bestIndexOfDoc]->page_word_frequency = 0; 
+		trackQueryIdsForUser(&remaining, queryDocArray[bestIndexOfDoc].docId); 
+		printCurrentQueryResult(&queryDocArray[bestIndexOfDoc]); 
+		queryDocArray[bestIndexOfDoc].page_word_frequency = 0; 
 	}
 	return remaining; 
 }
 
 // simple ranking algorithm to output the doc node with the highest page word frequency. 
-int highestWordFrequency(DocNode** queryDocArray) {
+int highestWordFrequency(DocNode* queryDocArray) {
 	int max = -1;
 	int max_index = 0;
 	int emptyCount = 0; 
 	for (int i = 0; i < NUM_SEARCH_RESULTS; ++i) {
-		if (queryDocArray[i] == NULL || queryDocArray[i]->page_word_frequency == 0) {
+		if (queryDocArray[i].page_word_frequency == 0) {
 			++emptyCount; 
 			continue;
 		}
-		if (queryDocArray[i]->page_word_frequency > max) {
-			max = queryDocArray[i]->page_word_frequency; 
+		if (queryDocArray[i].page_word_frequency > max) {
+			max = queryDocArray[i].page_word_frequency; 
 			max_index = i; 
 		}
 	}
@@ -190,11 +196,9 @@ void trackQueryIdsForUser(sharedDocId** remaining, int bestIndexOfDoc) {
 
 // helper function for displayQueryResults -> here we display our current doc query result to user 
 void printCurrentQueryResult(DocNode* currBestDocNode) {
-	char url[BUFSIZE]; 
-	memset(url, '\0', BUFSIZE); 
-	FILE* url_file; 
-	url_file = openFileContainingURL(currBestDocNode, url);
-	fgets(url, BUFSIZE, url_file); 			     	     // extract the first line which contains the URL 
+	char url[BUFSIZE] = {0}; 
+	FILE* url_file = openFileContainingURL(currBestDocNode, url);
+	fgets(url, BUFSIZE, url_file); 	    // extract the first line which contains the URL 
 	printf("Document ID: %d with word frequency: %d URL: %s", currBestDocNode->docId, currBestDocNode->page_word_frequency, url); 
 	fclose(url_file); 
 }

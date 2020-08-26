@@ -46,6 +46,8 @@ DocNode* allocateDocNode(FILE* log) {
 		exit(EXIT_RETURN); 
 	}
 	dnode->next = NULL; 
+	dnode->docId = -1; 
+	dnode->page_frequency = 0; 
 	return dnode; 
 }
 

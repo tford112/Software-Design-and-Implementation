@@ -26,7 +26,7 @@ bool isWordAnd(char*);
 bool isWordOr(char*);
 bool doesQueryContainAnd(char*); 
 bool doesQueryContainOr(char*); 
-int getNumOfDocsInArray(DocNode**);
+int getNumOfDocsInArray(DocNode*);
 int getNumOfSharedDocs(sharedDocId*);
 
 #endif 

@@ -58,15 +58,15 @@ typedef struct _SharedDocId sharedDocId;
 void collectQueryResults(INVERTED_INDEX*, FILE*); 
 void breakAndReadQuery(INVERTED_INDEX*, char*, FILE*);
 DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX*, char*, FILE*);
-void updateQueryDocArray(DocNode*, DocNode**);
-bool checkIfDocAlreadyInArray(DocNode*, DocNode**);
+void updateQueryDocArray(DocNode*, DocNode*);
+bool checkIfDocAlreadyInArray(DocNode*, DocNode*);
 
 // after computing what results (or in the case of AND, what shared results) appear,
 // we rank the search results with a very simple ranking algorithm (highestWordFrequency) 
 // and display the results in ranked order. 
-bool areThereAnyResults(DocNode**, sharedDocId*, bool);
-sharedDocId* displayQueryResults(DocNode**);
-int highestWordFrequency(DocNode**); 
+bool areThereAnyResults(DocNode*, sharedDocId*, bool);
+sharedDocId* displayQueryResults(DocNode*);
+int highestWordFrequency(DocNode*); 
 void trackQueryIdsForUser(sharedDocId**, int);
 void printCurrentQueryResult(DocNode*);
 

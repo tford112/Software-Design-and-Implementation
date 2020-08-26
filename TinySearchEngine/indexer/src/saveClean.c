@@ -35,18 +35,6 @@ void cleanUp(INVERTED_INDEX* index, FILE* logger) {
 	fprintf(logger, "Now cleaning..\n"); 
 	for (int i =0; i < MAX_HASH_SLOT; ++i) {
 		cleanUpWordNodesAtHashSlot(index, i); 
-		/*
-		WordNode* wnode = index->hash[i]; 
-		if (wnode == NULL) {
-			free(wnode); 
-			wnode = NULL; 
-		}
-		else {
-			cleanUpDocNodesFromWordNode(wnode); 
-			free(wnode); 
-			wnode = NULL; 
-		}
-		*/
 	}
 	free(index); 
 	fputs("Successfully cleaned\n", logger);

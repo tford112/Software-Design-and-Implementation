@@ -14,8 +14,8 @@ FILE* openFile(char*, char*);
 void checkIndexDataFile(FILE*); 
 INVERTED_INDEX* allocateInvertedIndex(FILE*); 
 WordNode* allocateWordNode(FILE*); 
-DocNode* allocateDocNode(FILE*); 
-DocNode** allocateDocNodeArray(FILE*, int); 
+//DocNode* allocateDocNode(FILE*); 
+DocNode* allocateDocNodeArray(int); 
 sharedDocId* allocateSharedId(); 
 #endif 
 
