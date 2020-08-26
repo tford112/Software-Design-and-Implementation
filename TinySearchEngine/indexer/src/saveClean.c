@@ -3,6 +3,7 @@
 #include <stdlib.h> 
 #include "../include/indexer.h" 
 #include "../include/allocate.h"
+#include "../include/saveClean.h" 
 
 void saveIndex(INVERTED_INDEX* index, char* filename, FILE* logger) {
 	int cur, doc_count;
@@ -33,25 +34,49 @@ void saveIndex(INVERTED_INDEX* index, char* filename, FILE* logger) {
 void cleanUp(INVERTED_INDEX* index, FILE* logger) {
 	fprintf(logger, "Now cleaning..\n"); 
 	for (int i =0; i < MAX_HASH_SLOT; ++i) {
+		cleanUpWordNodesAtHashSlot(index, i); 
+		/*
 		WordNode* wnode = index->hash[i]; 
 		if (wnode == NULL) {
 			free(wnode); 
 			wnode = NULL; 
 		}
 		else {
-			DocNode* dnode = wnode->page; 
-			while (dnode) {     			 // free every allocated document node 
-				DocNode* freedNode = dnode;
-				dnode = dnode->next;  		 // need to make sure they are all set to NULL after freeing
-				free(freedNode); 
-				freedNode = NULL; 
-			}
+			cleanUpDocNodesFromWordNode(wnode); 
 			free(wnode); 
 			wnode = NULL; 
 		}
+		*/
 	}
 	free(index); 
 	fputs("Successfully cleaned\n", logger);
 	index = NULL;
+}
+
+void cleanUpWordNodesAtHashSlot(INVERTED_INDEX* index, int idx) {
+	WordNode* currWnode = index->hash[idx]; 
+	if (currWnode == NULL) {
+		free(currWnode);
+		currWnode = NULL; 
+	}
+	else {
+		while (currWnode) {    		 // there may be additional word nodes at this hash slot  
+			cleanUpDocNodesFromWordNode(currWnode); 
+			WordNode* remove = currWnode; 
+			currWnode = currWnode->next; 
+			free(remove); 
+			remove = NULL; 
+		}
+	}	
+}
+
+void cleanUpDocNodesFromWordNode(WordNode* wnode) {
+	DocNode* dnode = wnode->page; 
+	while (dnode) {     			 // free every allocated document node 
+		DocNode* freedNode = dnode;
+		dnode = dnode->next;  		 // need to make sure they are all set to NULL after freeing
+		free(freedNode); 
+		freedNode = NULL; 
+	}
 }
 

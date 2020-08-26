@@ -163,14 +163,14 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 	char buf[WORD_LENGTH]; 
 	memset(buf, 0, WORD_LENGTH);
 	while (fscanf(text_file, " %s", buf) == 1) {
-		int buf_size = strlen(buf) ;
+		int buf_size = WORD_LENGTH; //strlen(buf) ;
 		if (buf[buf_size - 1] == '.') {       			// words that end with a period would otherwise be treated as different 
 			buf_size = buf_size - 1; 
 		}
 		for (int i = 0; i < buf_size; ++ i) {
 			buf[i] = tolower(buf[i]);    
 		}
-		char *word = malloc((buf_size + 1));
+		char *word = calloc((buf_size + 1), sizeof(char));
 		if (word == NULL) {
 			perror("Not enough memory.\n");
 			fprintf(logger, "Not enough memory.\n"); 
@@ -179,11 +179,11 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 		memcpy(word, buf, buf_size + 1);  			// need to copy to char* from buffer 
 		if (checkWordInvalid(word)) {
 			fprintf(logger, "word \"%s\" is invalid. Freeing memory..\n", word); 
-			free(word); 
 		}
 		else {
 			updateIndex(word, docId, index, logger); 
 		}
+		free(word); 
 	}
 }
 

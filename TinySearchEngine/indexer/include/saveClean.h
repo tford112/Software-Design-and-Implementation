@@ -9,4 +9,6 @@
 
 void saveIndex(INVERTED_INDEX*, char*, FILE*); 
 void cleanUp(INVERTED_INDEX*, FILE*); 
+void cleanUpWordNodesAtHashSlot(INVERTED_INDEX*, int); 
+void cleanUpDocNodesFromWordNode(WordNode*); 
 #endif 
