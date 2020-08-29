@@ -3,7 +3,7 @@
 
 // *****************Impementation Spec********************************
 // File: indexer.c
-// This file contains useful information for implementing the crawler:
+// This file contains useful information for implementing the indexer:
 // - DEFINES
 // - MACROS
 // - DATA STRUCTURES
@@ -15,8 +15,6 @@
 #define EXIT_RETURN 1 
 
 // DATA STRUCTURES. All these structures should be malloc 'd
-
-// This is the key data structure that holds the information of each URL.
 
 typedef struct _DocumentNode {
 	struct _DocumentNode *next;  // pointer to next member in list 

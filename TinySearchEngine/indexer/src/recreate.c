@@ -23,22 +23,22 @@ INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) {
 		split = strtok(NULL, " "); 
 		totalDocs = atoi(split); 
 		fprintf(logger, "Total docs: %d\n", totalDocs); 
-		DocNode** allDocNodesPerWord = allocateDocNodeArray(logger, totalDocs); 
+		DocNode* allDocNodesPerWord = allocateDocNodeArray(logger, totalDocs); 
 		int split_count = 0; 
 		while (split && docCounter < totalDocs) {
 			split = strtok(NULL, " "); 
 			if (split) {
 				if (split_count % 2 == 0 ) {  // even numbers represent the text docIds 
-					allDocNodesPerWord[docCounter]->docId = atoi(split); 
-					fprintf(logger, "added docId %d to docNodes array\n", allDocNodesPerWord[docCounter]->docId); 
+					allDocNodesPerWord[docCounter].docId = atoi(split); 
+					fprintf(logger, "added docId %d to docNodes array\n", allDocNodesPerWord[docCounter].docId); 
 					if (docCounter < totalDocs - 1) {
-						allDocNodesPerWord[docCounter]->next = allDocNodesPerWord[docCounter+1]; 
+						allDocNodesPerWord[docCounter].next = &allDocNodesPerWord[docCounter+1]; 
 						fprintf(logger, "currDocCounter: %d set connection to next node: %d\n", docCounter, docCounter+1); 
 					}
 				}
 				else {
-					allDocNodesPerWord[docCounter]->page_word_frequency = atoi(split); 
-					fprintf(logger, "word frequency %d for current doc\n\n", allDocNodesPerWord[docCounter]->page_word_frequency);
+					allDocNodesPerWord[docCounter].page_word_frequency = atoi(split); 
+					fprintf(logger, "word frequency %d for current doc\n\n", allDocNodesPerWord[docCounter].page_word_frequency);
 					++docCounter; 
 				}
 			}
@@ -46,7 +46,7 @@ INVERTED_INDEX* recreateIndex(FILE* data, FILE* logger) {
 		}
 		unsigned long hash_value = hash1(wnode->word) % MAX_HASH_SLOT; 
 		if (index->hash[hash_value] == NULL) {
-			wnode->page = allDocNodesPerWord[0]; 			// docNodes are now assigned to wnode 
+			wnode->page = &allDocNodesPerWord[0]; 			// docNodes are now assigned to wnode 
 			index->hash[hash_value] = wnode; 
 			fputs("\nAdded wnode to index\n", logger); 
 		}

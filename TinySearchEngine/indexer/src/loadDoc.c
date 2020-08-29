@@ -7,6 +7,17 @@
 #define SIZE 50
 #define MAX_FILE_NUM 25 
 
+/* File: loadDoc.c 
+ * Input -> directory where our text files are located 
+ * Output -> the located directory will now have text versions of the urls located in "urls" and was passed from crawler 
+ *
+ * Description -> I decided to directly use Python because I'm the most familiar with the BeautifulSoup extraction and wanted to reduce 
+ * the complexity (C doesn't appear to have as good of a HTML parser as Python). This file is mostly involved with being a helper function 
+ * via C to execute the extract.py file in the directory. 
+ */ 
+
+/*Responsible for executing the extract.py function. Calls the numFiles() function to figure out how many files we will need to extract
+ * We directly call from the command-line with loadDocument to extract the text from a url file*/
 void executeExtraction(FILE* log, char* dir) {
 	int nfiles = numFiles(dir); 
 	int count = 0; 
@@ -46,8 +57,7 @@ int numFiles(char* directory) {
 
 
 void loadDocument(char* filename) {
-	char command[SIZE];
-	memset(command, 0, SIZE); 
+	char command[SIZE] = {0};
 	snprintf(command, SIZE, "./extract.py %s", filename); 
 	system(command);
 }

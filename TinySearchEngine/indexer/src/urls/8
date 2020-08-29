@@ -444,8 +444,8 @@ https://www.jhu.edu/maps-directions/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-710017979" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-710017979" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-370033986" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-370033986" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5539,7 +5539,7 @@ https://www.jhu.edu/maps-directions/
 
             <div class="sidebar-group">
               
-<figure class="wp-block-image size-medium"><img src="https://www.jhu.edu/assets/uploads/2017/06/tour2-300x183.jpg" alt="Screenshot of breezeway from interactive campus tour" class="wp-image-25936" srcset="https://www.jhu.edu/assets/uploads/2017/06/tour2-300x183.jpg 300w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1024x626.jpg 1024w, https://www.jhu.edu/assets/uploads/2017/06/tour2-768x470.jpg 768w, https://www.jhu.edu/assets/uploads/2017/06/tour2-420x257.jpg 420w, https://www.jhu.edu/assets/uploads/2017/06/tour2-630x385.jpg 630w, https://www.jhu.edu/assets/uploads/2017/06/tour2-825x505.jpg 825w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1030x630.jpg 1030w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1194x730.jpg 1194w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1440x881.jpg 1440w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1300x795.jpg 1300w, https://www.jhu.edu/assets/uploads/2017/06/tour2.jpg 1442w" sizes="(max-width: 300px) 100vw, 300px" /></figure>
+<figure class="wp-block-image size-medium"><img src="https://www.jhu.edu/assets/uploads/2017/06/tour2-300x183.jpg" alt="Screenshot of breezeway from interactive campus tour" class="wp-image-25936" srcset="https://www.jhu.edu/assets/uploads/2017/06/tour2-300x183.jpg 300w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1024x626.jpg 1024w, https://www.jhu.edu/assets/uploads/2017/06/tour2-768x470.jpg 768w, https://www.jhu.edu/assets/uploads/2017/06/tour2-420x257.jpg 420w, https://www.jhu.edu/assets/uploads/2017/06/tour2-630x385.jpg 630w, https://www.jhu.edu/assets/uploads/2017/06/tour2-825x505.jpg 825w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1030x630.jpg 1030w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1194x730.jpg 1194w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1440x881.jpg 1440w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1300x795.jpg 1300w, https://www.jhu.edu/assets/uploads/2017/06/tour2.jpg 1442w" sizes="(min-width: 1680px) 210px, (min-width: 1280px) 174px, (min-width: 1024px) 200px, (min-width: 863px) 160px, (min-width: 768px) 209px, (min-width: 640px) 186px, (min-width: 412px) 155px, 155px" /></figure>
 
 
 
@@ -5777,8 +5777,8 @@ https://www.jhu.edu/maps-directions/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1554191694" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1554191694" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-20187848" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-20187848" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6740,7 +6740,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ec8ce06e74" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -6794,20 +6794,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
- 
-    <a href="https://jobs.jhu.edu/"
-         target="_self"
-         class=""
-
-        
-        
-        
-      >Employment Opportunities</a>
-  
-
-
-
-      </li>
+ </li>
 
     
     
@@ -7384,7 +7371,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ec8ce06e74" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -7438,6 +7425,358 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
+  
+  
+  
+    
+    
+                    
+    <a href="https://www.jhu.edu/maps-directions/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >Maps & Directions</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="https://www.jhu.edu/contact/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >Contact the University</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="https://jobs.jhu.edu/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >Employment Opportunities</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="https://my.jh.edu/portal/web/jhupub"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >my.johnshopkins.edu</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="https://giving.jhu.edu/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >Give to the University</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="http://alumni.jhu.edu/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >For Alumni</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="http://parents.jhu.edu/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >For Parents</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="http://hub.jhu.edu/media"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >For News Media</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+          
+  
+  
+  
+  
+  
+    
+  
+    
+    
+      <li class="navitem">
+        
+  
+  
+  
+  
+  
+    
+    
+                    
+    <a href="https://www.jhu.edu/life/athletics/"
+         target="_self"
+         class=""
+
+        
+        
+        
+      >Athletics</a>
+  
+
+
+
+      </li>
+
+    
+    
+
+    
+          
+    
+  </ul>
+
+
+  
+
+          
+    
+    
+    
+    
+    
+    
+    
+    
+      
+  
+            
+  <ul class="tier-1 force utility-links footer-utility column">
+
+          
+    
+          
+  
+  
+  
+  
+  
+    
+  
+    
     
       <li class="navitem">
         

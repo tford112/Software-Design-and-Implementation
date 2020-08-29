@@ -11,6 +11,5 @@
 #define BUFSIZE 1000
 
 // PROTOTYPES 
-
 INVERTED_INDEX* recreateIndex(FILE*, FILE*); 
 #endif 

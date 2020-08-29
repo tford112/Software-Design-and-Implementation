@@ -4,6 +4,15 @@ from bs4 import BeautifulSoup
 import sys 
 import subprocess 
 
+'''
+File: extract.py 
+Input: url filename 
+Output: a text file in "texts/" corresponding to the URL. The text will come from anything enclosed within <p> tags. 
+
+NOTE: This is not a perfect method to extract text because some helpful text is not taken and in the case with running JHU as the seed url,
+there can be some garbage text that is still captured (e.g. "You are looking at a modal window") 
+'''
+
 ## pass in the filename argument and use bs4 to get text from p tags 
 def extract(filename):
     tot = [] 

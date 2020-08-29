@@ -33,8 +33,8 @@ https://www.jhu.edu
 
     
 
-    <meta property="og:image" content="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg" />
-  <meta property="og:image:secure_url" content="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg" />
+    <meta property="og:image" content="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg" />
+  <meta property="og:image:secure_url" content="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg" />
 	<meta property="og:image:width" content="1600" />
 	<meta property="og:image:height" content="800" />
 
@@ -138,9 +138,9 @@ https://www.jhu.edu
   
 
 <div id="bbHeroSection" class="hero default section"
-  data-backup="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/08/11-800x400.jpg 800w"
-  data-mp4="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-67B_Web.mp4"
-  data-poster="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-67B_Web-960x540.jpg"
+  data-backup="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/03/JHU-64-800x400.jpg 800w"
+  data-mp4="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-66B_Web.mp4"
+  data-poster="https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-66B_Web-960x540.jpg"
   data-autoplay="autoplay"
   data-loop="loop"
   data-preload="auto"
@@ -162,12 +162,12 @@ https://www.jhu.edu
         </div>
 
         <noscript>
-                    <img width="1600" height="800" src="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg" class="backup-nojs fullwidth" alt="Homewood Campus" srcset="https://www.jhu.edu/assets/uploads/2014/08/11-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/08/11-800x400.jpg 800w" sizes="(max-width: 1600px) 100vw, 1600px" />
+                    <img width="1600" height="800" src="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg" class="backup-nojs fullwidth" alt="Lantern sculptures hanging from ceiling" srcset="https://www.jhu.edu/assets/uploads/2014/03/JHU-64-1600x800.jpg 1600w, https://www.jhu.edu/assets/uploads/2014/03/JHU-64-800x400.jpg 800w" sizes="(max-width: 1600px) 100vw, 1600px" />
         </noscript>
 
-        <div class="while-loading" style="background-image: url(https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-67B_Web-960x540.jpg);"></div>
+        <div class="while-loading" style="background-image: url(https://www.jhu.edu/assets/uploads/2020/04/Homepage-loop-66B_Web-960x540.jpg);"></div>
 
-                <p class="visuallyhidden" id="hero-video-description">Video footage: Close-up images of the Johns Hopkins COVID-19 tracking map, Socially distanced volunteers feel hand sanitizer bottles in a warehouse, Volunteers assemble protective face masks in a warehouse, Engineers work on a device that would allow two patients to share a ventilator, Health care workers don personal protective equipment, Community members line up in cars to pick up groceries at East Baltimore food distribution site</p>
+                <p class="visuallyhidden" id="hero-video-description">Video footage: A female doctor walks through a sunlit hospital breezeway, a health care provider in PPE puts on purple gloves, a male doctor wears a mask and face shield, a 3D geometric structure is examined on a computer screen, a 3D printer in motion, a woman in a lab environment refines a 3D-printed part under a large magnifying glass, close-up images of a 3D-printed piece for sharing ventilator air flow, pink liquid is removed from test tubes, close-up image of a petri dish in a lab environment, a woman in a red headscarf works in a lab, a medical team in a surgical setting wearing face masks</p>
 
       </div>
 
@@ -380,8 +380,8 @@ https://www.jhu.edu
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1031476343" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1031476343" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1479961853" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1479961853" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -3151,6 +3151,7 @@ https://www.jhu.edu
 
                           
       
+                
                   
   
   
@@ -3176,7 +3177,7 @@ https://www.jhu.edu
           data-category="Homepage"
           data-label="Teaser: COVID-19 resource center"
         
-      ><div class="image column force image-square"><img width="300" height="300" src="https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-300x300.jpeg" class="attachment-medium_thumb size-medium_thumb" alt="COVID-19 conceptual illustration" srcset="https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-300x300.jpeg 300w, https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-150x150.jpeg 150w, https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-700x700.jpeg 700w, https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-500x500.jpeg 500w" sizes="(max-width: 300px) 100vw, 300px" /></div></a>
+      ><div class="image column force image-square"><img width="300" height="300" src="https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-300x300.jpeg" class="attachment-medium_thumb size-medium_thumb" alt="COVID-19 conceptual illustration" sizes="(min-width: 1680px) 258px, (min-width: 1280px) 276px, (min-width: 1024px) 332px, (min-width: 863px) 266px, (min-width: 768px) 187px, (min-width: 640px) 171px, (min-width: 412px) 171px, (min-width: 375px) 306px, 306px" srcset="https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-300x300.jpeg 300w, https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-150x150.jpeg 150w, https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-700x700.jpeg 700w, https://www.jhu.edu/assets/uploads/2020/03/covid19_webcast-500x500.jpeg 500w" /></div></a>
   
 
 
@@ -3220,6 +3221,7 @@ https://www.jhu.edu
 
         
       
+                
                   
   
   
@@ -3245,7 +3247,7 @@ https://www.jhu.edu
           data-category="Homepage"
           data-label="Teaser: COVID-19 map"
         
-      ><div class="image column force image-square"><img width="300" height="300" src="https://www.jhu.edu/assets/uploads/2020/04/map2-300x300.jpg" class="attachment-medium_thumb size-medium_thumb" alt="Johns Hopkins COVID-19 tracking map" srcset="https://www.jhu.edu/assets/uploads/2020/04/map2-300x300.jpg 300w, https://www.jhu.edu/assets/uploads/2020/04/map2-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/map2-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/map2-500x500.jpg 500w" sizes="(max-width: 300px) 100vw, 300px" /></div></a>
+      ><div class="image column force image-square"><img width="300" height="300" src="https://www.jhu.edu/assets/uploads/2020/04/map2-300x300.jpg" class="attachment-medium_thumb size-medium_thumb" alt="Johns Hopkins COVID-19 tracking map" sizes="(min-width: 1680px) 258px, (min-width: 1280px) 276px, (min-width: 1024px) 332px, (min-width: 863px) 266px, (min-width: 768px) 187px, (min-width: 640px) 171px, (min-width: 412px) 171px, (min-width: 375px) 306px, 306px" srcset="https://www.jhu.edu/assets/uploads/2020/04/map2-300x300.jpg 300w, https://www.jhu.edu/assets/uploads/2020/04/map2-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/map2-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/map2-500x500.jpg 500w" /></div></a>
   
 
 
@@ -3289,6 +3291,7 @@ https://www.jhu.edu
 
         
       
+                
                   
   
   
@@ -3314,7 +3317,7 @@ https://www.jhu.edu
           data-category="Homepage"
           data-label="Teaser: COVID-19 U.S. map"
         
-      ><div class="image column force image-square"><img width="300" height="300" src="https://www.jhu.edu/assets/uploads/2020/04/us_map-300x300.png" class="attachment-medium_thumb size-medium_thumb" alt="U.S. map" srcset="https://www.jhu.edu/assets/uploads/2020/04/us_map-300x300.png 300w, https://www.jhu.edu/assets/uploads/2020/04/us_map-150x150.png 150w, https://www.jhu.edu/assets/uploads/2020/04/us_map-700x700.png 700w, https://www.jhu.edu/assets/uploads/2020/04/us_map-500x500.png 500w" sizes="(max-width: 300px) 100vw, 300px" /></div></a>
+      ><div class="image column force image-square"><img width="300" height="300" src="https://www.jhu.edu/assets/uploads/2020/04/us_map-300x300.png" class="attachment-medium_thumb size-medium_thumb" alt="U.S. map" sizes="(min-width: 1680px) 258px, (min-width: 1280px) 276px, (min-width: 1024px) 332px, (min-width: 863px) 266px, (min-width: 768px) 187px, (min-width: 640px) 171px, (min-width: 412px) 171px, (min-width: 375px) 306px, 306px" srcset="https://www.jhu.edu/assets/uploads/2020/04/us_map-300x300.png 300w, https://www.jhu.edu/assets/uploads/2020/04/us_map-150x150.png 150w, https://www.jhu.edu/assets/uploads/2020/04/us_map-700x700.png 700w, https://www.jhu.edu/assets/uploads/2020/04/us_map-500x500.png 500w" /></div></a>
   
 
 
@@ -3541,8 +3544,9 @@ https://www.jhu.edu
 
             
       
+                
         
-                    
+          
                                 
                       
 	
@@ -3552,7 +3556,7 @@ https://www.jhu.edu
     <div class="article teaser column force has-image">
 
           <div class="thumbnail">
-        <a class="force gtm-news" href="https://hub.jhu.edu/2020/07/28/convalescent-plasma-study-speeds-to-trials/" data-label="Article: Convalescent plasma: A COVID-19 treatment speeds to clinical trials"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/convalescent-sereum-dung-hoang_impact.jpg?itok=SaahGh4F" alt="Collage of Arturo Casadevall holding a test tube" class="column" sizes="(min-width: 1728px) 949px, (min-width: 1296px) 785px, (min-width: 864px) 705px, (min-width: 576px) 642px, 428px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/convalescent-sereum-dung-hoang_impact.jpg?itok=XlfEvCz0 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/convalescent-sereum-dung-hoang_impact.jpg?itok=SaahGh4F 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/convalescent-sereum-dung-hoang_impact.jpg?itok=WEBHo0Ig 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/convalescent-sereum-dung-hoang_impact.jpg?itok=XByiOu6n 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/convalescent-sereum-dung-hoang_impact.jpg?itok=hjLlgNNN 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/convalescent-sereum-dung-hoang_impact.jpg?itok=QsUxOE5p 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/convalescent-sereum-dung-hoang_impact.jpg?itok=ba6kq2Fv 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/convalescent-sereum-dung-hoang_impact.jpg?itok=y2EUlzx7 1380w"/><div class="caption column"><p class="credit"><span class="visuallyhidden">Credit: </span>Dung Hoang for Johns Hopkins University</p></div></div></a>
+        <a class="force gtm-news" href="https://hub.jhu.edu/2020/07/28/convalescent-plasma-study-speeds-to-trials/" data-label="Article: Convalescent plasma: A COVID-19 treatment speeds to clinical trials"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/convalescent-sereum-dung-hoang_impact.jpg?itok=SaahGh4F" alt="Collage of Arturo Casadevall holding a test tube" class="column" sizes="(min-width: 1680px) 949px, (min-width: 1280px) 785px, (min-width: 1024px) 697px, (min-width: 863px) 558px, (min-width: 768px) 642px, (min-width: 640px) 571px, (min-width: 412px) 476px, (min-width: 375px) 306px, 306px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/convalescent-sereum-dung-hoang_impact.jpg?itok=XlfEvCz0 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/convalescent-sereum-dung-hoang_impact.jpg?itok=SaahGh4F 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/convalescent-sereum-dung-hoang_impact.jpg?itok=WEBHo0Ig 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/convalescent-sereum-dung-hoang_impact.jpg?itok=XByiOu6n 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/convalescent-sereum-dung-hoang_impact.jpg?itok=hjLlgNNN 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/convalescent-sereum-dung-hoang_impact.jpg?itok=QsUxOE5p 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/convalescent-sereum-dung-hoang_impact.jpg?itok=ba6kq2Fv 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/convalescent-sereum-dung-hoang_impact.jpg?itok=y2EUlzx7 1380w"/><div class="caption column"><p class="credit"><span class="visuallyhidden">Credit: </span>Dung Hoang for Johns Hopkins University</p></div></div></a>
       </div>
     
     <div class="text">
@@ -3603,8 +3607,9 @@ https://www.jhu.edu
           
         
       
+                
         
-                    
+          
           
                       
 	
@@ -3614,7 +3619,70 @@ https://www.jhu.edu
     <div class="article teaser column force has-image">
 
           <div class="thumbnail">
-        <a class="force gtm-news" href="https://hub.jhu.edu/2020/08/11/covid-19-vaccine-development-ruth-karron-qa/" data-label="Article: How close are we to a safe, effective vaccine?"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/covid-vaccine2.jpg?itok=X2SQSykJ" alt="Covid-19 vaccine" class="column" sizes="(min-width: 1728px) 105px, (min-width: 1296px) 104px, (min-width: 864px) 336px, (min-width: 576px) 125px, 132px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/covid-vaccine2.jpg?itok=M70ZZ_Ox 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/covid-vaccine2.jpg?itok=X2SQSykJ 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/covid-vaccine2.jpg?itok=gebhVxGO 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/covid-vaccine2.jpg?itok=6n_kY7__ 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/covid-vaccine2.jpg?itok=oF547dK- 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/covid-vaccine2.jpg?itok=y49e6lGp 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/covid-vaccine2.jpg?itok=LLw9cDZz 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/covid-vaccine2.jpg?itok=xcGsMEhT 1380w"/></div></a>
+        <a class="force gtm-news" href="https://hub.jhu.edu/2020/08/24/masks-protect-wearer-and-others/" data-label="Article: Wearing a mask protects you and those around you"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/flag_mask082420.jpg?itok=-mRZvFY_" alt="Face mask with American flag pattern against red background" class="column" sizes="(min-width: 1680px) 258px, (min-width: 1280px) 276px, (min-width: 1024px) 332px, (min-width: 863px) 266px, (min-width: 768px) 187px, (min-width: 640px) 171px, (min-width: 412px) 171px, (min-width: 375px) 306px, 306px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/flag_mask082420.jpg?itok=UQOuLKuw 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/flag_mask082420.jpg?itok=-mRZvFY_ 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/flag_mask082420.jpg?itok=BYGPm6v_ 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/flag_mask082420.jpg?itok=hizqiJvD 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/flag_mask082420.jpg?itok=qjZWCC6T 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/flag_mask082420.jpg?itok=LVEdBoj_ 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/flag_mask082420.jpg?itok=rUmfP80f 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/flag_mask082420.jpg?itok=IMX_R22L 1380w"/><div class="caption column"><p class="credit"><span class="visuallyhidden">Credit: </span>mchebby / Getty Images</p></div></div></a>
+      </div>
+    
+    <div class="text">
+
+      <div class="accent-element">
+
+        			<div class="kicker">Mask hysteria?</div>
+	
+        <h5><a class="gtm-news" href="https://hub.jhu.edu/2020/08/24/masks-protect-wearer-and-others/" data-label="Article: Wearing a mask protects you and those around you">Wearing a mask protects you and those around you</a></h5>
+
+        
+				
+		
+		<span class="visuallyhidden">Published</span>
+
+		
+		
+		
+		
+						
+		
+														
+		<span class="publish-date convert-pubdate" data-timestamp="1598280300">
+	
+	Aug 24, 2020
+
+</span>
+
+	
+
+        
+	
+	
+
+
+        <div class="summary">New research co-led by a Johns Hopkins researcher suggests face coverings reduce viral exposure, limiting both transmission and severe disease. But is that evidence enough to turn the tide of public opinion now that masks have become politicized? 
+				
+	
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+          
+        
+      
+                
+        
+          
+          
+                      
+	
+    
+  						
+		
+    <div class="article teaser column force has-image">
+
+          <div class="thumbnail">
+        <a class="force gtm-news" href="https://hub.jhu.edu/2020/08/11/covid-19-vaccine-development-ruth-karron-qa/" data-label="Article: How close are we to a safe, effective vaccine?"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/covid-vaccine2.jpg?itok=X2SQSykJ" alt="Covid-19 vaccine" class="column" sizes="(min-width: 1680px) 258px, (min-width: 1280px) 276px, (min-width: 1024px) 332px, (min-width: 863px) 266px, (min-width: 768px) 187px, (min-width: 640px) 171px, (min-width: 412px) 171px, (min-width: 375px) 306px, 306px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/covid-vaccine2.jpg?itok=M70ZZ_Ox 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/covid-vaccine2.jpg?itok=X2SQSykJ 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/covid-vaccine2.jpg?itok=gebhVxGO 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/covid-vaccine2.jpg?itok=6n_kY7__ 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/covid-vaccine2.jpg?itok=oF547dK- 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/covid-vaccine2.jpg?itok=y49e6lGp 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/covid-vaccine2.jpg?itok=LLw9cDZz 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/covid-vaccine2.jpg?itok=xcGsMEhT 1380w"/></div></a>
       </div>
     
     <div class="text">
@@ -3665,8 +3733,9 @@ https://www.jhu.edu
           
         
       
+                
         
-                    
+          
           
                       
 	
@@ -3676,16 +3745,16 @@ https://www.jhu.edu
     <div class="article teaser column force has-image">
 
           <div class="thumbnail">
-        <a class="force gtm-news" href="https://hub.jhu.edu/2020/08/06/annette-anderson-schools-reopening/" data-label="Article: Redefining the K-12 experience"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/AnnetteAndersonThumb.jpg?itok=NfAJkztP" alt="A child does classwork while sitting in front of a tablet displaying a video conference call" class="column" sizes="(min-width: 1728px) 105px, (min-width: 1296px) 104px, (min-width: 864px) 336px, (min-width: 576px) 125px, 132px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/AnnetteAndersonThumb.jpg?itok=XEjg6q9V 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/AnnetteAndersonThumb.jpg?itok=NfAJkztP 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/AnnetteAndersonThumb.jpg?itok=beDtYEiJ 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/AnnetteAndersonThumb.jpg?itok=oXit7LRu 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/AnnetteAndersonThumb.jpg?itok=REf3nN7Z 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/AnnetteAndersonThumb.jpg?itok=NNukcWKL 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/AnnetteAndersonThumb.jpg?itok=LxaC7jk0 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/AnnetteAndersonThumb.jpg?itok=jujci6Dz 1380w"/><div class="caption column"><p class="credit"><span class="visuallyhidden">Credit: </span>Getty Images</p></div></div></a>
+        <a class="force gtm-news" href="https://hub.jhu.edu/2020/08/24/convocation-class-of-2024/" data-label="Article: A virtual welcome"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/Convocation-class-2024.jpg?itok=8AwjWOrK" alt="Convocation Class of 2024" class="column" sizes="(min-width: 1680px) 258px, (min-width: 1280px) 276px, (min-width: 1024px) 332px, (min-width: 863px) 266px, (min-width: 768px) 187px, (min-width: 640px) 171px, (min-width: 412px) 171px, (min-width: 375px) 306px, 306px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/Convocation-class-2024.jpg?itok=BH-EPZ-P 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/Convocation-class-2024.jpg?itok=8AwjWOrK 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/Convocation-class-2024.jpg?itok=ZHDSkBlb 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/Convocation-class-2024.jpg?itok=8uuoa3uw 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/Convocation-class-2024.jpg?itok=33GTM75U 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/Convocation-class-2024.jpg?itok=gSfoVl-Q 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/Convocation-class-2024.jpg?itok=3zuLuxtP 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/Convocation-class-2024.jpg?itok=eMxzdGge 1380w"/></div></a>
       </div>
     
     <div class="text">
 
       <div class="accent-element">
 
-        			<div class="kicker">Q<span class='plus'>+</span>A</div>
+        			<div class="kicker">Convocation 2020</div>
 	
-        <h5><a class="gtm-news" href="https://hub.jhu.edu/2020/08/06/annette-anderson-schools-reopening/" data-label="Article: Redefining the K-12 experience">Redefining the K-12 experience</a></h5>
+        <h5><a class="gtm-news" href="https://hub.jhu.edu/2020/08/24/convocation-class-of-2024/" data-label="Article: A virtual welcome">A virtual welcome</a></h5>
 
         
 				
@@ -3699,9 +3768,9 @@ https://www.jhu.edu
 						
 		
 														
-		<span class="publish-date convert-pubdate" data-timestamp="1596722400">
+		<span class="publish-date convert-pubdate" data-timestamp="1598266800">
 	
-	Aug 6, 2020
+	Aug 24, 2020
 
 </span>
 
@@ -3712,69 +3781,7 @@ https://www.jhu.edu
 	
 
 
-        <div class="summary">COVID-19 may force many K-12 schools to go all-virtual for fall. How can we make sure the children have a better experience than they did in spring? 
-				
-	
-</div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-          
-        
-      
-        
-                    
-          
-                      
-	
-    
-  						
-		
-    <div class="article teaser column force has-image">
-
-          <div class="thumbnail">
-        <a class="force gtm-news" href="https://hub.jhu.edu/2020/08/05/meredith-greif-housing-evictions/" data-label="Article: U.S. faces looming affordable housing crisis"><div class="image column force image-landscape"><img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/for_rent_080520.jpg?itok=9sOvZqCi" alt="Apartment with "For Rent" sign" class="column" sizes="(min-width: 1728px) 105px, (min-width: 1296px) 104px, (min-width: 864px) 336px, (min-width: 576px) 125px, 132px" srcset="https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_240/public/for_rent_080520.jpg?itok=ImJmxrVM 240w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hub_thumbnail/public/for_rent_080520.jpg?itok=9sOvZqCi 360w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_540/public/for_rent_080520.jpg?itok=sHxXnfUb 540w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_720/public/for_rent_080520.jpg?itok=kt6_DvBB 720w, https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/for_rent_080520.jpg?itok=luF33cPR 900w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1005/public/for_rent_080520.jpg?itok=d7Spd5xz 1005w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1230/public/for_rent_080520.jpg?itok=yNKITKZX 1230w, https://api.hub.jhu.edu/factory/sites/default/files/styles/hard_crop_landscape_1380/public/for_rent_080520.jpg?itok=gVA3v9C- 1380w"/><div class="caption column"><p class="credit"><span class="visuallyhidden">Credit: </span>Will Kirk / Johns Hopkins University</p></div></div></a>
-      </div>
-    
-    <div class="text">
-
-      <div class="accent-element">
-
-        			<div class="kicker">Q<span class='plus'>+</span>A</div>
-	
-        <h5><a class="gtm-news" href="https://hub.jhu.edu/2020/08/05/meredith-greif-housing-evictions/" data-label="Article: U.S. faces looming affordable housing crisis">U.S. faces looming affordable housing crisis</a></h5>
-
-        
-				
-		
-		<span class="visuallyhidden">Published</span>
-
-		
-		
-		
-		
-						
-		
-														
-		<span class="publish-date convert-pubdate" data-timestamp="1596636900">
-	
-	Aug 5, 2020
-
-</span>
-
-	
-
-        
-	
-	
-
-
-        <div class="summary">Johns Hopkins sociologist Meredith Greif discusses the shortage of affordable housing that existed in the U.S. before the coronavirus pandemic swept through, making everything worse 
+        <div class="summary">Members of the Class of 2024 and new transfer students are welcomed to the Johns Hopkins community in the university's first digital convocation ceremony 
 				
 	
 </div>
@@ -3853,7 +3860,7 @@ https://www.jhu.edu
           data-category="Homepage"
           data-label="Instagram photo: Spring tulips"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/tulips-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Red tulips bloom in front of a campus building" sizes="(min-width: 1728px) 427px, (min-width: 1296px) 432px, (min-width: 864px) 325px, (min-width: 576px) 288px, 288px" srcset="https://www.jhu.edu/assets/uploads/2020/04/tulips-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/tulips-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/tulips-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/tulips-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/tulips-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Red tulips bloom in front of a campus building" sizes="(min-width: 1680px) 420px, (min-width: 1280px) 420px, (min-width: 1024px) 320px, (min-width: 863px) 256px, (min-width: 768px) 288px, (min-width: 640px) 256px, (min-width: 412px) 312px, (min-width: 375px) 206px, 188px" srcset="https://www.jhu.edu/assets/uploads/2020/04/tulips-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/tulips-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/tulips-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/tulips-300x300.jpg 300w" /></a>
   
 
 
@@ -3909,7 +3916,7 @@ Share something you love about JHU.
           data-category="Homepage"
           data-label="Instagram photo: Light up blue"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/blue-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Campus building at dusk illuminated by blue lights" sizes="(min-width: 1728px) 427px, (min-width: 1296px) 432px, (min-width: 864px) 325px, (min-width: 576px) 288px, 288px" srcset="https://www.jhu.edu/assets/uploads/2020/04/blue-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/blue-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/blue-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/blue-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/blue-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Campus building at dusk illuminated by blue lights" sizes="(min-width: 1680px) 420px, (min-width: 1280px) 420px, (min-width: 1024px) 320px, (min-width: 863px) 256px, (min-width: 768px) 288px, (min-width: 640px) 256px, (min-width: 412px) 312px, (min-width: 375px) 206px, 188px" srcset="https://www.jhu.edu/assets/uploads/2020/04/blue-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/blue-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/blue-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/blue-300x300.jpg 300w" /></a>
   
 
 
@@ -3963,7 +3970,7 @@ Share something you love about JHU.
           data-category="Homepage"
           data-label="Instagram photo: Splitters"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/splitters-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="3D printed splitters for ventilators" sizes="(min-width: 1728px) 427px, (min-width: 1296px) 432px, (min-width: 864px) 325px, (min-width: 576px) 288px, 288px" srcset="https://www.jhu.edu/assets/uploads/2020/04/splitters-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/splitters-300x300.jpg 300w, https://www.jhu.edu/assets/uploads/2020/04/splitters-1024x1024.jpg 1024w, https://www.jhu.edu/assets/uploads/2020/04/splitters-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/splitters-768x768.jpg 768w, https://www.jhu.edu/assets/uploads/2020/04/splitters-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/splitters-420x420.jpg 420w, https://www.jhu.edu/assets/uploads/2020/04/splitters-630x630.jpg 630w, https://www.jhu.edu/assets/uploads/2020/04/splitters-825x825.jpg 825w, https://www.jhu.edu/assets/uploads/2020/04/splitters-1030x1030.jpg 1030w, https://www.jhu.edu/assets/uploads/2020/04/splitters.jpg 1080w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/splitters-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="3D printed splitters for ventilators" sizes="(min-width: 1680px) 420px, (min-width: 1280px) 420px, (min-width: 1024px) 320px, (min-width: 863px) 256px, (min-width: 768px) 288px, (min-width: 640px) 256px, (min-width: 412px) 312px, (min-width: 375px) 206px, 188px" srcset="https://www.jhu.edu/assets/uploads/2020/04/splitters-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/splitters-300x300.jpg 300w, https://www.jhu.edu/assets/uploads/2020/04/splitters-1024x1024.jpg 1024w, https://www.jhu.edu/assets/uploads/2020/04/splitters-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/splitters-768x768.jpg 768w, https://www.jhu.edu/assets/uploads/2020/04/splitters-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/splitters-420x420.jpg 420w, https://www.jhu.edu/assets/uploads/2020/04/splitters-630x630.jpg 630w, https://www.jhu.edu/assets/uploads/2020/04/splitters-825x825.jpg 825w, https://www.jhu.edu/assets/uploads/2020/04/splitters-1030x1030.jpg 1030w, https://www.jhu.edu/assets/uploads/2020/04/splitters.jpg 1080w" /></a>
   
 
 
@@ -4017,7 +4024,7 @@ Share something you love about JHU.
           data-category="Homepage"
           data-label="Instagram photo: ICU Nurses"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/nurses-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Nurses in PPE with signs reading: We stay here for you; please stay home for us" sizes="(min-width: 1728px) 427px, (min-width: 1296px) 432px, (min-width: 864px) 325px, (min-width: 576px) 288px, 288px" srcset="https://www.jhu.edu/assets/uploads/2020/04/nurses-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/nurses-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/nurses-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/nurses-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/nurses-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Nurses in PPE with signs reading: We stay here for you; please stay home for us" sizes="(min-width: 1680px) 420px, (min-width: 1280px) 420px, (min-width: 1024px) 320px, (min-width: 863px) 256px, (min-width: 768px) 288px, (min-width: 640px) 256px, (min-width: 412px) 312px, (min-width: 375px) 206px, 188px" srcset="https://www.jhu.edu/assets/uploads/2020/04/nurses-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/nurses-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/nurses-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/nurses-300x300.jpg 300w" /></a>
   
 
 
@@ -4071,7 +4078,7 @@ Share something you love about JHU.
           data-category="Homepage"
           data-label="Instagram photo: Empty chairs"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/chairs-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Three empty chairs on a campus quad" sizes="(min-width: 1728px) 427px, (min-width: 1296px) 432px, (min-width: 864px) 325px, (min-width: 576px) 288px, 288px" srcset="https://www.jhu.edu/assets/uploads/2020/04/chairs-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/chairs-300x300.jpg 300w, https://www.jhu.edu/assets/uploads/2020/04/chairs-1024x1024.jpg 1024w, https://www.jhu.edu/assets/uploads/2020/04/chairs-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/chairs-768x768.jpg 768w, https://www.jhu.edu/assets/uploads/2020/04/chairs-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/chairs-420x420.jpg 420w, https://www.jhu.edu/assets/uploads/2020/04/chairs-630x630.jpg 630w, https://www.jhu.edu/assets/uploads/2020/04/chairs-825x825.jpg 825w, https://www.jhu.edu/assets/uploads/2020/04/chairs-1030x1030.jpg 1030w, https://www.jhu.edu/assets/uploads/2020/04/chairs.jpg 1080w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/chairs-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Three empty chairs on a campus quad" sizes="(min-width: 1680px) 420px, (min-width: 1280px) 420px, (min-width: 1024px) 320px, (min-width: 863px) 256px, (min-width: 768px) 288px, (min-width: 640px) 256px, (min-width: 412px) 312px, (min-width: 375px) 206px, 188px" srcset="https://www.jhu.edu/assets/uploads/2020/04/chairs-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/chairs-300x300.jpg 300w, https://www.jhu.edu/assets/uploads/2020/04/chairs-1024x1024.jpg 1024w, https://www.jhu.edu/assets/uploads/2020/04/chairs-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/chairs-768x768.jpg 768w, https://www.jhu.edu/assets/uploads/2020/04/chairs-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/chairs-420x420.jpg 420w, https://www.jhu.edu/assets/uploads/2020/04/chairs-630x630.jpg 630w, https://www.jhu.edu/assets/uploads/2020/04/chairs-825x825.jpg 825w, https://www.jhu.edu/assets/uploads/2020/04/chairs-1030x1030.jpg 1030w, https://www.jhu.edu/assets/uploads/2020/04/chairs.jpg 1080w" /></a>
   
 
 
@@ -4127,7 +4134,7 @@ We want...
           data-category="Homepage"
           data-label="Instagram photo: Background images"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/blossoms-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Spring blossoms on campus" sizes="(min-width: 1728px) 427px, (min-width: 1296px) 432px, (min-width: 864px) 325px, (min-width: 576px) 288px, 288px" srcset="https://www.jhu.edu/assets/uploads/2020/04/blossoms-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/blossoms-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/blossoms-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/blossoms-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/04/blossoms-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Spring blossoms on campus" sizes="(min-width: 1680px) 420px, (min-width: 1280px) 420px, (min-width: 1024px) 320px, (min-width: 863px) 256px, (min-width: 768px) 288px, (min-width: 640px) 256px, (min-width: 412px) 312px, (min-width: 375px) 206px, 188px" srcset="https://www.jhu.edu/assets/uploads/2020/04/blossoms-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/04/blossoms-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/04/blossoms-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/04/blossoms-300x300.jpg 300w" /></a>
   
 
 
@@ -4308,7 +4315,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/ishpreet-singh/"
+    <a href="https://www.jhu.edu/profiles/maya-foster/"
          target="_self"
          class="image column gtm-link-click"
 
@@ -4316,16 +4323,16 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Ishpreet"
+          data-label="Profile: Maya"
         
-      ><div class="accent-element"><img width="700" height="700" src="https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-700x700.jpg" class="attachment-xlarge_thumb size-xlarge_thumb" alt="Ishpreet Singh" sizes="(min-width: 1728px) 702px, (min-width: 1296px) 579px, (min-width: 864px) 631px, (min-width: 576px) 421px, 477px" srcset="https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/ishpreet_singh_thumb-300x300.jpg 300w" /></div></a>
+      ><div class="accent-element"><img width="700" height="700" src="https://www.jhu.edu/assets/uploads/2019/05/foster_featured-700x700.jpg" class="attachment-xlarge_thumb size-xlarge_thumb" alt="Maya Foster" sizes="(min-width: 1680px) 702px, (min-width: 1280px) 579px, (min-width: 1024px) 624px, (min-width: 863px) 500px, (min-width: 768px) 471px, (min-width: 640px) 374px, (min-width: 412px) 312px, (min-width: 375px) 342px, 311px" srcset="https://www.jhu.edu/assets/uploads/2019/05/foster_featured-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/foster_featured-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/foster_featured-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/foster_featured-300x300.jpg 300w" /></div></a>
   
 
 
         
         <div class="quote column">
           <blockquote>
-            <p>Every day, I get to see from a different perspective and tackle problems in a new way.</p>
+            <p>I’m proud to be a part of celebrating our brilliant and vibrant community of women of color at Hopkins.</p>
 
 
                                     
@@ -4333,7 +4340,7 @@ We want...
     
     
               
-    <a href="https://www.jhu.edu/profiles/ishpreet-singh/"
+    <a href="https://www.jhu.edu/profiles/maya-foster/"
          target="_self"
          class="gtm-link-click"
 
@@ -4341,9 +4348,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Ishpreet"
+          data-label="Profile: Maya"
         
-      >More from Ishpreet</a>
+      >More from Maya</a>
   
 
 
@@ -4358,7 +4365,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/kale-hyder/"
+    <a href="https://www.jhu.edu/profiles/autumn-hughes/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4366,9 +4373,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Kale"
+          data-label="Profile: Autumn"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kale Hyder" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Autumn Hughes" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-300x300.jpg 300w" /></a>
   
 
 
@@ -4379,7 +4386,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/heather-michaelson/"
+    <a href="https://www.jhu.edu/profiles/kristofer-madu/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4387,51 +4394,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Heather Michaelson"
+          data-label="Profile: Kristofer"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Heather Michaelson" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-300x300.jpg 300w" /></a>
-  
-
-
-      
-        
-                        
-  
-    
-              
-              
-    <a href="https://www.jhu.edu/profiles/bianca-decatur/"
-         target="_self"
-         class="secondary profile column gtm-link-click"
-
-        
-        
-                  data-action="Click"
-          data-category="Homepage"
-          data-label="Profile: Bianca Decatur"
-        
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Bianca Decatur" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-300x300.jpg 300w" /></a>
-  
-
-
-      
-        
-                        
-  
-    
-              
-              
-    <a href="https://www.jhu.edu/profiles/liz-mengel/"
-         target="_self"
-         class="secondary profile column gtm-link-click"
-
-        
-        
-                  data-action="Click"
-          data-category="Homepage"
-          data-label="Profile: Liz Mengel"
-        
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/mengel_main-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Liz Mengel" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/mengel_main-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/mengel_main-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/mengel_main-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/mengel_main-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kristofer Madu" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/Kris_Madu_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4452,7 +4417,7 @@ We want...
           data-category="Homepage"
           data-label="Profile: John Beauchamp"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="John Beauchamp" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="John Beauchamp" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/beauchamp_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4463,7 +4428,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/anthony-boutros/"
+    <a href="https://www.jhu.edu/profiles/bianca-decatur/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4471,9 +4436,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Anthony"
+          data-label="Profile: Bianca Decatur"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Anthony Boutros" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/boutros_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Bianca Decatur" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/02/bianca_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4484,7 +4449,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/kirby-leo/"
+    <a href="https://www.jhu.edu/profiles/kale-hyder/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4492,9 +4457,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Kirby"
+          data-label="Profile: Kale"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kirby Leo" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kale Hyder" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kale_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4505,7 +4470,7 @@ We want...
     
               
               
-    <a href="https://www.jhu.edu/profiles/autumn-hughes/"
+    <a href="https://www.jhu.edu/profiles/heather-michaelson/"
          target="_self"
          class="secondary profile column gtm-link-click"
 
@@ -4513,9 +4478,9 @@ We want...
         
                   data-action="Click"
           data-category="Homepage"
-          data-label="Profile: Autumn"
+          data-label="Profile: Heather Michaelson"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Autumn Hughes" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/autumn_hughes-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Heather Michaelson" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2020/02/michaelson_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4536,7 +4501,49 @@ We want...
           data-category="Homepage"
           data-label="Profile: Logan Lyons"
         
-      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Logan Lyons" sizes="(min-width: 1728px) 333px, (min-width: 1296px) 210px, (min-width: 864px) 300px, (min-width: 576px) 274px, 183px" srcset="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-300x300.jpg 300w" /></a>
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Logan Lyons" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/lyons_thumb-300x300.jpg 300w" /></a>
+  
+
+
+      
+        
+                        
+  
+    
+              
+              
+    <a href="https://www.jhu.edu/profiles/melissa-mai/"
+         target="_self"
+         class="secondary profile column gtm-link-click"
+
+        
+        
+                  data-action="Click"
+          data-category="Homepage"
+          data-label="Profile: Melissa"
+        
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Melissa Mai" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-300x300.jpg 300w" /></a>
+  
+
+
+      
+        
+                        
+  
+    
+              
+              
+    <a href="https://www.jhu.edu/profiles/kirby-leo/"
+         target="_self"
+         class="secondary profile column gtm-link-click"
+
+        
+        
+                  data-action="Click"
+          data-category="Homepage"
+          data-label="Profile: Kirby"
+        
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kirby Leo" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-300x300.jpg 300w" /></a>
   
 
 
@@ -4581,8 +4588,8 @@ We want...
 
       
       
-      <label for="search-program_explorer-348373216" class="visuallyhidden">Search programs</label>
-      <input aria-label="Search programs" id="search-program_explorer-348373216" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-program_explorer-1429076369" class="visuallyhidden">Search programs</label>
+      <input aria-label="Search programs" id="search-program_explorer-1429076369" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -4946,8 +4953,8 @@ We want...
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1627228126" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1627228126" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-844722999" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-844722999" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>

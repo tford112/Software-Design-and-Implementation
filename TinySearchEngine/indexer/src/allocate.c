@@ -46,20 +46,22 @@ DocNode* allocateDocNode(FILE* log) {
 		exit(EXIT_RETURN); 
 	}
 	dnode->next = NULL; 
+	dnode->page_word_frequency = 0; 
 	dnode->docId = -1; 
-	dnode->page_frequency = 0; 
 	return dnode; 
 }
 
-DocNode** allocateDocNodeArray(FILE* log, int totalDocs) { // number of total dnodes to allocate for a word  
-	DocNode** allDocNodesPerWord = malloc(sizeof(DocNode*) * totalDocs);  
+DocNode* allocateDocNodeArray(FILE* log, int totalDocs) { // number of total dnodes to allocate for a word  
+	DocNode* allDocNodesPerWord = malloc(sizeof(DocNode) * totalDocs);  
 	if (allDocNodesPerWord == NULL) {
 		perror("Couldn't allocate memory for array of DocNodes for word");
 		fputs("Couldn't allocate memory for array of DocNodes for word", log);
 		exit(EXIT_RETURN); 
 	}
 	for (int i = 0; i < totalDocs; ++i) {
-		allDocNodesPerWord[i] = allocateDocNode(log); 
+		allDocNodesPerWord[i].docId = -1;
+		allDocNodesPerWord[i].page_word_frequency = 0; 
+		allDocNodesPerWord[i].next = NULL; 
 	}
 	return allDocNodesPerWord; 
 }

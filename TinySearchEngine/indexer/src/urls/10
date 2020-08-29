@@ -353,8 +353,8 @@ https://www.jhu.edu/about/university-leadership/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-783229472" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-783229472" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-32718799" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-32718799" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5322,7 +5322,7 @@ https://www.jhu.edu/about/university-leadership/
         <div id="main-content" class="primary-content column force" role="main">
 
                       
-<div class="wp-block-image"><figure class="alignright size-medium"><img src="https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-225x300.jpg" alt="President Ronald J. Daniels" class="wp-image-29559" srcset="https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-225x300.jpg 225w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-768x1024.jpg 768w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1152x1536.jpg 1152w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1536x2048.jpg 1536w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-420x560.jpg 420w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-630x840.jpg 630w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-825x1100.jpg 825w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1030x1373.jpg 1030w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1194x1592.jpg 1194w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1440x1920.jpg 1440w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1300x1733.jpg 1300w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1600x2133.jpg 1600w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels.jpg 1770w" sizes="(max-width: 225px) 100vw, 225px" /></figure></div>
+<div class="wp-block-image"><figure class="alignright size-medium"><img src="https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-225x300.jpg" alt="President Ronald J. Daniels" class="wp-image-29559" srcset="https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-225x300.jpg 225w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-768x1024.jpg 768w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1152x1536.jpg 1152w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1536x2048.jpg 1536w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-420x560.jpg 420w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-630x840.jpg 630w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-825x1100.jpg 825w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1030x1373.jpg 1030w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1194x1592.jpg 1194w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1440x1920.jpg 1440w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1300x1733.jpg 1300w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels-1600x2133.jpg 1600w, https://www.jhu.edu/assets/uploads/2020/05/ron_daniels.jpg 1770w" sizes="(min-width: 1680px) 210px, (min-width: 1280px) 210px, (min-width: 1024px) 187px, (min-width: 863px) 150px, (min-width: 768px) 126px, (min-width: 640px) 112px, (min-width: 412px) 94px, (min-width: 375px) 166px, 151px" /></figure></div>
 
 
 
@@ -5656,8 +5656,8 @@ https://www.jhu.edu/about/university-leadership/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1800243549" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1800243549" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-487331623" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-487331623" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6619,7 +6619,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ec8ce06e74" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";

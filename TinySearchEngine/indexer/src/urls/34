@@ -33,8 +33,8 @@ https://www.jhu.edu/life/athletics/
 
     
 
-      <meta property="og:image" content="https://www.jhu.edu/assets/themes/machado/assets/images/default-hero-images/22-1600x800-8092dfd856.jpg" />
-    <meta property="og:image:secure_url" content="https://www.jhu.edu/assets/themes/machado/assets/images/default-hero-images/22-1600x800-8092dfd856.jpg" />
+      <meta property="og:image" content="https://www.jhu.edu/assets/themes/machado/assets/images/default-hero-images/61-1600x800-7b43ce6716.jpg" />
+    <meta property="og:image:secure_url" content="https://www.jhu.edu/assets/themes/machado/assets/images/default-hero-images/61-1600x800-7b43ce6716.jpg" />
   	<meta property="og:image:width" content="1600" />
   	<meta property="og:image:height" content="800" />
   
@@ -76,7 +76,7 @@ https://www.jhu.edu/life/athletics/
 
         <style>
     a,
-    button { border-bottom-color: #6F2C3F; }
+    button { border-bottom-color: #623412; }
     .no-js a:focus,
     .no-js a:hover,
     .no-js button:focus,
@@ -92,36 +92,36 @@ https://www.jhu.edu/life/athletics/
     .no-touchevents .button:focus,
     .no-touchevents .button:hover,
     .no-touchevents .wp-block-button.is-style-outline .wp-block-button__link:focus,
-    .no-touchevents .wp-block-button.is-style-outline .wp-block-button__link:hover { border-color: #6F2C3F; background-color: #6F2C3F; }
+    .no-touchevents .wp-block-button.is-style-outline .wp-block-button__link:hover { border-color: #623412; background-color: #623412; }
     .no-js .teaser .text h5 a:focus,
     .no-js .teaser .text h5 a:hover,
     .no-touchevents .teaser .text h5 a:focus,
-    .no-touchevents .teaser .text h5 a:hover { color: #6F2C3F; }
-    hr { background-color: #6F2C3F; color: #6F2C3F; }
-    table caption { background-color: #6F2C3F; }
-    .identity-stripe { border-top-color: #6F2C3F; }
-    .identity-stripe .logo-tab { background-color: #6F2C3F; }
+    .no-touchevents .teaser .text h5 a:hover { color: #623412; }
+    hr { background-color: #623412; color: #623412; }
+    table caption { background-color: #623412; }
+    .identity-stripe { border-top-color: #623412; }
+    .identity-stripe .logo-tab { background-color: #623412; }
     .search-results .url,
     #googleSearchResults .gs-webResult div.gs-visibleUrl,
     #googleSearchResults .gs-imageResult div.gs-visibleUrl,
     #googleSearchResults .gsc-results .gsc-cursor-page,
-    #googleSearchBox a.gsst_a .gscb_a { color: #6F2C3F; }
-    .gssb_c { outline-color: #6F2C3F; }
-    #googleSearchResults .gsc-results .gsc-cursor-page.gsc-cursor-current-page { background-color: #6F2C3F; border-bottom-color: #6F2C3F; }
+    #googleSearchBox a.gsst_a .gscb_a { color: #623412; }
+    .gssb_c { outline-color: #623412; }
+    #googleSearchResults .gsc-results .gsc-cursor-page.gsc-cursor-current-page { background-color: #623412; border-bottom-color: #623412; }
     .no-js #googleSearchResults .gsc-results .gsc-cursor-page:focus,
     .no-js #googleSearchResults .gsc-results .gsc-cursor-page:hover,
     .no-touchevents #googleSearchResults .gsc-results .gsc-cursor-page:focus,
-    .no-touchevents #googleSearchResults .gsc-results .gsc-cursor-page:hover { border-bottom-color: #6F2C3F; }
-    .pagination .current { background-color: #6F2C3F; }
-    .page-layout_inner.page-layout_big-header .page-breadcrumb { background-color: #6F2C3F; }
-    .main-nav .french-fries .actions li a { background-color: #6F2C3F; }
+    .no-touchevents #googleSearchResults .gsc-results .gsc-cursor-page:hover { border-bottom-color: #623412; }
+    .pagination .current { background-color: #623412; }
+    .page-layout_inner.page-layout_big-header .page-breadcrumb { background-color: #623412; }
+    .main-nav .french-fries .actions li a { background-color: #623412; }
     .no-js .main-nav .main-nav .search-box button:focus,
     .no-js .main-nav .main-nav .search-box button:hover,
     .no-touchevents .main-nav .main-nav .search-box button:focus,
-    .no-touchevents .main-nav .main-nav .search-box button:hover { background-color: #6F2C3F; }
-    .page-layout_inner .section-nav .active-page > a { color: #6F2C3F; }
+    .no-touchevents .main-nav .main-nav .search-box button:hover { background-color: #623412; }
+    .page-layout_inner .section-nav .active-page > a { color: #623412; }
     .main-content .button-accent,
-    .main-content .wp-block-button__link { background-color: #6F2C3F; border-color: #6F2C3F; color: #ffffff; }
+    .main-content .wp-block-button__link { background-color: #623412; border-color: #623412; color: #ffffff; }
     .no-js .main-content .button-accent:focus,
     .no-js .main-content .button-accent:hover,
     .no-js .main-content .wp-block-button__link:focus,
@@ -129,43 +129,43 @@ https://www.jhu.edu/life/athletics/
     .no-touchevents .main-content .button-accent:focus,
     .no-touchevents .main-content .button-accent:hover,
     .no-touchevents .main-content .wp-block-button__link:focus,
-    .no-touchevents .main-content .wp-block-button__link:hover { background-color: #000000; border-color: #6F2C3F; }
-    .main-content .primary-column .primary-content .quote .bubble { border-color: #6F2C3F; }
-    .main-content .primary-column .primary-content .quote .bubble:before{ border-top-color: #6F2C3F; }
-    .main-content .primary-column .primary-content .quote .bubble p strong { color: #6F2C3F; }
-    .main-content .sidebar .type-quote .bubble { background-color: #6F2C3F; }
-    .main-content .sidebar .type-quote .bubble:before{ border-top-color: #6F2C3F; }
-    .main-content .sidebar .type-fact .fa { color: #6F2C3F; }
-    .main-content .calendar caption { background-color: #6F2C3F; }
-    .main-content .calendar tr .day a { color: #6F2C3F; }
+    .no-touchevents .main-content .wp-block-button__link:hover { background-color: #000000; border-color: #623412; }
+    .main-content .primary-column .primary-content .quote .bubble { border-color: #623412; }
+    .main-content .primary-column .primary-content .quote .bubble:before{ border-top-color: #623412; }
+    .main-content .primary-column .primary-content .quote .bubble p strong { color: #623412; }
+    .main-content .sidebar .type-quote .bubble { background-color: #623412; }
+    .main-content .sidebar .type-quote .bubble:before{ border-top-color: #623412; }
+    .main-content .sidebar .type-fact .fa { color: #623412; }
+    .main-content .calendar caption { background-color: #623412; }
+    .main-content .calendar tr .day a { color: #623412; }
     .no-js .main-content .calendar tr .day a:focus,
     .no-js .main-content .calendar tr .day a:hover,
     .no-touchevents .main-content .calendar tr .day a:focus,
-    .no-touchevents .main-content .calendar tr .day a:hover { background-color: #6F2C3F; color: #ffffff; }
-    .main-content .search-box form { background-color: #6F2C3F; }
-    .main-content .search-box input { border-color: #6F2C3F; }
-    .main-content .search-box button { background-color: #6F2C3F; border-color: #6F2C3F; color: #ffffff !important; }
+    .no-touchevents .main-content .calendar tr .day a:hover { background-color: #623412; color: #ffffff; }
+    .main-content .search-box form { background-color: #623412; }
+    .main-content .search-box input { border-color: #623412; }
+    .main-content .search-box button { background-color: #623412; border-color: #623412; color: #ffffff !important; }
     .no-js .main-content .search-box button:focus,
     .no-js .main-content .search-box button:hover,
     .no-touchevents .main-content .search-box button:focus,
-    .no-touchevents .main-content .search-box button:hover { background-color: #000000 !important; border-color: #6F2C3F; }
-    .page-layout_inner .primary-column .primary-content blockquote { border-color: #6F2C3F; }
-    .page-layout_inner .primary-column .primary-content blockquote:before{ border-top-color: #6F2C3F; }
+    .no-touchevents .main-content .search-box button:hover { background-color: #000000 !important; border-color: #623412; }
+    .page-layout_inner .primary-column .primary-content blockquote { border-color: #623412; }
+    .page-layout_inner .primary-column .primary-content blockquote:before{ border-top-color: #623412; }
     .no-js .page-layout_inner.page-layout_search .pagination a:focus,
     .no-js .page-layout_inner.page-layout_search .pagination a:hover,
     .no-touchevents .page-layout_inner.page-layout_search .pagination a:focus,
-    .no-touchevents .page-layout_inner.page-layout_search .pagination a:hover { border-bottom-color: #6F2C3F; }
-    .page-layout_inner.page-layout_search .pagination span.page-number { background-color: #6F2C3F; }
-    .page-layout_inner.person-template-default .primary-column .primary-content .image-container::after { border-color: #6F2C3F; }
-    .page-layout_inner.person-template-default .primary-column .primary-content .quote strong { color: #6F2C3F; }
-    .page-layout_inner.person-template-default.accent-color-light .primary-column .primary-content .quote strong { background-color: #6F2C3F; -webkit-box-shadow: -0.125em 0 0 #6F2C3F, 0.125em 0 0 #6F2C3F; -moz-box-shadow: -0.125em 0 0 #6F2C3F, 0.125em 0 0 #6F2C3F; -ms-box-shadow: -0.125em 0 0 #6F2C3F, 0.125em 0 0 #6F2C3F; -o-box-shadow: -0.125em 0 0 #6F2C3F, 0.125em 0 0 #6F2C3F; box-shadow: -0.125em 0 0 #6F2C3F, 0.125em 0 0 #6F2C3F; color: #000000; }
-    .filters .filter.active > .input-label-group label { background-color: #6F2C3F; }
-    .modal-background .modal-content { border-top-color: #6F2C3F; }
-    .modal-background .close-box-x  { background-color: #6F2C3F; }
+    .no-touchevents .page-layout_inner.page-layout_search .pagination a:hover { border-bottom-color: #623412; }
+    .page-layout_inner.page-layout_search .pagination span.page-number { background-color: #623412; }
+    .page-layout_inner.person-template-default .primary-column .primary-content .image-container::after { border-color: #623412; }
+    .page-layout_inner.person-template-default .primary-column .primary-content .quote strong { color: #623412; }
+    .page-layout_inner.person-template-default.accent-color-light .primary-column .primary-content .quote strong { background-color: #623412; -webkit-box-shadow: -0.125em 0 0 #623412, 0.125em 0 0 #623412; -moz-box-shadow: -0.125em 0 0 #623412, 0.125em 0 0 #623412; -ms-box-shadow: -0.125em 0 0 #623412, 0.125em 0 0 #623412; -o-box-shadow: -0.125em 0 0 #623412, 0.125em 0 0 #623412; box-shadow: -0.125em 0 0 #623412, 0.125em 0 0 #623412; color: #000000; }
+    .filters .filter.active > .input-label-group label { background-color: #623412; }
+    .modal-background .modal-content { border-top-color: #623412; }
+    .modal-background .close-box-x  { background-color: #623412; }
     .no-js .modal-background .search-box button:focus,
     .no-js .modal-background .search-box button:hover,
     .no-touchevents .modal-background .search-box button:focus,
-    .no-touchevents .modal-background .search-box button:hover { background-color: #6F2C3F; }
+    .no-touchevents .modal-background .search-box button:hover { background-color: #623412; }
   </style>
 
   <style>
@@ -231,8 +231,8 @@ https://www.jhu.edu/life/athletics/
 <!-- begin TITLE section -->
 
 
-<div class="page-title-section" style='background-color: #6F2C3F;'>
-  <div class="page-title-background" style='background-image: url(https://www.jhu.edu/assets/themes/machado/assets/images/default-hero-images/22-1600x800-8092dfd856.jpg)'></div>
+<div class="page-title-section" style='background-color: #623412;'>
+  <div class="page-title-background" style='background-image: url(https://www.jhu.edu/assets/themes/machado/assets/images/default-hero-images/61-1600x800-7b43ce6716.jpg)'></div>
   <div class="dot-matrix"></div>
   <div class="center">
 
@@ -446,8 +446,8 @@ https://www.jhu.edu/life/athletics/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1484382535" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1484382535" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1552130829" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1552130829" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5721,8 +5721,8 @@ https://www.jhu.edu/life/athletics/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-55233975" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-55233975" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-662013825" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-662013825" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6684,7 +6684,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ec8ce06e74" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -6738,7 +6738,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
-ype = 'text/javascript'; sz.async = true;
+e = 'text/javascript'; sz.async = true;
 sz.src = '//siteimproveanalytics.com/js/siteanalyze_6185845.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
 })();
@@ -6755,7 +6755,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
-pt">
+script">
 /*<![CDATA[*/
 (function() {
 var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
@@ -6775,7 +6775,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
-/*]]>*/
+>*/
 </script>
     
     <script>
@@ -6788,7 +6788,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
-cript>
+ipt>
     
     <script>
   !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);

@@ -444,8 +444,8 @@ https://www.jhu.edu/admissions/visit/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-293935787" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-293935787" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-309264485" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-309264485" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -5512,7 +5512,7 @@ https://www.jhu.edu/admissions/visit/
 
             <div class="sidebar-group">
               
-<figure class="wp-block-image size-large"><img src="https://www.jhu.edu/assets/uploads/2017/06/tour2-1024x626.jpg" alt="Screenshot of breezeway from interactive campus tour" class="wp-image-25936" srcset="https://www.jhu.edu/assets/uploads/2017/06/tour2-1024x626.jpg 1024w, https://www.jhu.edu/assets/uploads/2017/06/tour2-300x183.jpg 300w, https://www.jhu.edu/assets/uploads/2017/06/tour2-768x470.jpg 768w, https://www.jhu.edu/assets/uploads/2017/06/tour2-420x257.jpg 420w, https://www.jhu.edu/assets/uploads/2017/06/tour2-630x385.jpg 630w, https://www.jhu.edu/assets/uploads/2017/06/tour2-825x505.jpg 825w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1030x630.jpg 1030w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1194x730.jpg 1194w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1440x881.jpg 1440w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1300x795.jpg 1300w, https://www.jhu.edu/assets/uploads/2017/06/tour2.jpg 1442w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img src="https://www.jhu.edu/assets/uploads/2017/06/tour2-1024x626.jpg" alt="Screenshot of breezeway from interactive campus tour" class="wp-image-25936" srcset="https://www.jhu.edu/assets/uploads/2017/06/tour2-1024x626.jpg 1024w, https://www.jhu.edu/assets/uploads/2017/06/tour2-300x183.jpg 300w, https://www.jhu.edu/assets/uploads/2017/06/tour2-768x470.jpg 768w, https://www.jhu.edu/assets/uploads/2017/06/tour2-420x257.jpg 420w, https://www.jhu.edu/assets/uploads/2017/06/tour2-630x385.jpg 630w, https://www.jhu.edu/assets/uploads/2017/06/tour2-825x505.jpg 825w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1030x630.jpg 1030w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1194x730.jpg 1194w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1440x881.jpg 1440w, https://www.jhu.edu/assets/uploads/2017/06/tour2-1300x795.jpg 1300w, https://www.jhu.edu/assets/uploads/2017/06/tour2.jpg 1442w" sizes="(min-width: 1680px) 210px, (min-width: 1280px) 174px, (min-width: 1024px) 200px, (min-width: 863px) 160px, (min-width: 768px) 209px, (min-width: 640px) 186px, (min-width: 412px) 155px, 155px" /></figure>
 
 
 
@@ -5727,8 +5727,8 @@ https://www.jhu.edu/admissions/visit/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-2103536972" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-2103536972" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-367627263" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-367627263" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6690,7 +6690,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb1544e04" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ec8ce06e74" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -6744,7 +6744,93 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
- class="highlight">Our nine schools prepare students to excel in today's world</span></h2>
+, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/melissa_mai_thumb-300x300.jpg 300w" /></a>
+  
+
+
+      
+        
+                        
+  
+    
+              
+              
+    <a href="https://www.jhu.edu/profiles/kirby-leo/"
+         target="_self"
+         class="secondary profile column gtm-link-click"
+
+        
+        
+                  data-action="Click"
+          data-category="Homepage"
+          data-label="Profile: Kirby"
+        
+      ><img width="500" height="500" src="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg" class="attachment-large_thumb size-large_thumb" alt="Kirby Leo" sizes="(min-width: 1680px) 333px, (min-width: 1280px) 210px, (min-width: 1024px) 296px, (min-width: 863px) 273px, (min-width: 768px) 273px, (min-width: 640px) 243px, (min-width: 412px) 203px, (min-width: 375px) 130px, 119px" srcset="https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-500x500.jpg 500w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-150x150.jpg 150w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-700x700.jpg 700w, https://www.jhu.edu/assets/uploads/2019/05/kirby_thumb-300x300.jpg 300w" /></a>
+  
+
+
+      
+      
+  
+  
+
+
+    </div>
+
+  </div>
+
+</div>
+          
+<div class="academics module row" role="region" aria-label="Academics" data-module="academics">
+
+  <div class="dot-matrix" aria-hidden="true"></div>
+
+  <div class="torn-paper" aria-hidden="true"></div>
+
+  <div class="center force">
+
+    <div class="module-content sticky column force">
+
+      
+      <div class="row search-box-container">
+
+        
+  
+        
+      
+
+  
+  
+            
+  
+  
+  <div class="jhu-block search-box force">
+
+    <form method="GET" action="https://e-catalogue.jhu.edu/search/" class="column force" id="gtm-home-explorer" >
+
+      
+      
+      <label for="search-program_explorer-1429076369" class="visuallyhidden">Search programs</label>
+      <input aria-label="Search programs" id="search-program_explorer-1429076369" class="column" type="text" name="q" value="" autocomplete="off">
+
+      <button aria-label="Search" type="submit" class="button column">
+        <i class="fa fa-fw fa-search" aria-hidden="true"></i>
+        <span class="text">Search Programs</span>
+      </button>
+
+      
+
+    </form>
+
+  </div>
+
+
+
+      </div>
+
+      <div class="row schools">
+
+        <h2><span class="highlight">Our nine schools prepare students to excel in today's world</span></h2>
 
         
         <ul>
@@ -7089,8 +7175,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1627228126" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1627228126" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-844722999" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-844722999" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
