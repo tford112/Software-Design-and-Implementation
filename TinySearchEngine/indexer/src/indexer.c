@@ -9,7 +9,25 @@
 #include "../include/saveClean.h" 
 #include "../include/allocate.h"
 
-// driver 
+/* File: indexer.c 
+ * Input: Depends on usages 
+ * 	Usage 1: Extract Text -> run the file as "./indexer [URL_DIRECTORY] [TARGET_DIRECTORY] 
+ *      Usage 2: Parsing the Texts to create an Index File -> run the file as "./indexer [TARGET_DIRECTORY] "
+ * Output: 
+ * 	An index file that will have every word we extracted into our text files recorded with the total number 
+	 * of documents it appears in as well as how many times it appears in each of the documents. 
+ * 	For example, "administration 3 5 2 10 1 21 2" indicates that the word administration appears 3 times
+ * 		2 times in document ID 5 ("text_5") 2 times, document ID 10 once, and 2 times in document ID 21 
+ * Description: 
+ * 	The executeExtraction() case has been addressed in loadDoc.c and extract.py. This file is concerned with 
+ * 	how we can parse our text files and transform them into a .dat file as described above. We utilize a helpful
+ * 	data structure, INVERTED_INDEX, which will be a hash table that will contain pointers to WordNodes. readWords()
+ * 	and updateIndex() will be responsible for creating a finished index data structure that corresponds to all the 
+ * 	words captured in our extracted text files. We then call "saveIndex()" which will generate the actual .dat file
+ * 	in the format listed above basedon our INVERTED_INDEX index. 
+ */
+
+// driver -> can execute either executeExtraction or executeParsing. 
 int main(int argc, char** argv){
 	FILE *logger = openFile("logger_index.txt", "wb"); 
 	INVERTED_INDEX* index = allocateInvertedIndex(logger); 
@@ -66,104 +84,11 @@ void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
 	}
 }
 
-// get doc id from filename. We assume that the crawler saves files using progressive numbers as unique identifiers. 
-int getDocumentId(char* filename) {  // don't extract the actual "text_" part  
-	char* underscore = strchr(filename, '_'); // get first occurrence of '_' 
-	int idx = underscore - &filename[0];  // get the index where '_' occurred
-	char num[5]; 
-	memcpy(num, &filename[idx+1], 4); 
-	num[4] = '\0'; 
-	return atoi(num); 
-}
-
-int checkWordInvalid(char* word) {
-	int invalid = 0; 
-	for (int i = 0; i < strlen(word); ++i) {
-		if (!isalpha(word[i])) {
-			++invalid;
-		}
-		if (strstr(word, "-")) {
-			++invalid; 
-		}
-	}
-	return invalid;
-}
-
-int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
-	unsigned long hash_value; 
-	hash_value = hash1(word) % MAX_HASH_SLOT;
-	if (index->hash[hash_value] == NULL) {      // case where no instance of word found in hash table 
-		DocNode* dnode = allocateDocNode(logger); 
-		dnode->docId = docId; 
-		dnode->page_word_frequency = 1;
-		WordNode* wnode = allocateWordNode(logger); 
-		wnode->page = dnode; 
-		strlcpy(wnode->word, word, WORD_LENGTH);  
-		index->hash[hash_value] = wnode; 
-		fprintf(logger, "word \"%s\" at hash %lu for docid %d\n", word, hash_value, docId); 
-		return 1; 
-	}	
-	// There is a collision 
-	// case 1. the word is found in hash_table. If so, then 
-	// i. It was the same document -> only need to update the page_word_frequency 
-	// 	Note: We need to go through the hash list at a word collision to check whether the match exists in another doc. 
-	// ii. It was a new document -> Then need to initialize that new document and set pointer 
-	// case 2. there was a collision because identical hash value. If so, then 
-	// i. Create a new WordNode. 
-	else {
-		WordNode* coll_curr = index->hash[hash_value]; 	
-		while (coll_curr) {
-			if (strcmp(coll_curr->word, word) == 0) {  
-				if (coll_curr->page->docId == docId) {   	 // case 1 i. 
-					fprintf(logger, "collision occurred for \"%s\" at hash idx: %lu in same doc.\n", word, hash_value); 
-					++coll_curr->page->page_word_frequency; 
-					return 1; 	
-				}
-				else {   					
-					DocNode* curr_page = coll_curr->page; 
-					while (curr_page) {
-						if (curr_page->docId == docId) { 
-							fprintf(logger, "found doc match (%d)  within hash list for word \"%s\". Updating word freq\n", docId, word);
-							++curr_page->page_word_frequency; 
-							return 1; 
-						}
-						if (curr_page->next == NULL) {
-							break;
-						}
-						curr_page = curr_page->next; 
-					}
-					DocNode* dnode = allocateDocNode(logger); 
-					dnode->docId = docId; 
-					dnode->page_word_frequency = 1; 
-					curr_page->next = dnode; 			// insert new DocNode at end  
-					fprintf(logger, "diff doc (%d) for word \"%s\" at hash %lu\n", docId, word, hash_value); 
-					return 1; 
-				}
-			}
-			else if (coll_curr->next == NULL) {
-				break; 
-			}
-			coll_curr = coll_curr->next; 
-		}
-		DocNode* dnode = allocateDocNode(logger); 
-		dnode->docId = docId; 
-		dnode->page_word_frequency = 1;
-		WordNode* wnode = allocateWordNode(logger); 
-		wnode->page = dnode; 
-		strlcpy(wnode->word, word, WORD_LENGTH);  
-		wnode->prev = coll_curr; 
-		coll_curr->next = wnode; 
-		return 1; 
-	}
-	return 0; 
-}
-
-
+/* Given a text file, we now get all our words and format them slightly (lowercase). If the word is valid, we can update our Index*/
 void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) {
-	char buf[WORD_LENGTH]; 
-	memset(buf, 0, WORD_LENGTH);
+	char buf[WORD_LENGTH] = {0}; 
 	while (fscanf(text_file, " %s", buf) == 1) {
-		int buf_size = WORD_LENGTH; //strlen(buf) ;
+		int buf_size = WORD_LENGTH; 
 		if (buf[buf_size - 1] == '.') {       			// words that end with a period would otherwise be treated as different 
 			buf_size = buf_size - 1; 
 		}
@@ -187,4 +112,99 @@ void readWords(FILE *text_file, FILE* logger, int docId, INVERTED_INDEX* index) 
 	}
 }
 
+/* updateIndex() - We receive a valid word and figure out how we can update our Index. If there is no collision, then we can 
+   simply just create an entry at that hash location. If there is then there are some details to work out and 
+   more details can be found immediately below. Generally, there are 3 scenarios that could happen with a collision.
+  	1. the collision occurred because it was because it was a different word. In this case, it was only luck that 
+  	there was an identical hash-value already.
+	2. the word is found in hash_table. If so, then 
+	 	i. It was the same document -> only need to update the page_word_frequency 
+	 		Note: We need to go through the hash list at a word collision to check whether the match exists in another doc. 
+	 	ii. It was a new document -> Then need to initialize that new document and set pointer 
+*/
+int updateIndex(char* word, int docId, INVERTED_INDEX* index, FILE* logger) {
+	unsigned long hash_value; 
+	hash_value = hash1(word) % MAX_HASH_SLOT;
+	if (index->hash[hash_value] == NULL) {      // case where no instance of word found in hash table 
+		DocNode* dnode = allocateDocNode(logger); 
+		dnode->docId = docId; 
+		dnode->page_word_frequency = 1;
+		WordNode* wnode = allocateWordNode(logger); 
+		wnode->page = dnode; 
+		strlcpy(wnode->word, word, WORD_LENGTH);  
+		index->hash[hash_value] = wnode; 
+		fprintf(logger, "word \"%s\" at hash %lu for docid %d\n", word, hash_value, docId); 
+		return 1; 
+	}	
+	else {  
+		WordNode* collCurrWord = index->hash[hash_value]; 	
+		while (collCurrWord) {
+			if (strcmp(collCurrWord->word, word) == 0) {  
+				if (collCurrWord->page->docId == docId) {   	 // case 2 i. 
+					fprintf(logger, "collision occurred for \"%s\" at hash idx: %lu in same doc.\n", word, hash_value); 
+					++collCurrWord->page->page_word_frequency; 
+					return 1; 	
+				}
+				else {   					
+					DocNode* currPage = collCurrWord->page;    // case 2 ii. - Iterate through our linked list until we can make a new DocNode
+					while (currPage) {
+						if (currPage->docId == docId) { 
+							fprintf(logger, "found doc match (%d)  within hash list for word \"%s\". Updating word freq\n", docId, word);
+							++currPage->page_word_frequency; 
+							return 1; 
+						}
+						if (currPage->next == NULL) {
+							break;
+						}
+						currPage = currPage->next; 
+					}
+					DocNode* dnode = allocateDocNode(logger); 
+					dnode->docId = docId; 
+					dnode->page_word_frequency = 1; 
+					currPage->next = dnode; 			// insert new DocNode at end  
+					fprintf(logger, "diff doc (%d) for word \"%s\" at hash %lu\n", docId, word, hash_value); 
+					return 1; 
+				}
+			}
+			else if (collCurrWord->next == NULL) {
+				break; 
+			}
+			collCurrWord = collCurrWord->next; 
+		}
+		DocNode* dnode = allocateDocNode(logger); 
+		dnode->docId = docId; 
+		dnode->page_word_frequency = 1;
+		WordNode* wnode = allocateWordNode(logger); 
+		wnode->page = dnode; 
+		strlcpy(wnode->word, word, WORD_LENGTH);  
+		wnode->prev = collCurrWord; 
+		collCurrWord->next = wnode; 
+		return 1; 
+	}
+	return 0; 
+}
+
+// get doc id from filename. We assume that the crawler saves files using progressive numbers as unique identifiers. 
+int getDocumentId(char* filename) {  				// don't extract the actual "text_" part  
+	char* underscore = strchr(filename, '_'); 		// get first occurrence of '_' 
+	int idx = underscore - &filename[0];  			// get the index where '_' occurred
+	char num[5]; 
+	memcpy(num, &filename[idx+1], 4); 
+	num[4] = '\0'; 
+	return atoi(num); 
+}
+
+// helper function to determine if word has numbers or other garbage characters (e.g hyphen) 
+int checkWordInvalid(char* word) {
+	int invalid = 0; 
+	for (int i = 0; i < strlen(word); ++i) {
+		if (!isalpha(word[i])) {
+			++invalid;
+		}
+		if (strstr(word, "-")) {
+			++invalid; 
+		}
+	}
+	return invalid;
+}
 

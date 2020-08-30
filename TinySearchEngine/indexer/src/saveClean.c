@@ -5,6 +5,18 @@
 #include "../include/allocate.h"
 #include "../include/saveClean.h" 
 
+/* File: saveClean.c 
+ * Input: INVERTED_INDEX* from indexer.c 
+ * Output: 
+ * 	An index file that will have every word we extracted into our text files recorded with the total number 
+	 * of documents it appears in as well as how many times it appears in each of the documents. 
+ * 	For example, "administration 3 5 2 10 1 21 2" indicates that the word administration appears 3 times
+ * 		2 times in document ID 5 ("text_5") 2 times, document ID 10 once, and 2 times in document ID 21 
+ * Description: 
+ * 	Once our index data structure is completed, we now format our results into a .dat file in our "saveIndex()" 
+ * 	function. The rest of the functions deal with cleaning up our memory afterwards. 
+ */
+
 void saveIndex(INVERTED_INDEX* index, char* filename, FILE* logger) {
 	int cur, doc_count;
 	cur = 0; 
