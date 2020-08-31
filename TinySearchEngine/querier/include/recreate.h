@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdlib.h> 
 #include "nums.h" 
-// PROTOTYPES 
 
+// PROTOTYPES 
 INVERTED_INDEX* recreateIndex(FILE*, FILE*); 
 INVERTED_INDEX* returnRecreatedIndex(FILE*, FILE*); 
 #endif 

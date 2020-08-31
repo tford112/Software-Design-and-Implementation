@@ -10,7 +10,8 @@
 // reading in User Input -> validateInputArgs, readInUserQueryInput and removeSpacesAndMakeLowerCase 
 // checking whether query piece has an AND or OR -> isWordAnd, isWordOr, doesQueryContainAnd, doesQueryContainOr
 // "getters" -> getNumOfDocsInArray, getNumOfSharedDocs 
-//
+
+// MACROS 
 #include <stdbool.h> 
 #include <string.h> 
 #include <ctype.h> 
@@ -18,6 +19,8 @@
 #include "allocate.h" 
 #include "recreate.h"
 #include "query.h" 
+
+// PROTOTYPES 
 void validateInputArgs(int, char*);
 int readInUserQueryInput(char*, int);
 char* removeSpacesAndMakeLowerCase(char* query);

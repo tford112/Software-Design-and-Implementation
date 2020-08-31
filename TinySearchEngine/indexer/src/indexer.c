@@ -77,10 +77,10 @@ void executeParsing(FILE* logger, char* text_dir, INVERTED_INDEX* index) {
 		FILE *f = openFile(filename, "rb"); 
 		int docId = getDocumentId(filename); 
 		fprintf(logger, "Reading from document: %s\n\n", filename);
-		readWords(f, logger, docId, index); // start parsing this file and update index 
+		readWords(f, logger, docId, index); 			             // start parsing this file and update index 
 		free(filename); 
 		fclose(f); 
-		++file_count; 
+		file_count++;
 	}
 }
 

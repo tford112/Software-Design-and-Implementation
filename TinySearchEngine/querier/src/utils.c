@@ -3,7 +3,12 @@
 #include <stdlib.h>
 #include "../include/utils.h" 
 
-// first check whether the correct arguments (number and existence) for running file 
+/* FILE: utils.c 
+ *
+ * DESCRIPTION: Utility functions that couldn't fit in neatly elsewhere 
+ */
+
+// helper function for checking the correct arguments (number and existence) for running file 
 void validateInputArgs(int argc, char* indexToSearch) {
 	if (argc < 2) {
 		printf("Need to provide an index to read from\n"); 
@@ -26,7 +31,7 @@ int readInUserQueryInput(char* buf, int size) {
 	return FAIL;  
 }
 
-// remove any leading and trailing whitespaces that a user may include as well as turning query into lowercase 
+// helper function for formatting user input by removing any leading and trailing whitespaces that a user may include as well as turning query into lowercase 
 char* removeSpacesAndMakeLowerCase(char* query) {
 	char queryNoWhiteSpaces[BUFSIZE]; 
 	memset(queryNoWhiteSpaces, '\0', BUFSIZE); 

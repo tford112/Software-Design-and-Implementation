@@ -11,5 +11,10 @@
 #define NUM_SEARCH_RESULTS 100 
 #define BUFSIZE 1000 
 
+// *******************Implementation Spec *******************************
+//
+// File: nums.c 
+// This file contains magic numbers that are sprinkled throughout the files. 
+
 #endif 
 

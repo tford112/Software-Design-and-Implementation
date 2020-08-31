@@ -9,15 +9,18 @@
 // common case for our query search engine. Because we have to have a collection 
 // of shared documents for each query word that needs to be filtered down, it's 
 // best to have all the related functions in a separate file. 
+
+// MACROS 
 #include <stdlib.h> 
 #include "nums.h" 
 #include "query.h" 
 #include "utils.h" 
 #include "allocate.h" 
+
+// PROTOTYPES 
 sharedDocId* initializeSharedIds(sharedDocId*, DocNode*);
 sharedDocId* filterFromSharedIds(DocNode*, sharedDocId*);
 void removeSharedDocId(sharedDocId**, int);
 void removeNonSharedIdsFromDocArray(DocNode*, sharedDocId*);
-
 
 #endif 

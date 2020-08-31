@@ -2,13 +2,19 @@
 #include <stdio.h>
 #include "../include/and.h" 
 
+/* FILE: and.c 
+ *
+ * DESCRIPTION: The AND case of the querier (e.g. "computer science" or "computer AND science" as user queries) requires us to keep track of not only all the documents that match each piece of the query (e.g. all the documents for "computer" and "science") but also all the documents that have all the query pieces in question a.k.a the shared docIds (e.g. only a subset of documents will have both "computer" and "science" appear). We only have to initialize our shared Ids once and then keep paring them down with each subsequent piece (e.g it collects all the doc Ids for "computer" and then for "science", the program will keep track of only common documents. And if there was another piece like "blueberry", then the only docIds that remain are ones that contain "computer", "science", and "blueberry". 
+ */
+
+
 // we can initialize our shared Ids from our queryDocArray one time. This will be pared down later in our filterFromSharedIds 
 sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode* queryDocArray) {
 	int numSharedDocs = getNumOfSharedDocs(sdoc); 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray); 
 	int currQueryDocIndex = 0; 
 	int count = 0; 
-	if (numSharedDocs == 0) {    // only initialize if there is no shared ids to begin with 
+	if (numSharedDocs == 0) {     			// only initialize if there is no shared ids to begin with 
 		while (currQueryDocIndex < numDocsInQueryDocArray && count < NUM_SEARCH_RESULTS) { 
 			if (sdoc == NULL) {     	// linked list if head is NULL 
 				sdoc = allocateSharedId(); 
@@ -32,8 +38,10 @@ sharedDocId* initializeSharedIds(sharedDocId* sdoc, DocNode* queryDocArray) {
 }
 
 // we will have to filter down our shared Ids with each query Piece 
-// (e.g. computer AND science -> we gather all the docIds that are generated from searching the index for "computer", 
-//  we then have to pare down our result search with "science" right after to find the intersecting results) 
+// For every shared docId, we then iterate through our searchResult DocNode (linked lists aren't ideal for search..) 
+// to see if that shared docId appears. If it does, then we can move on to the next shared docId and so on. If however
+// our search result couldn't find this shared docId then we can't keep it anymore 
+// (e.g. "computer" generated docIds 1, 3, 5 but "science" generated only 1, 3. So the AND case would only output 1 and 3)
 sharedDocId* filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
 	DocNode* currDoc = searchResult; 
 	bool isDocIdInShared = false; 
@@ -54,7 +62,7 @@ sharedDocId* filterFromSharedIds(DocNode* searchResult, sharedDocId* sdoc) {
 			currSId = currSId->next; 
 			isDocIdInShared = false; 
 		}
-		currDoc = searchResult;  // start process again 
+		currDoc = searchResult;  			    // start process again 
 	}
 	return sdoc; 
 }
@@ -76,7 +84,7 @@ void removeSharedDocId(sharedDocId** head, int docId) {
 	}
 }
 
-// for the AND case -> now that we have a (pared) down shared Id array, we can remove all the doc results from our queryDocArray that don't have matching 
+// now that we have a (pared) down shared Id array, we can remove all the doc results from our queryDocArray that don't have matching 
 // ids in the shared array 
 void removeNonSharedIdsFromDocArray(DocNode* queryDocArray, sharedDocId* sdoc) { 
 	int numDocsInQueryDocArray = getNumOfDocsInArray(queryDocArray);

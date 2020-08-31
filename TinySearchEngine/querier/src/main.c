@@ -12,13 +12,18 @@
 #include "../include/utils.h" 
 #include "../include/and.h" 
 
+/*  FILE: main.c 
+ *  
+ *  DESCRIPTION: Driver file 
+ */
+
 int main(int argc, char** argv) {
 	validateInputArgs(argc, argv[1]);
-	FILE* recreate = openFile(argv[1], "rb");  				
+	FILE* recreate = openFile(argv[1], "rb");  				// pass in our indexer .dat file generated from "indexer" section 
 	FILE* log = openFile("logger_querier.txt", "wb"); 
 	INVERTED_INDEX* index = returnRecreatedIndex(recreate, log); 
-	collectQueryResults(index, log); 
-	cleanIndex(index, log); // clean up all allocated memory for INVERTED_INDEX 
+	collectQueryResults(index, log);					// main query driver 
+	cleanIndex(index, log); 						// clean up all allocated memory for INVERTED_INDEX 
 	fclose(log); 
 	fclose(recreate); 
 	return 0; 

@@ -13,9 +13,7 @@
 #include "nums.h" 
 #include <stdbool.h>
 
-// DATA STRUCTURES. All these structures should be malloc 'd
-
-// This is the key data structure that holds the information of each URL.
+// DATA STRUCTURES. 
 
 typedef struct _DocumentNode {
 	struct _DocumentNode *next;  // pointer to next member in list 
@@ -55,23 +53,23 @@ typedef struct _SharedDocId sharedDocId;
 // search query array storing all these results. If it is the OR case, then for the next query piece
 // we only have to avoid duplicates. If it is the AND case (e.g. "computer AND science" which is also
 // "computer science"), then we have several functions in the "and.c" file that will handle those. 
+// after computing what results (or in the case of AND, what shared results) appear,
+// we rank the search results with a very simple ranking algorithm (highestWordFrequency) 
+// and display the results in ranked order. After getting the queries and displaying them, we prompt 
+// the user to make a doc id selection so as to open that file and read it  
+
 void collectQueryResults(INVERTED_INDEX*, FILE*); 
 void breakAndReadQuery(INVERTED_INDEX*, char*, FILE*);
 DocNode* searchIndexForAllDocQueryMatches(INVERTED_INDEX*, char*, FILE*);
 void updateQueryDocArray(DocNode*, DocNode*);
 bool checkIfDocAlreadyInArray(DocNode*, DocNode*);
 
-// after computing what results (or in the case of AND, what shared results) appear,
-// we rank the search results with a very simple ranking algorithm (highestWordFrequency) 
-// and display the results in ranked order. 
 bool areThereAnyResults(DocNode*, sharedDocId*, bool);
 sharedDocId* displayQueryResults(DocNode*);
 int highestWordFrequency(DocNode*); 
 void trackQueryIdsForUser(sharedDocId**, int);
 void printCurrentQueryResult(DocNode*);
 
-// after getting the queries and displaying them, we prompt the user to make 
-// a doc id selection so as to open that file and read it 
 void promptUserForRequest(sharedDocId*);
 bool validateUserRequest(sharedDocId*, char*);
 

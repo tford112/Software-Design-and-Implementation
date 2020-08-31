@@ -12,6 +12,19 @@
 #include "../include/utils.h" 
 #include "../include/and.h" 
 
+/* FILE: query.c 
+ * DESCRIPTION: we get the user query and break it up into multiple pieces. Each piece will be cross-checked 
+	with our index. If it exists, we track the document nodes it appears in via id. We create a 
+	search query array storing all these results. If it is the OR case, then for the next query piece
+	we only have to avoid duplicates. If it is the AND case (e.g. "computer AND science" which is also
+	"computer science"), then we have several functions in the "and.c" file that will handle those. 
+	after computing what results (or in the case of AND, what shared results) appear,
+	we rank the search results with a very simple ranking algorithm (highestWordFrequency) 
+	and display the results in ranked order. After getting the queries and displaying them, we prompt 
+	the user to make a doc id selection so as to open that file and read it  
+*/
+
+
 void collectQueryResults(INVERTED_INDEX* index, FILE* log) { 
 	fputs("TinySearch: ", stdout); 
 	char query[BUFSIZE]; 
