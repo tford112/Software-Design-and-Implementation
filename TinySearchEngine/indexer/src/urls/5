@@ -446,8 +446,8 @@ https://www.jhu.edu/academics/graduate-studies/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-729016130" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-729016130" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-1044582665" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-1044582665" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -6275,8 +6275,8 @@ https://www.jhu.edu/academics/graduate-studies/
                         <input type="hidden" name="c" value="site_search" />
               
       
-      <label for="search-google-1298551310" class="visuallyhidden">Search jhu.edu</label>
-      <input aria-label="Search jhu.edu" id="search-google-1298551310" class="column" type="text" name="q" value="" autocomplete="off">
+      <label for="search-google-820715837" class="visuallyhidden">Search jhu.edu</label>
+      <input aria-label="Search jhu.edu" id="search-google-820715837" class="column" type="text" name="q" value="" autocomplete="off">
 
       <button aria-label="Search" type="submit" class="button column">
         <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -7238,7 +7238,7 @@ window.lodash = _.noConflict();
 <script type='text/javascript' src='https://www.jhu.edu/wp-includes/js/dist/api-fetch.min.js?ver=b437dd9d1118e698b1b85961e759bf03'></script>
 <script type='text/javascript'>
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.jhu.edu/wp-json/" ) );
-wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ec8ce06e74" );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "fcf0aea6be" );
 wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
 wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
 wp.apiFetch.nonceEndpoint = "https://wpadmin.jhu.edu/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -7292,49 +7292,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz
 
   </body>
 </html>
-  
-  
-  
-    
-    
-                    
-    <a href="https://www.jhu.edu/maps-directions/"
-         target="_self"
-         class=""
-
-        
-        
-        
-      >Maps & Directions</a>
-  
-
-
-
-      </li>
-
-    
-    
-
-          
-  
-  
-  
-  
-  
-    
-  
-    
-    
-      <li class="navitem">
-        
-  
-  
-  
-  
-  
-    
-    
-                    
     <a href="https://www.jhu.edu/contact/"
          target="_self"
          class=""

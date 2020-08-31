@@ -71,6 +71,9 @@ void cleanUpWordNodesAtHashSlot(INVERTED_INDEX* index, int idx) {
 }
 
 void cleanUpDocNodesFromWordNode(WordNode* wnode) {
+	DocNode* dnode = wnode->page;
+	free(dnode); 
+	/*
 	DocNode* dnode = wnode->page; 
 	while (dnode) {     			 // free every allocated document node 
 		DocNode* freedNode = dnode;
@@ -78,5 +81,6 @@ void cleanUpDocNodesFromWordNode(WordNode* wnode) {
 		free(freedNode); 
 		freedNode = NULL; 
 	}
+	*/
 }
 
